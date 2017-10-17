@@ -109,7 +109,7 @@ class App {
 
 		// Include our file.
 		$includes_dir = trailingslashit( $this->path ) . 'includes/';
-		$file         = 'class-' . strtolower( end( $parts ) ) . '.php';
+		$file = 'class-' . strtolower( str_replace( '_', '-', end( $parts ) ) ) . '.php';
 
 		if ( stream_resolve_include_path( $includes_dir . $file ) ) {
 			require_once $includes_dir . $file;
