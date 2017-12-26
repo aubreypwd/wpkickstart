@@ -51,6 +51,8 @@ function app() {
 
 	return $app;
 }
+
+// Wait until WordPress is ready, then go!
 add_action( 'plugins_loaded', 'YourCompanyName\YourPluginName\app' );
 
 // When we deactivate this plugin...
