@@ -39,13 +39,24 @@ class Test_App extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Test that the version is set to something proper.
+	 * Test that the version method is set to something proper.
 	 *
 	 * @author Your Name
 	 * @since  NEXT
 	 */
 	public function test_version() {
 		$this->__method_exists_is_not_empty_and_a_string( 'version' );
+	}
+
+	/**
+	 * Test that the url method is set to something proper.
+	 *
+	 * @author Your Name
+	 * @since  NEXT
+	 */
+	public function test_url() {
+		$this->__method_exists_is_not_empty_and_a_string( 'url' );
+		$this->assertTrue( (boolean) filter_var( app()->url(), FILTER_VALIDATE_URL ), 'App::url() needs to return a valid URL.' );
 	}
 
 	/**
