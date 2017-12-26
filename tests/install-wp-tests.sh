@@ -1,10 +1,21 @@
 #!/usr/bin/env bash
 
+###
+ # Run bash tests/install-wp-tests.sh
+ #
+ # @since 1.1.1
+ ##
+
 if [ $# -lt 3 ]; then
+
+	## You need to enter some commands....
 	echo "usage: $0 <db-name> <db-user> <db-pass> [db-host] [wp-version] [skip-database-creation]"
 	exit 1
 fi
 
+echo "Starting..."
+
+## Setup.
 DB_NAME=$1
 DB_USER=$2
 DB_PASS=$3
@@ -14,40 +25,54 @@ SKIP_DB_CREATE=${6-false}
 WP_TESTS_DIR=${WP_TESTS_DIR-/tmp/wordpress-tests-lib}
 WP_CORE_DIR=${WP_CORE_DIR-/tmp/wordpress/}
 
+###
+ # Download.
+ #
+ # @since 1.1.1
+ ##
 download() {
 	if [ `which curl` ]; then
 		curl -s "$1" > "$2";
 	elif [ `which wget` ]; then
 		wget -nv -O "$2" "$1"
 	else
-		echo "Please install curl or wget."
+		echo "🛑 Please install curl or wget."
 		exit 1
 	fi
 }
 
+# Download some stuff...
+echo "Downloading WordPress..."
 if [[ $WP_VERSION =~ [0-9]+\.[0-9]+(\.[0-9]+)? ]]; then
 	WP_TESTS_TAG="tags/$WP_VERSION"
 elif [[ $WP_VERSION == 'nightly' || $WP_VERSION == 'trunk' ]]; then
 	WP_TESTS_TAG="trunk"
 else
+
 	# http serves a single offer, whereas https serves multiple. we only want one
 	download http://api.wordpress.org/core/version-check/1.7/ /tmp/wp-latest.json
 	grep '[0-9]+\.[0-9]+(\.[0-9]+)?' /tmp/wp-latest.json
 	LATEST_VERSION=$(grep -o '"version":"[^"]*' /tmp/wp-latest.json | sed 's/"version":"//')
+
 	if [[ -z "$LATEST_VERSION" ]]; then
 		echo "Latest WordPress version could not be found"
 		exit 1
 	fi
+
 	WP_TESTS_TAG="tags/$LATEST_VERSION"
-fi
+fi; echo "Done."
 
-set -ex
-
+###
+ # Install WP.
+ #
+ # @since 1.1.1
+ ##
 install_wp() {
 	if [ -d $WP_CORE_DIR ]; then
 		return;
 	fi
 
+	echo "Installing WordPress..."
 	mkdir -p $WP_CORE_DIR
 
 	if [[ $WP_VERSION == 'nightly' || $WP_VERSION == 'trunk' ]]; then
@@ -66,9 +91,16 @@ install_wp() {
 	fi
 
 	download https://raw.github.com/markoheijnen/wp-mysqli/master/db.php $WP_CORE_DIR/wp-content/db.php
+	echo "Done."
 }
 
+###
+ # Install Test Suite.
+ #
+ # @since 1.1.1
+ ##
 install_test_suite() {
+	echo "Installing test suite..."
 
 	# portable in-place argument for both GNU sed and Mac OSX sed
 	if [[ $(uname -s) == 'Darwin' ]]; then
@@ -97,9 +129,18 @@ install_test_suite() {
 		sed $ioption "s/yourpasswordhere/$DB_PASS/" "$WP_TESTS_DIR"/wp-tests-config.php
 		sed $ioption "s|localhost|${DB_HOST}|" "$WP_TESTS_DIR"/wp-tests-config.php
 	fi
+
+	echo "Done."
 }
 
+
+###
+ # Create the DB.
+ #
+ # @since 1.1.1
+ ##
 install_db() {
+	echo "Creating WP Database..."
 	if [ ${SKIP_DB_CREATE} = "true" ]; then
 		return 0
 	fi
@@ -122,16 +163,27 @@ install_db() {
 
 	# create database
 	mysqladmin create $DB_NAME --user="$DB_USER" --password="$DB_PASS"$EXTRA
+	echo "Done."
 }
 
+echo "Starting installations..."
+
+## Install the things.
 install_wp
 install_test_suite
 install_db
 
+echo "Installations complete."
+
 if [ `which svn` ]; then
-	echo "Done."
+
+	# You have SVN, you're good to go.
+	echo "🏁  Done."
 else
-	echo "Done, but you need to install SVN."
+
+	# You don't have SVN, install it!
+	echo "🔔 Done, but you need to install SVN."
 fi
 
-echo "You may need to install php5-mysqlnd if you get a mysql_connect() error."
+# This can be an issue if you are using php5 w/out mysqli.
+echo "⚠️  You may need to install php5-mysqlnd if you get a mysql_connect() error."
