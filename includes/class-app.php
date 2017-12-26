@@ -193,6 +193,7 @@ class App {
 	 */
 	public function attach() {
 		$this->shared = new Shared();
+		// $this->attached_thing = new Attached_Thing();
 	}
 
 	/**
