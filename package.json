@@ -1,0 +1,24 @@
+{
+	"name": "your-company-plugin-name",
+	"title": "your-company-plugin-name",
+	"version": "NEXT",
+	"description": "your-company-plugin-name",
+	"author": {
+		"name": "YourCompanyName",
+		"url": "https://example.com"
+	},
+	"license": "GPLv2",
+	"devDependencies": {
+		"grunt": "latest",
+		"grunt-wp-i18n": "latest",
+		"grunt-contrib-clean": "latest",
+		"load-grunt-tasks": "latest",
+		"del": "latest",
+		"glob": "latest"
+	},
+	"scripts": {
+		"your-company-plugin-name": "dockunit",
+		"preversion": "npm test",
+		"version": "grunt version && git add ."
+	}
+}

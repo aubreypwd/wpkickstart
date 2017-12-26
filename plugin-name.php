@@ -1,62 +1,53 @@
 <?php
 /**
- * Plugin Name:
- * Plugin URI:
+ * Plugin Name: Plugin Name
  * Description:
- * Version:
- * Author:
- * Author URI:
- * License:
- * License URI:
- * Text Domain:
- * Network:
+ * Version: NEXT
+ * Author: YourCompanyName
+ * Author URI: http://example.com
+ * Text Domain: plugin-name
+ * Network: False
+ * License:     GPLv2
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  *
- * @since Unknown
- * @package  Company/Package
+ * @since     NEXT
+ * @package   YourCompanyName\YourPluginName
  */
 
 // Our namespace.
-namespace Company\Package;
-
-// Classes outside our namespace.
-use Exception;
+namespace YourCompanyName\YourPluginName;
 
 // Require the App class.
 require_once 'includes/class-app.php';
 
+// Create a global variable for the app.
+$app = null;
+
 /**
- * Helper function to access the application instance for the Client Plugin.
+ * Create/Get the App.
  *
- * @author Unknown
- * @since Unknown
+ * @author Your Name
+ * @since  NEXT
  *
- * @return App|null App if success, null if exception caught (error will be logged).
+ * @return App The App.
  */
 function app() {
-	static $app;
+	global $app;
 
-	if ( ! $app instanceof App ) {
+	if ( null === $app ) {
 
-		// Start the app.
-		try {
-			$app = new App( __FILE__ );
-		} catch ( Exception $e ) {
-
-			// Catch any errors and log them if debugging is enabled.
-			if ( defined( 'WP_DEBUG' ) && true === WP_DEBUG ) {
-
-				// @codingStandardsIgnoreLine Conditionally debug.
-				error_log( $e->getMessage() );
-			}
-
-			// Return null so no further action can take place.
-			return null;
-		}
+		// Create the app and go!
+		$app = new App( __FILE__ );
+		$app->attach();
+		$app->hooks();
 	}
+
+	// Load language files.
+	load_plugin_textdomain( 'plugin-name', false, basename( dirname( __FILE__ ) ) . '/languages' );
 
 	return $app;
 }
-app(); // Initialize the app.
+add_action( 'plugins_loaded', 'YourCompanyName\YourPluginName\app' );
 
 // When we deactivate this plugin...
 register_deactivation_hook( __FILE__, array( app(), 'deactivate_plugin' ) );

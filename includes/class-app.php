@@ -1,57 +1,87 @@
 <?php
 /**
- * Main Application Instance.
+ * Application.
  *
- * @since Unknown
- * @package  Company/Package
+ * @since NEXT
+ * @package  YourCompanyName\YourPluginName
  */
 
-namespace Company\Package;
+namespace YourCompanyName\YourPluginName;
+
 use Exception;
 
 /**
  * Application Loader.
  *
  * Everything starts here. If you create a new class,
- * attach it to this class.
+ * attach it to this class using attach() below.
  *
- * @author Unknown
- * @since Unknown
+ * @since NEXT
  */
 class App {
 
 	/**
 	 * Plugin basename.
 	 *
-	 * @author Unknown
+	 * @author Your Name
 	 * @var    string
-	 * @since Unknown
+	 * @since  NEXT
 	 */
-	protected $basename = '';
+	public $basename = '';
 
 	/**
 	 * URL of plugin directory.
 	 *
-	 * @author Unknown
+	 * @author Your Name
 	 * @var    string
-	 * @since Unknown
+	 * @since  NEXT
 	 */
-	protected $url = '';
+	public $url = '';
 
 	/**
 	 * Path of plugin directory.
 	 *
-	 * @author Unknown
+	 * @author Your Name
 	 * @var    string
-	 * @since Unknown
+	 * @since  NEXT
 	 */
-	protected $path = '';
+	public $path = '';
+
+	/**
+	 * Is WP_DEBUG set?
+	 *
+	 * @since  NEXT
+	 * @author Your Name
+	 *
+	 * @var boolean
+	 */
+	public $wp_debug = false;
+
+	/**
+	 * The plugin file.
+	 *
+	 * @since  NEXT
+	 * @author Your Name
+	 *
+	 * @var string
+	 */
+	public $plugin_file = '';
+
+	/**
+	 * The plugin headers.
+	 *
+	 * @since  NEXT
+	 * @author Your Name
+	 *
+	 * @var string
+	 */
+	public $plugin_headers = '';
 
 	/**
 	 * Construct.
 	 *
-	 * @author Unknown
-	 * @since Unknown
+	 * @author Your Name
+	 * @since  NEXT
 	 *
 	 * @param string $plugin_file The plugin file, usually __FILE__ of the base plugin.
 	 *
@@ -63,24 +93,30 @@ class App {
 		if ( empty( $plugin_file ) || ! stream_resolve_include_path( $plugin_file ) ) {
 
 			// Translators: Displays a message if a plugin file is not passed.
-			throw new Exception( sprintf( esc_html__( 'Invalid plugin file %1$s supplied to %2$s', 'company-package' ), $plugin_file, __METHOD__ ) );
+			throw new Exception( sprintf( esc_html__( 'Invalid plugin file %1$s supplied to %2$s', 'plugin-name' ), $plugin_file, __METHOD__ ) );
 		}
 
 		// Plugin setup.
-		$this->basename = plugin_basename( $plugin_file );
-		$this->url      = plugin_dir_url( $plugin_file );
-		$this->path     = plugin_dir_path( $plugin_file );
+		$this->plugin_file = $plugin_file;
+		$this->basename    = plugin_basename( $plugin_file );
+		$this->url         = plugin_dir_url( $plugin_file );
+		$this->path        = plugin_dir_path( $plugin_file );
+		$this->wp_debug    = defined( 'WP_DEBUG' ) && WP_DEBUG;
+
+		// Plugin information.
+		$this->plugin_headers = get_file_data( $this->plugin_file, array(
+			'Version' => 'Version',
+		), 'plugin' );
 
 		// Loaders.
 		$this->auto_loader();
-		$this->attach();
 	}
 
 	/**
 	 * Register the autoloader.
 	 *
-	 * @since Unknown
-	 * @author Unknown
+	 * @since NEXT
+	 * @author Your Name
 	 */
 	private function auto_loader() {
 
@@ -91,8 +127,8 @@ class App {
 	/**
 	 * Require classes.
 	 *
-	 * @author Unknown
-	 * @since Unknown
+	 * @author Your Name
+	 * @since  NEXT
 	 *
 	 * @param string $class_name Fully qualified name of class to try and load.
 	 *
@@ -101,7 +137,7 @@ class App {
 	public function autoload( $class_name ) {
 
 		// If our class doesn't have our namespace, don't load it.
-		if ( 0 !== strpos( $class_name, 'Company\\Package\\' ) ) {
+		if ( 0 !== strpos( $class_name, 'YourCompanyName\\YourPluginName\\' ) ) {
 			return;
 		}
 
@@ -109,11 +145,38 @@ class App {
 
 		// Include our file.
 		$includes_dir = trailingslashit( $this->path ) . 'includes/';
-		$file = 'class-' . strtolower( str_replace( '_', '-', end( $parts ) ) ) . '.php';
+		$file         = 'class-' . strtolower( str_replace( '_', '-', end( $parts ) ) ) . '.php';
 
 		if ( stream_resolve_include_path( $includes_dir . $file ) ) {
 			require_once $includes_dir . $file;
 		}
+	}
+
+	/**
+	 * Get the plugin version.
+	 *
+	 * @author Your Name
+	 * @since  NEXT
+	 *
+	 * @return string The version of this plugin.
+	 */
+	public function version() {
+		return $this->header( 'Version' );
+	}
+
+	/**
+	 * Get a header.
+	 *
+	 * @author Aubrey Portwood
+	 * @since  NEXT
+	 *
+	 * @param  string $header The header you want, e.g. Version, Author, etc.
+	 * @return string         The value of the header.
+	 */
+	public function header( $header ) {
+		return isset( $this->plugin_headers[ $header ] )
+			? (string) $this->plugin_headers[ $header ]
+			: '';
 	}
 
 	/**
@@ -125,18 +188,28 @@ class App {
 	 *
 	 * When you add something that gets attached
 	 *
-	 * @author Unknown
-	 * @since Unknown
+	 * @author Your Name
+	 * @since  NEXT
 	 */
-	private function attach() {
+	public function attach() {
 		$this->shared = new Shared();
+	}
+
+	/**
+	 * Fire hooks!
+	 *
+	 * @author Your Name
+	 * @since  NEXT
+	 */
+	public function hooks() {
+		// $this->attached_thing->hooks();
 	}
 
 	/**
 	 * This plugin's url.
 	 *
-	 * @author Unknown
-	 * @since Unknown
+	 * @author Your Name
+	 * @since  NEXT
 	 *
 	 * @param  string $path (Optional) appended path.
 	 * @return string       URL and path.
@@ -150,10 +223,8 @@ class App {
 	/**
 	 * Re-attribute user content to site author.
 	 *
-	 * @author Unknown
-	 * @author Unknown
-	 *
-	 * @since Unknown
+	 * @author Your Name
+	 * @since  NEXT
 	 */
 	public function deactivate_plugin() {
 	}
