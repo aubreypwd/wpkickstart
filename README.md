@@ -17,6 +17,8 @@ file and clear out it's contents. Then attach it in the `App::attach()` method,
 and if you're hooking into WordPress, create and call your new class' `hooks` method
 in the `App::hooks()` method and start writing new code!
 
+**Make sure you clear out this README for your own!**
+
 ### `app()`
 
 In any class you can always call the base `App` class using the `app()` function, e.g.
