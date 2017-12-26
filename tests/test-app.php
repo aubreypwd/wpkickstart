@@ -45,9 +45,7 @@ class Test_App extends WP_UnitTestCase {
 	 * @since  NEXT
 	 */
 	public function test_version() {
-		$this->assertTrue( method_exists( app(), 'version' ), 'App::version() method must exist, it could be used throughout the plugin.' );
-		$this->assertNotEmpty( app()->version(), "Please make sure you have Version defined in your plugin's PHP file." );
-		$this->assertTrue( is_string( app()->version() ), "App::version() should always return a string from the Plugin file's header, something might have changed in the method." );
+		$this->__method_exists_is_not_empty_and_a_string( 'version' );
 	}
 
 	/**
@@ -106,5 +104,19 @@ class Test_App extends WP_UnitTestCase {
 		if ( method_exists( app(), 'auto_loader' ) ) {
 			$this->assertTrue( method_exists( app(), 'autoload' ), 'App::autoload() required to autoload classes.' );
 		}
+	}
+
+	/**
+	 * Ensure that a method exists, is not empty when it returns, and returns a string.
+	 *
+	 * @param string $function_name The function name.
+	 *
+	 * @author Aubrey Portwood
+	 * @since  NEXT
+	 */
+	private function __method_exists_is_not_empty_and_a_string( $function_name ) {
+		$this->assertTrue( method_exists( app(), $function_name ), "App::{$function_name} method must exist, it could be used throughout the plugin." );
+		$this->assertNotEmpty( app()->$function_name(), "Make sure {$function_name} returns a non-empty value." );
+		$this->assertTrue( is_string( app()->$function_name() ), "App::{$function_name} should always return a string from the Plugin file's header, something might have changed in the method." );
 	}
 }
