@@ -175,7 +175,7 @@ class App {
 	 */
 	public function header( $header ) {
 		return isset( $this->plugin_headers[ $header ] )
-			? (string) $this->plugin_headers[ $header ]
+			? trim( (string) $this->plugin_headers[ $header ] )
 			: '';
 	}
 

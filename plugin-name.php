@@ -1,17 +1,17 @@
 <?php
 /**
  * Plugin Name: Plugin Name
- * Description:
- * Version: NEXT
- * Author: YourCompanyName
- * Author URI: http://example.com
+ * Description: Description of your plugin goes here.
+ * Version:     NEXT
+ * Author:      YourCompanyName
+ * Author URI:  http://example.com
  * Text Domain: plugin-name
- * Network: False
- * License: GPLv2
+ * Network:     False
+ * License:     GPLv2
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  *
- * @since     NEXT
- * @package   YourCompanyName\YourPluginName
+ * @since       NEXT
+ * @package     YourCompanyName\YourPluginName
  */
 
 // Our namespace.
