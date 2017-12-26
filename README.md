@@ -20,4 +20,9 @@ in the `App::hooks()` method and start writing new code!
 ### `app()`
 
 In any class you can always call the base `App` class using the `app()` function, e.g.
-`app()->shared->method_in_shared_class()` or `app()->my_new_class->method_in_my_new_class()`.
+
+`app()->shared->method_in_shared_class()`
+
+or...
+
+`app()->my_new_class->method_in_my_new_class()`
