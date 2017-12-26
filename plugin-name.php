@@ -38,7 +38,11 @@ function app() {
 
 		// Create the app and go!
 		$app = new App( __FILE__ );
+
+		// Attach our other classes.
 		$app->attach();
+
+		// Run any hooks.
 		$app->hooks();
 	}
 
