@@ -7,7 +7,7 @@
  * Author URI: http://example.com
  * Text Domain: plugin-name
  * Network: False
- * License:     GPLv2
+ * License: GPLv2
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  *
  * @since     NEXT
