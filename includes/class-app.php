@@ -108,6 +108,9 @@ class App {
 			'Version' => 'Version',
 		), 'plugin' );
 
+		// Load language files.
+		load_plugin_textdomain( 'plugin-name', false, basename( dirname( __FILE__ ) ) . '/languages' );
+
 		// Loaders.
 		$this->auto_loader();
 	}

@@ -44,9 +44,6 @@ function app() {
 
 		// Run any hooks.
 		$app->hooks();
-
-		// Load language files.
-		load_plugin_textdomain( 'plugin-name', false, basename( dirname( __FILE__ ) ) . '/languages' );
 	}
 
 	return $app;
