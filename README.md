@@ -26,3 +26,12 @@ In any class you can always call the base `App` class using the `app()` function
 or...
 
 `app()->my_new_class->method_in_my_new_class()`
+
+### Language
+
+I use Grunt to generate .pot files for language translations, simply run:
+
+`grunt languages`
+
+...which will generate a `plugin-name.pot` file in `languages/`. You can then
+use PoEdit and tools like it to open the `.pot` file and generate language `.mo` files.
