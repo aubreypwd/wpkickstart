@@ -104,12 +104,20 @@ class App {
 		$this->wp_debug    = defined( 'WP_DEBUG' ) && WP_DEBUG;
 
 		// Plugin information.
-		$this->plugin_headers = get_file_data( $this->plugin_file, array(
-			'Version' => 'Version',
+		$this->plugin_headers = get_file_data( $plugin_file, array(
+			'Plugin Name' => 'Plugin Name',
+			'Description' => 'Description',
+			'Version'     => 'Version',
+			'Author'      => 'Author',
+			'Author URI'  => 'Author URI',
+			'Text Domain' => 'Text Domain',
+			'Network'     => 'Network',
+			'License'     => 'License',
+			'License URI' => 'License URI',
 		), 'plugin' );
 
 		// Load language files.
-		load_plugin_textdomain( 'plugin-name', false, basename( dirname( __FILE__ ) ) . '/languages' );
+		load_plugin_textdomain( 'plugin-name', false, basename( dirname( $plugin_file ) ) . '/languages' );
 
 		// Loaders.
 		$this->auto_loader();
