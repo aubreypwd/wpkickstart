@@ -12,6 +12,8 @@ each file and start globally replacing things like `Plugin Name`,
 it up for your needs. Just make sure you examine all the base files
 and customize it for your needs.
 
+**Also remember to rename the `plugin-name.php` file to be the same.**
+
 The easiest way to create a new class is to duplicate the `class-shared.php`
 file and clear out it's contents. Then attach it in the `App::attach()` method,
 and if you're hooking into WordPress, create and call your new class' `hooks` method
