@@ -98,9 +98,14 @@ class Test_App extends WP_UnitTestCase {
 		}
 
 		// ->plugin_headers
-		$this->assertTrue( property_exists( app(), 'plugin_headers' ), 'App::plugin_headers should be set to an array of header information from the plugin file.' );
+		$this->assertTrue( property_exists( app(), 'plugin_headers' ), "App::plugin_headers should be set to an array of header information from the plugin file, but doesn't even exist." );
 		$this->assertNotEmpty( app()->plugin_headers, 'App::plugin_headers should be set to an array of header information from the plugin file.' );
 		$this->assertTrue( is_array( app()->plugin_headers ), 'App::plugin_headers should be set to an array of header information from the plugin file.' );
+
+		// ->wp_debug.
+		$this->assertTrue( property_exists( app(), 'wp_debug' ), "App::wp_debug should be set to a boolean, but doesn't even exist." );
+		$this->assertTrue( is_bool( app()->wp_debug ), 'App::wp_debug should be set to a boolean.' );
+
 	}
 
 	/**
