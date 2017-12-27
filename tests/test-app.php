@@ -125,6 +125,12 @@ class Test_App extends WP_UnitTestCase {
 		}
 	}
 
+	/**
+	 * Test that all folders are protected against directory browsing.
+	 *
+	 * @author Aubrey Portwood
+	 * @since  NEXT
+	 */
 	public function test_all_folders_are_protected() {
 
 		// Recursive directory iterator for current directory, ignoring dots.
