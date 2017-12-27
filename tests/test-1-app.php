@@ -66,7 +66,7 @@ class Test_App extends WP_UnitTestCase {
 	/**
 	 * Test for a semantic version.
 	 *
-	 * @author Aubrey Portwood
+	 * @author Your Name
 	 * @since  NEXT
 	 */
 	public function test_semver() {
@@ -77,7 +77,7 @@ class Test_App extends WP_UnitTestCase {
 	/**
 	 * Test that the app's properties are properly set.
 	 *
-	 * @author Aubrey Portwood
+	 * @author Your Name
 	 * @since  NEXT
 	 */
 	public function test_app_properties() {
@@ -114,7 +114,7 @@ class Test_App extends WP_UnitTestCase {
 	/**
 	 * Test that autoloading functions exist.
 	 *
-	 * @author Aubrey Portwood
+	 * @author Your Name
 	 * @since  NEXT
 	 */
 	public function test_autoloader() {
@@ -128,7 +128,7 @@ class Test_App extends WP_UnitTestCase {
 	/**
 	 * Test that all folders are protected against directory browsing.
 	 *
-	 * @author Aubrey Portwood
+	 * @author Your Name
 	 * @since  NEXT
 	 */
 	public function test_all_folders_are_protected() {
@@ -150,7 +150,7 @@ class Test_App extends WP_UnitTestCase {
 	 *
 	 * @param string $function_name The function name.
 	 *
-	 * @author Aubrey Portwood
+	 * @author Your Name
 	 * @since  NEXT
 	 */
 	private function method_exists_is_not_empty_and_a_string( $function_name ) {
@@ -162,7 +162,7 @@ class Test_App extends WP_UnitTestCase {
 	/**
 	 * Files to ignore for testing all folders are protected.
 	 *
-	 * @author Aubrey Portwood
+	 * @author Your Name
 	 * @since  NEXT
 	 *
 	 * @param  string $file     The file.
