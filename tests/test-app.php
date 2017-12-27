@@ -129,7 +129,7 @@ class Test_App extends WP_UnitTestCase {
 
 		// Recursive directory iterator for current directory, ignoring dots.
 		$it = new RecursiveDirectoryIterator( app()->path, FilesystemIterator::SKIP_DOTS );
-		$it = new RecursiveCallbackFilterIterator( $it, array( $this, 'file_exclude_filter_for_test_all_folders_are_protected' ) );
+		$it = new RecursiveCallbackFilterIterator( $it, array( $this, 'exclude_folders_from_index_dot_php_protection' ) );
 		$it = new RecursiveIteratorIterator( $it, RecursiveIteratorIterator::SELF_FIRST );
 
 		// And then just loop :)...
@@ -164,7 +164,12 @@ class Test_App extends WP_UnitTestCase {
 	 * @param  string $iterator The iterator.
 	 * @return boolean          True if it's okay to be included.
 	 */
-	public function file_exclude_filter_for_test_all_folders_are_protected( $file, $key, $iterator ) {
-		return ! in_array( $file->getFilename(), array( '.git', 'node_modules' ), true );
+	public function exclude_folders_from_index_dot_php_protection( $file, $key, $iterator ) {
+
+		// If you add a folder you don't want tests to look for index.php files in, add them to the array here.
+		return ! in_array( $file->getFilename(), array(
+			'.git',
+			'node_modules',
+		), true );
 	}
 }
