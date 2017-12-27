@@ -9,12 +9,16 @@
 namespace YourCompanyName\YourPluginName;
 
 use \WP_UnitTestCase;
+use \RecursiveDirectoryIterator;
+use \FilesystemIterator;
+use \RecursiveCallbackFilterIterator;
+use \RecursiveIteratorIterator;
 
 /**
  * App Tests.
  *
  * @since   NEXT
- * @package App
+ * @package YourCompanyName\YourPluginName
  */
 class Test_App extends WP_UnitTestCase {
 
@@ -45,7 +49,7 @@ class Test_App extends WP_UnitTestCase {
 	 * @since  NEXT
 	 */
 	public function test_version() {
-		$this->__method_exists_is_not_empty_and_a_string( 'version' );
+		$this->method_exists_is_not_empty_and_a_string( 'version' );
 	}
 
 	/**
@@ -55,7 +59,7 @@ class Test_App extends WP_UnitTestCase {
 	 * @since  NEXT
 	 */
 	public function test_url() {
-		$this->__method_exists_is_not_empty_and_a_string( 'url' );
+		$this->method_exists_is_not_empty_and_a_string( 'url' );
 		$this->assertTrue( (boolean) filter_var( app()->url(), FILTER_VALIDATE_URL ), 'App::url() needs to return a valid URL.' );
 	}
 
@@ -105,7 +109,6 @@ class Test_App extends WP_UnitTestCase {
 		// ->wp_debug.
 		$this->assertTrue( property_exists( app(), 'wp_debug' ), "App::wp_debug should be set to a boolean, but doesn't even exist." );
 		$this->assertTrue( is_bool( app()->wp_debug ), 'App::wp_debug should be set to a boolean.' );
-
 	}
 
 	/**
@@ -122,6 +125,20 @@ class Test_App extends WP_UnitTestCase {
 		}
 	}
 
+	public function test_all_folders_are_protected() {
+
+		// Recursive directory iterator for current directory, ignoring dots.
+		$it = new RecursiveDirectoryIterator( app()->path, FilesystemIterator::SKIP_DOTS );
+		$it = new RecursiveCallbackFilterIterator( $it, array( $this, 'file_exclude_filter_for_test_all_folders_are_protected' ) );
+		$it = new RecursiveIteratorIterator( $it, RecursiveIteratorIterator::SELF_FIRST );
+
+		// And then just loop :)...
+		foreach ( $it as $file ) {
+			$path = dirname( $file->getRealPath() );
+			$this->assertTrue( file_exists( "{$path}/index.php" ), "{$path} needs to have a index.php file in it to protect it from directory browsing." );
+		}
+	}
+
 	/**
 	 * Ensure that a method exists, is not empty when it returns, and returns a string.
 	 *
@@ -130,9 +147,24 @@ class Test_App extends WP_UnitTestCase {
 	 * @author Aubrey Portwood
 	 * @since  NEXT
 	 */
-	private function __method_exists_is_not_empty_and_a_string( $function_name ) {
+	private function method_exists_is_not_empty_and_a_string( $function_name ) {
 		$this->assertTrue( method_exists( app(), $function_name ), "App::{$function_name} method must exist, it could be used throughout the plugin." );
 		$this->assertNotEmpty( app()->$function_name(), "Make sure {$function_name} returns a non-empty value." );
 		$this->assertTrue( is_string( app()->$function_name() ), "App::{$function_name} should always return a string from the Plugin file's header, something might have changed in the method." );
+	}
+
+	/**
+	 * Files to ignore for testing all folders are protected.
+	 *
+	 * @author Aubrey Portwood
+	 * @since  NEXT
+	 *
+	 * @param  string $file     The file.
+	 * @param  string $key      The key.
+	 * @param  string $iterator The iterator.
+	 * @return boolean          True if it's okay to be included.
+	 */
+	public function file_exclude_filter_for_test_all_folders_are_protected( $file, $key, $iterator ) {
+		return ! in_array( $file->getFilename(), array( '.git', 'node_modules' ), true );
 	}
 }
