@@ -101,7 +101,7 @@ class Test_App extends WP_UnitTestCase {
 			$this->assertDirectoryExists( app()->path, 'App::path should always be set to a valid directory that exists.' );
 		}
 
-		// ->plugin_headers
+		// ->plugin_headers.
 		$this->assertTrue( property_exists( app(), 'plugin_headers' ), "App::plugin_headers should be set to an array of header information from the plugin file, but doesn't even exist." );
 		$this->assertNotEmpty( app()->plugin_headers, 'App::plugin_headers should be set to an array of header information from the plugin file.' );
 		$this->assertTrue( is_array( app()->plugin_headers ), 'App::plugin_headers should be set to an array of header information from the plugin file.' );
@@ -135,13 +135,21 @@ class Test_App extends WP_UnitTestCase {
 
 		// Recursive directory iterator for current directory, ignoring dots.
 		$it = new RecursiveDirectoryIterator( app()->path, FilesystemIterator::SKIP_DOTS );
+
+		// Exclude some folders from being examined.
 		$it = new RecursiveCallbackFilterIterator( $it, array( $this, 'exclude_folders_from_index_dot_php_protection' ) );
+
+		// Get new set of iterations.
 		$it = new RecursiveIteratorIterator( $it, RecursiveIteratorIterator::SELF_FIRST );
 
 		// And then just loop :)...
 		foreach ( $it as $file ) {
-			$path = dirname( $file->getRealPath() );
-			$this->assertTrue( file_exists( "{$path}/index.php" ), "{$path} needs to have a index.php file in it to protect it from directory browsing." );
+
+			// We just want the directory for the file.
+			$dir = dirname( $file->getRealPath() );
+
+			// Find out if the directory has a index.php file to protect it.
+			$this->assertTrue( file_exists( "{$dir}/index.php" ), "{$dir} needs to have a index.php file in it to protect it from directory browsing." );
 		}
 	}
 
