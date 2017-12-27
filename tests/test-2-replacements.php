@@ -24,6 +24,16 @@ use \WP_UnitTestCase;
 class Test_Replacements extends WP_UnitTestCase {
 
 	/**
+	 * How to skip message.
+	 *
+	 * @author Your Name
+	 * @since  NEXT
+	 *
+	 * @var string
+	 */
+	private $how_to_skip = "\nTo skip replacement tests (and you really shouldn't), run `export PHPUNIT_TEST_REPLACEMENTS=skip` before you run phpunit again.";
+
+	/**
 	 * The Environment variable you have to set to skip to skip these tests.
 	 *
 	 * To skip these tests you have to set an explicit environment variable
@@ -51,7 +61,7 @@ class Test_Replacements extends WP_UnitTestCase {
 		if ( 'skip' !== getenv( $this->env_name ) ) {
 			global $app;
 			$parent = basename( dirname( $app->plugin_file ) );
-			$this->assertFalse( file_exists( "{$app->path}plugin-name.php" ), "Please rename {$app->path}plugin-name.php to {$parent}.php" );
+			$this->assertFalse( file_exists( "{$app->path}plugin-name.php" ), "Please rename {$app->path}plugin-name.php to {$parent}.php. {$this->how_to_skip}" );
 		}
 	}
 }
