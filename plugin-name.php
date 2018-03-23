@@ -20,9 +20,6 @@ namespace YourCompanyName\YourPluginName;
 // Require the App class.
 require_once 'includes/class-app.php';
 
-// Create a global variable for the app, it's namespaced, don't worry.
-$app = null;
-
 /**
  * Create/Get the App.
  *
@@ -32,7 +29,7 @@ $app = null;
  * @return App The App.
  */
 function app() {
-	global $app;
+	$app = null;
 
 	if ( null === $app ) {
 
