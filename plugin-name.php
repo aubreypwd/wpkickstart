@@ -29,7 +29,7 @@ require_once 'includes/class-app.php';
  * @return App The App.
  */
 function app() {
-	$app = null;
+	static $app = null;
 
 	if ( null === $app ) {
 
