@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Plugin Name
+ * Plugin Name: PluginName
  * Description: Description of your plugin goes here.
  * Version:     NEXT
  * Author:      YourCompanyName
