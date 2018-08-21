@@ -1,5 +1,7 @@
 # WP Plugin Boilerplate
 
+Version: `2.0.0`
+
 This is a WordPress Plugin framework I like to use. It uses namespacing,
 a class-based structure, a simple `app()` callable for calling different
 parts of your plugin, and Grunt for language management.
