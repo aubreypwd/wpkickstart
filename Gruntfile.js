@@ -3,8 +3,8 @@
  *
  * This is mainly used to generate language files for us.
  *
- * @since  #{NEXT}
- * @package #{YourCompanyName}\#{YourPluginName}
+ * @since  __NEXT__
+ * @package __YourCompanyName__\__YourPluginName__
  */
 
 /* globals require, module */
@@ -26,7 +26,7 @@ module.exports = function( grunt ) {
 			dist: {
 				options: {
 					domainPath: '/languages/',
-					potFilename: '#{plugin-name}.pot',
+					potFilename: '__plugin-name__.pot',
 					type: 'wp-plugin'
 				}
 			}

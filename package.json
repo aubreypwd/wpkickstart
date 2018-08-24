@@ -1,11 +1,11 @@
 {
-	"name": "#{your-company}-#{plugin-name}",
-	"title": "#{your-company}-#{plugin-name}",
-	"version": "#{NEXT}",
-	"description": "#{your-company}-#{plugin-name}",
+	"name": "#{your-company}-__plugin-name__",
+	"title": "#{your-company}-__plugin-name__",
+	"version": "__NEXT__",
+	"description": "#{your-company}-__plugin-name__",
 	"author": {
-		"name": "#{YourCompanyName}",
-		"url": "#{http://example.com}"
+		"name": "__YourCompanyName__",
+		"url": "http://example.com"
 	},
 	"license": "GPLv2",
 	"devDependencies": {
@@ -17,7 +17,7 @@
 		"glob": "latest"
 	},
 	"scripts": {
-		"#{your-company}-#{plugin-name}": "dockunit",
+		"#{your-company}-__plugin-name__": "dockunit",
 		"preversion": "npm test",
 		"version": "grunt version && git add ."
 	}

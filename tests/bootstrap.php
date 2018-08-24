@@ -2,7 +2,7 @@
 /**
  * PHPUnit bootstrap file
  *
- * @package #{YourCompanyName}\#{YourPluginName}
+ * @package __YourCompanyName__\__YourPluginName__
  */
 
 $_tests_dir = getenv( 'WP_TESTS_DIR' );
@@ -17,7 +17,7 @@ require_once $_tests_dir . '/includes/functions.php';
  * Manually load the plugin being tested.
  */
 function _manually_load_plugin() {
-	require dirname( dirname( __FILE__ ) ) . '/#{plugin-name}.php';
+	require dirname( dirname( __FILE__ ) ) . '/__plugin-name__.php';
 }
 tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
 

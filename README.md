@@ -10,11 +10,11 @@ parts of your plugin, and Grunt for language management.
 
 Simply clone it down and delete the `.git` stuff to start off. Open up
 each file and start globally replacing things like `Plugin Name`,
-`#{plugin-name}`, `#{YourCompanyName}`, `#{YourPluginName}`, etc to start setting
+`__plugin-name__`, `__YourCompanyName__`, `__YourPluginName__`, etc to start setting
 it up for your needs. Just make sure you examine all the base files
 and customize it for your needs.
 
-**Also remember to rename the `#{plugin-name}.php` file to be the same.**
+**Also remember to rename the `__plugin-name__.php` file to be the same.**
 
 The easiest way to create a new class is to duplicate the `class-shared.php`
 file and clear out it's contents. Then attach it in the `App::attach()` method,
@@ -22,6 +22,15 @@ and if you're hooking into WordPress, create and call your new class' `hooks` me
 in the `App::hooks()` method and start writing new code!
 
 **Make sure you clear out this README for your own!**
+
+### Things to Replace
+
+- `__PluginName__` e.g. `My Plugin`
+- `__NEXT__` e.g. `1.0.0`
+- `__plugin-name__` e.g. `my-plugin-name`
+- `__YourCompanyName__` e.g. `MyCompanyName`
+- `__YourPluginName__` e.g. `MyPluginName`
+- `__YourName__` e.g. `Aubrey Portwood`
 
 ### `app()`
 
@@ -39,7 +48,7 @@ I use Grunt to generate .pot files for language translations, simply run:
 
 `grunt languages`
 
-...which will generate a `#{plugin-name}.pot` file in `languages/`. You can then
+...which will generate a `__plugin-name__.pot` file in `languages/`. You can then
 use PoEdit and tools like it to open the `.pot` file and generate language `.mo` files.
 
 _______________
@@ -48,7 +57,7 @@ _______________
 
 ## 2.0.0
 
-- Replacing things are more exact using e.g. `#{plugin-name}` vs `plugin-name`
+- Replacing things are more exact using e.g. `__plugin-name__` vs `plugin-name`
 
 ## 1.2
 
