@@ -152,15 +152,92 @@ class App {
 			return;
 		}
 
-		$parts = explode( '\\', $class_name );
+		// Autoload files from parts.
+		$this->autoload_from_parts( explode( '\\', $class_name ) );
+	}
 
-		// Include our file.
-		$includes_dir = trailingslashit( $this->path ) . 'includes/';
-		$file         = 'class-' . strtolower( str_replace( '_', '-', end( $parts ) ) ) . '.php';
+	/**
+	 * Autoload files from self::autoload() parts.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  __NEXT__
+	 *
+	 * @param  array $parts  The parts from self::autoload().
+	 */
+	private function autoload_from_parts( $parts ) {
 
-		if ( stream_resolve_include_path( $includes_dir . $file ) ) {
-			require_once $includes_dir . $file;
+		// includes/.
+		if ( stream_resolve_include_path( $this->autoload_include_file( $parts, 'includes' ) ) ) {
+			require_once $this->autoload_include_file( $parts, 'includes' );
 		}
+
+		// feature/.
+		if ( stream_resolve_include_path( $this->autoload_feature_file( $parts ) ) ) {
+			require_once $this->autoload_feature_file( $parts );
+		}
+	}
+
+	/**
+	 * Autoload a feature e.g. feature/class-feature.php.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  __NEXT__
+	 *
+	 * @param  array $parts The parts from self::autoload().
+	 * @return string       The path to that feature class file.
+	 */
+	public function autoload_feature_file( $parts ) {
+		if ( isset( $parts[2] ) ) {
+
+			// Where would it be?
+			$file = $this->autoload_class_file( $parts );
+			$dir  = $this->autoload_dir( 'features/' . strtolower( str_replace( '_', '-', $parts[2] ) ) );
+
+			// Pass back that path.
+			return "{$dir}{$file}";
+		}
+
+		return '';
+	}
+
+	/**
+	 * Get a file for including from includes/.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  __NEXT__
+	 *
+	 * @param  array  $parts The parts from self::autoload().
+	 * @param  string $dir   What directory?.
+	 * @return string        The path to that file.
+	 */
+	private function autoload_include_file( $parts, $dir = '' ) {
+		return $this->autoload_dir( $dir ) . $this->autoload_class_file( $parts );
+	}
+
+	/**
+	 * Get a directory for autoload.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  __NEXT__
+	 *
+	 * @param  string $dir What dir, e.g. includes.
+	 * @return string      The path to that directory.
+	 */
+	private function autoload_dir( $dir = '' ) {
+		return trailingslashit( $this->path ) . trailingslashit( $dir );
+	}
+
+	/**
+	 * Generate a class filename to autoload.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  __NEXT__
+	 *
+	 * @param  array $parts  The parts from self::autoload().
+	 * @return string        The class filename.
+	 */
+	private function autoload_class_file( $parts ) {
+		return 'class-' . strtolower( str_replace( '_', '-', end( $parts ) ) ) . '.php';
 	}
 
 	/**
@@ -204,7 +281,7 @@ class App {
 	 */
 	public function attach() {
 		$this->shared = new Shared();
-		// $this->attached_thing = new Attached_Thing();
+		// $this->example_feature = new Example_Feature();
 	}
 
 	/**
@@ -214,7 +291,24 @@ class App {
 	 * @since  __NEXT__
 	 */
 	public function hooks() {
-		// $this->attached_thing->hooks();
+		$this->autoload_hooks(); // If you want to run your own hook methods, just strip this.
+		// $this->attached_thing->hooks(); // You could do it this way if you want.
+	}
+
+	/**
+	 * Autoload hooks method.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  __NEXT__
+	 */
+	private function autoload_hooks() {
+		foreach ( get_object_vars( $this ) as $prop ) {
+			if ( is_object( $prop ) ) {
+				if ( method_exists( $prop, 'hooks' ) ) {
+					$prop->hooks();
+				}
+			}
+		}
 	}
 
 	/**

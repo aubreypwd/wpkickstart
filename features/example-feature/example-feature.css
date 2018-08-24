@@ -1,0 +1,10 @@
+/* sass-lint:disable-all */
+.example-feature {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	background-color: #000;
+	padding: 50px;
+	margin-left: -12%;
+	color: white;
+}
