@@ -1,21 +1,21 @@
 <?php
 /**
- * Plugin Name: PluginName
+ * Plugin Name: #{PluginName}
  * Description: Description of your plugin goes here.
- * Version:     NEXT
- * Author:      YourCompanyName
- * Author URI:  http://example.com
- * Text Domain: plugin-name
+ * Version:     #{NEXT}
+ * Author:      #{YourCompanyName}
+ * Author URI:  #{http://example.com}
+ * Text Domain: #{plugin-name}
  * Network:     False
  * License:     GPLv2
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  *
- * @since       NEXT
- * @package     YourCompanyName\YourPluginName
+ * @since       #{NEXT}
+ * @package     #{YourCompanyName}\#{YourPluginName}
  */
 
 // Our namespace.
-namespace YourCompanyName\YourPluginName;
+namespace #{YourCompanyName}\#{YourPluginName};
 
 // Require the App class.
 require_once 'includes/class-app.php';
@@ -23,8 +23,8 @@ require_once 'includes/class-app.php';
 /**
  * Create/Get the App.
  *
- * @author Your Name
- * @since  NEXT
+ * @author #{YourName}
+ * @since  #{NEXT}
  *
  * @return App The App.
  */
@@ -47,7 +47,7 @@ function app() {
 }
 
 // Wait until WordPress is ready, then go!
-add_action( 'plugins_loaded', 'YourCompanyName\YourPluginName\app' );
+add_action( 'plugins_loaded', '#{YourCompanyName}\#{YourPluginName}\app' );
 
 // When we deactivate this plugin...
 register_deactivation_hook( __FILE__, array( app(), 'deactivate_plugin' ) );

@@ -2,17 +2,17 @@
 /**
  * Shared functionality.
  *
- * @since NEXT
- * @package  YourCompanyName\YourPluginName
+ * @since #{NEXT}
+ * @package  #{YourCompanyName}\#{YourPluginName}
  */
 
-namespace YourCompanyName\YourPluginName;
+namespace #{YourCompanyName}\#{YourPluginName};
 
 /**
  * Shared functionality between several areas.
  *
- * @author Your Name
- * @since NEXT
+ * @author #{YourName}
+ * @since #{NEXT}
  */
 class Shared {
 }

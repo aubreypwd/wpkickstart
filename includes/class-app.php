@@ -2,11 +2,11 @@
 /**
  * Application.
  *
- * @since NEXT
- * @package  YourCompanyName\YourPluginName
+ * @since #{NEXT}
+ * @package  #{YourCompanyName}\#{YourPluginName}
  */
 
-namespace YourCompanyName\YourPluginName;
+namespace #{YourCompanyName}\#{YourPluginName};
 
 use Exception;
 
@@ -16,42 +16,42 @@ use Exception;
  * Everything starts here. If you create a new class,
  * attach it to this class using attach() below.
  *
- * @since NEXT
+ * @since #{NEXT}
  */
 class App {
 
 	/**
 	 * Plugin basename.
 	 *
-	 * @author Your Name
+	 * @author #{YourName}
 	 * @var    string
-	 * @since  NEXT
+	 * @since  #{NEXT}
 	 */
 	public $basename = '';
 
 	/**
 	 * URL of plugin directory.
 	 *
-	 * @author Your Name
+	 * @author #{YourName}
 	 * @var    string
-	 * @since  NEXT
+	 * @since  #{NEXT}
 	 */
 	public $url = '';
 
 	/**
 	 * Path of plugin directory.
 	 *
-	 * @author Your Name
+	 * @author #{YourName}
 	 * @var    string
-	 * @since  NEXT
+	 * @since  #{NEXT}
 	 */
 	public $path = '';
 
 	/**
 	 * Is WP_DEBUG set?
 	 *
-	 * @since  NEXT
-	 * @author Your Name
+	 * @since  #{NEXT}
+	 * @author #{YourName}
 	 *
 	 * @var boolean
 	 */
@@ -60,8 +60,8 @@ class App {
 	/**
 	 * The plugin file.
 	 *
-	 * @since  NEXT
-	 * @author Your Name
+	 * @since  #{NEXT}
+	 * @author #{YourName}
 	 *
 	 * @var string
 	 */
@@ -70,8 +70,8 @@ class App {
 	/**
 	 * The plugin headers.
 	 *
-	 * @since  NEXT
-	 * @author Your Name
+	 * @since  #{NEXT}
+	 * @author #{YourName}
 	 *
 	 * @var string
 	 */
@@ -80,8 +80,8 @@ class App {
 	/**
 	 * Construct.
 	 *
-	 * @author Your Name
-	 * @since  NEXT
+	 * @author #{YourName}
+	 * @since  #{NEXT}
 	 *
 	 * @param string $plugin_file The plugin file, usually __FILE__ of the base plugin.
 	 *
@@ -93,7 +93,7 @@ class App {
 		if ( empty( $plugin_file ) || ! stream_resolve_include_path( $plugin_file ) ) {
 
 			// Translators: Displays a message if a plugin file is not passed.
-			throw new Exception( sprintf( esc_html__( 'Invalid plugin file %1$s supplied to %2$s', 'plugin-name' ), $plugin_file, __METHOD__ ) );
+			throw new Exception( sprintf( esc_html__( 'Invalid plugin file %1$s supplied to %2$s', '#{plugin-name}' ), $plugin_file, __METHOD__ ) );
 		}
 
 		// Plugin setup.
@@ -117,7 +117,7 @@ class App {
 		), 'plugin' );
 
 		// Load language files.
-		load_plugin_textdomain( 'plugin-name', false, basename( dirname( $plugin_file ) ) . '/languages' );
+		load_plugin_textdomain( '#{plugin-name}', false, basename( dirname( $plugin_file ) ) . '/languages' );
 
 		// Loaders.
 		$this->auto_loader();
@@ -126,8 +126,8 @@ class App {
 	/**
 	 * Register the autoloader.
 	 *
-	 * @since NEXT
-	 * @author Your Name
+	 * @since #{NEXT}
+	 * @author #{YourName}
 	 */
 	private function auto_loader() {
 
@@ -138,8 +138,8 @@ class App {
 	/**
 	 * Require classes.
 	 *
-	 * @author Your Name
-	 * @since  NEXT
+	 * @author #{YourName}
+	 * @since  #{NEXT}
 	 *
 	 * @param string $class_name Fully qualified name of class to try and load.
 	 *
@@ -148,7 +148,7 @@ class App {
 	public function autoload( $class_name ) {
 
 		// If our class doesn't have our namespace, don't load it.
-		if ( 0 !== strpos( $class_name, 'YourCompanyName\\YourPluginName\\' ) ) {
+		if ( 0 !== strpos( $class_name, '#{YourCompanyName}\\#{YourPluginName}\\' ) ) {
 			return;
 		}
 
@@ -166,8 +166,8 @@ class App {
 	/**
 	 * Get the plugin version.
 	 *
-	 * @author Your Name
-	 * @since  NEXT
+	 * @author #{YourName}
+	 * @since  #{NEXT}
 	 *
 	 * @return string The version of this plugin.
 	 */
@@ -179,7 +179,7 @@ class App {
 	 * Get a header.
 	 *
 	 * @author Aubrey Portwood
-	 * @since  NEXT
+	 * @since  #{NEXT}
 	 *
 	 * @param  string $header The header you want, e.g. Version, Author, etc.
 	 * @return string         The value of the header.
@@ -199,8 +199,8 @@ class App {
 	 *
 	 * When you add something that gets attached
 	 *
-	 * @author Your Name
-	 * @since  NEXT
+	 * @author #{YourName}
+	 * @since  #{NEXT}
 	 */
 	public function attach() {
 		$this->shared = new Shared();
@@ -210,8 +210,8 @@ class App {
 	/**
 	 * Fire hooks!
 	 *
-	 * @author Your Name
-	 * @since  NEXT
+	 * @author #{YourName}
+	 * @since  #{NEXT}
 	 */
 	public function hooks() {
 		// $this->attached_thing->hooks();
@@ -220,8 +220,8 @@ class App {
 	/**
 	 * This plugin's url.
 	 *
-	 * @author Your Name
-	 * @since  NEXT
+	 * @author #{YourName}
+	 * @since  #{NEXT}
 	 *
 	 * @param  string $path (Optional) appended path.
 	 * @return string       URL and path.
@@ -235,8 +235,8 @@ class App {
 	/**
 	 * Re-attribute user content to site author.
 	 *
-	 * @author Your Name
-	 * @since  NEXT
+	 * @author #{YourName}
+	 * @since  #{NEXT}
 	 */
 	public function deactivate_plugin() {
 	}
