@@ -31,6 +31,7 @@ in the `App::hooks()` method and start writing new code!
 - `__YourCompanyName__` e.g. `MyCompanyName`
 - `__YourPluginName__` e.g. `MyPluginName`
 - `__YourName__` e.g. `Aubrey Portwood`
+- You'll also want to rename `/wp-plugin-boilerplate/wp-plugin-boilerplate.php` e.g. `/my-plugin-name/my-plugin-name.php`
 
 ### `app()`
 
