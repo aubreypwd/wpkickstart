@@ -39,7 +39,7 @@ in the `App::hooks()` method and start writing new code!
 You can do this using `replace.php`, e.g.:
 
 ```
-php replace.php --__PluginName__="MyPluginName" --__NEXT__="1.0.0" --__plugin-name__="my-plugin-name" --__YourCompanyName__=MyCompanyName --__YourPluginName__=MyPluginName --__YourName__="Aubrey Portwood" --__your-company__="my-comoany"
+php replace.php --__PluginName__="My Plugin Name" --__NEXT__="1.0.0" --__plugin-name__="my-plugin-name" --__YourCompanyName__=MyCompanyName --__YourPluginName__=MyPluginName --__YourName__="Aubrey Portwood" --__your-company__="my-comoany"
 ```
 
 But, after that please also check for minor adjustments.
