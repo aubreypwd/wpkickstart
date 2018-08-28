@@ -33,6 +33,7 @@ foreach ( new RecursiveIteratorIterator( $dir ) as $filename => $file ) {
 		'/..',
 		'/.',
 		'replace.php',
+		'-lock',
 	);
 
 	if ( is_dir( $filename ) ) {
