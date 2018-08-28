@@ -2,6 +2,9 @@
 /**
  * Example Feature.
  *
+ * You'll want to modify, delete, or keep this file around
+ * for easy duplication.
+ *
  * @since __NEXT__
  * @package  __YourCompanyName__\__YourPluginName__
  */
@@ -16,6 +19,12 @@ namespace __YourCompanyName__\__YourPluginName__;
  */
 class Example_Feature {
 
+	/**
+	 * Hooks.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  __NEXT__
+	 */
 	public function hooks() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'scripts' ) );
