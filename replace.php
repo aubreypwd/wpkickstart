@@ -32,7 +32,7 @@ foreach ( new RecursiveIteratorIterator( $dir ) as $filename => $file ) {
 		'.xml',
 		'/..',
 		'/.',
-		'rename.php',
+		'replace.php',
 	);
 
 	if ( is_dir( $filename ) ) {

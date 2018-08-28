@@ -34,12 +34,12 @@ in the `App::hooks()` method and start writing new code!
 - `__your-company__` e.g. `my-company-name`
 - You'll also want to rename `/wp-plugin-boilerplate/wp-plugin-boilerplate.php` e.g. `/my-plugin-name/my-plugin-name.php`
 
-#### Using `rename.php`
+#### Using `replace.php`
 
-You can do this using `rename.php`, e.g.:
+You can do this using `replace.php`, e.g.:
 
 ```
-php rename.php --__PluginName__="MyPluginName" --__NEXT__="1.0.0" --__plugin-name__="my-plugin-name" --__YourCompanyName__=MyCompanyName --__YourPluginName__=MyPluginName --__YourName__="Aubrey Portwood" --__your-company__="my-comoany"
+php replace.php --__PluginName__="MyPluginName" --__NEXT__="1.0.0" --__plugin-name__="my-plugin-name" --__YourCompanyName__=MyCompanyName --__YourPluginName__=MyPluginName --__YourName__="Aubrey Portwood" --__your-company__="my-comoany"
 ```
 
 ### `app()`
