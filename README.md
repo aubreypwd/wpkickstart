@@ -57,7 +57,10 @@ _______________
 
 ## 2.0.0
 
+This release introduces a new concept of "features" which are folders that contain the entire component of a feature. This allows you to more easily move features, their JS, CSS, etc as a whole to other projects, drop them in the `features/` folder, attach them and use them without having to figure out where files go.
+
 - Replacing things are more exact using e.g. `__plugin-name__` vs `plugin-name`
+- New feature structure
 
 ## 1.2
 
