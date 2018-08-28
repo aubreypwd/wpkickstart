@@ -1,5 +1,9 @@
 <?php
 
+if ( php_sapi_name() !== "cli" ) {
+	die( 'Not allowed, run via cli.' );
+}
+
 $args = array();
 foreach ( $argv as $arg ) {
 	$arg = explode( '=', $arg );
