@@ -73,6 +73,7 @@ This release introduces a new concept of "features" which are folders that conta
 
 - Replacing things are more exact using e.g. `__plugin-name__` vs `plugin-name`
 - New feature structure
+- New `replace.php` PHP file you can use to do your replacements
 
 ## 1.2
 
