@@ -10,21 +10,14 @@ foreach ( $args as $i => $value ) {
 	$args[ str_replace( '--', '', $i ) ] = $value;
 }
 
-error_log( print_r( (object) array(
-	'line' => __LINE__,
-	'file' => __FILE__,
-	'dump' => array(
-		$args,
-	),
-), true ) );
-
 foreach ( array(
-	'MyPluginName',
-	'1.0.0',
-	'plugin-name',
-	'WebDevStudios',
-	'MyPluginName',
-	'Aubrey Portwood',
+	'__PluginName__',
+	'__NEXT__',
+	'__plugin-name__',
+	'__YourCompanyName__',
+	'__YourPluginName__',
+	'__YourName__',
+	'__your-company__',
 ) as $r_arg ) {
 	if ( ! isset( $args[ $r_arg ] ) ) {
 		die( "Sorry, but `php replace.php --{$r_arg}=value` is required." );
@@ -39,6 +32,7 @@ foreach ( new RecursiveIteratorIterator( $dir ) as $filename => $file ) {
 		'.xml',
 		'/..',
 		'/.',
+		'rename.php',
 	);
 
 	if ( is_dir( $filename ) ) {
@@ -59,12 +53,13 @@ foreach ( new RecursiveIteratorIterator( $dir ) as $filename => $file ) {
 	$contents = file_get_contents( $filename );
 
 	$replacements = array(
-		'MyPluginName'      => $args[ 'MyPluginName' ],
-		'1.0.0'            => $args[ '1.0.0' ],
-		'plugin-name'     => $args[ 'plugin-name' ],
-		'WebDevStudios' => $args[ 'WebDevStudios' ],
-		'MyPluginName'  => $args[ 'MyPluginName' ],
-		'Aubrey Portwood'        => $args[ 'Aubrey Portwood' ],
+		'__PluginName__'      => $args[ '__PluginName__' ],
+		'__NEXT__'            => $args[ '__NEXT__' ],
+		'__plugin-name__'     => $args[ '__plugin-name__' ],
+		'__YourCompanyName__' => $args[ '__YourCompanyName__' ],
+		'__YourPluginName__'  => $args[ '__YourPluginName__' ],
+		'__YourName__'        => $args[ '__YourName__' ],
+		'__your-company__'    => $args[ '__your-company__' ],
 	);
 
 	foreach ( $replacements as $replace => $with ) {
