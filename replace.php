@@ -68,4 +68,7 @@ foreach ( new RecursiveIteratorIterator( $dir ) as $filename => $file ) {
 
 	file_put_contents( $filename, $contents );
 
+	copy( 'wp-plugin-boilerplate.php', $args[ '__plugin-name__' ] );
+
+	unlink( 'wp-plugin-boilerplate.php' );
 }
