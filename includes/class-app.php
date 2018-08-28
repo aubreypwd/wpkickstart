@@ -168,7 +168,7 @@ class App {
 
 		// includes/.
 		if ( stream_resolve_include_path( $this->autoload_include_file( $parts, 'includes' ) ) ) {
-			require_once $this->autoload_include_file( $parts, 'includes' );
+			require_once $this->autoload_include_file( $parts );
 		}
 
 		// feature/.
@@ -206,12 +206,11 @@ class App {
 	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
 	 * @since  __NEXT__
 	 *
-	 * @param  array  $parts The parts from self::autoload().
-	 * @param  string $dir   What directory?.
-	 * @return string        The path to that file.
+	 * @param  array $parts The parts from self::autoload().
+	 * @return string       The path to that file.
 	 */
-	private function autoload_include_file( $parts, $dir = '' ) {
-		return $this->autoload_dir( $dir ) . $this->autoload_class_file( $parts );
+	private function autoload_include_file( $parts ) {
+		return $this->autoload_dir( 'includes' ) . $this->autoload_class_file( $parts );
 	}
 
 	/**
