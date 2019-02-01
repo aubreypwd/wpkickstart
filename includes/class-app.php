@@ -159,11 +159,18 @@ class App {
 	/**
 	 * Autoload files from self::autoload() parts.
 	 *
+	 * Note, if you pass any class in here it will look for it in:
+	 *
+	 * - /includes/
+	 * - /components/class-name/
+	 *
 	 * @author __YourName__
 	 * @since  __NEXT__
 	 *
 	 * @param  array $parts  The parts from self::autoload().
 	 * @return void          Early bail once we load the thing.
+	 *
+	 * @throws \Exception If we can't autoload a file.
 	 */
 	private function autoload_from_parts( $parts ) {
 
@@ -183,6 +190,61 @@ class App {
 			require_once $this->autoload_service_file( $parts );
 			return;
 		}
+
+		// Try and find a file in all the directories, maybe you're using some new file.
+		if ( stream_resolve_include_path( $this->autoload_recursive_file( $parts ) ) ) {
+			require_once $this->autoload_recursive_file( $parts );
+			return;
+		}
+
+		throw new \Exception( 'Could autoload from parts: ' . wp_json_encode( $parts ) );
+	}
+
+	/**
+	 * Autoload a service e.g. service/class-service.php.
+	 *
+	 * @author __YourName__
+	 * @since  __NEXT__
+	 *
+	 * @param  array $parts The parts from self::autoload().
+	 * @return string       The path to that service class file.
+	 * @throws \Exception   If $parts does not have a valid 2 index set.
+	 */
+	public function autoload_recursive_file( $parts ) {
+		if ( isset( $parts[2] ) ) {
+
+			// Where would it be?
+			$file  = $this->autoload_class_file( $parts );
+			$class = strtolower( str_replace( '_', '-', $parts[2] ) );
+
+			$dirs = [
+
+				// Search these directories in the structure.
+				$this->autoload_dir( 'includes' ),
+				$this->autoload_dir( 'components' ),
+				$this->autoload_dir( 'services' ),
+				$this->autoload_dir( 'vendor' ), // Maybe even in composer's vendor folder, maybe composer isn't autoloading it for you?
+			];
+
+			foreach ( $dirs as $dir ) {
+
+				$recursive_dir = new \RecursiveDirectoryIterator( $dir );
+
+				foreach ( new \RecursiveIteratorIterator( $recursive_dir ) as $recursive_file => $file_obj ) {
+					if ( ! stristr( $recursive_file, '.php' ) ) {
+						continue;
+					}
+
+					if ( basename( $recursive_file ) !== $file ) {
+						continue;
+					}
+
+					return $recursive_file;
+				}
+			}
+		}
+
+		throw new \Exception( '$parts[2] must be set.' );
 	}
 
 	/**
