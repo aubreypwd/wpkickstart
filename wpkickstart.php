@@ -43,6 +43,9 @@ function app() {
 
 		// Run any hooks.
 		$app->hooks();
+
+		// Run the app.
+		$app->run();
 	}
 
 	return $app;

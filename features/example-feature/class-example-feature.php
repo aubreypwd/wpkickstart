@@ -22,7 +22,7 @@ class Example_Feature {
 	/**
 	 * Hooks.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author __YourName__
 	 * @since  __NEXT__
 	 */
 	public function hooks() {
@@ -33,9 +33,19 @@ class Example_Feature {
 	}
 
 	/**
+	 * Run.
+	 *
+	 * @author __YourName__
+	 * @since  __NEXT__
+	 */
+	public function run() {
+		// Things you want to do before hooks.
+	}
+
+	/**
 	 * Content.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author __YourName__
 	 * @since  __NEXT__
 	 */
 	public function content() {
@@ -47,7 +57,7 @@ class Example_Feature {
 	/**
 	 * Load styles and scripts.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author __YourName__
 	 * @since  __NEXT__
 	 */
 	public function scripts() {

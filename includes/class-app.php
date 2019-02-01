@@ -159,7 +159,7 @@ class App {
 	/**
 	 * Autoload files from self::autoload() parts.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author __YourName__
 	 * @since  __NEXT__
 	 *
 	 * @param  array $parts  The parts from self::autoload().
@@ -180,7 +180,7 @@ class App {
 	/**
 	 * Autoload a feature e.g. feature/class-feature.php.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author __YourName__
 	 * @since  __NEXT__
 	 *
 	 * @param  array $parts The parts from self::autoload().
@@ -203,7 +203,7 @@ class App {
 	/**
 	 * Get a file for including from includes/.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author __YourName__
 	 * @since  __NEXT__
 	 *
 	 * @param  array $parts The parts from self::autoload().
@@ -216,7 +216,7 @@ class App {
 	/**
 	 * Get a directory for autoload.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author __YourName__
 	 * @since  __NEXT__
 	 *
 	 * @param  string $dir What dir, e.g. includes.
@@ -229,7 +229,7 @@ class App {
 	/**
 	 * Generate a class filename to autoload.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author __YourName__
 	 * @since  __NEXT__
 	 *
 	 * @param  array $parts  The parts from self::autoload().
@@ -254,7 +254,7 @@ class App {
 	/**
 	 * Get a header.
 	 *
-	 * @author Aubrey Portwood
+	 * @author __YourName__
 	 * @since  __NEXT__
 	 *
 	 * @param  string $header The header you want, e.g. Version, Author, etc.
@@ -267,7 +267,17 @@ class App {
 	}
 
 	/**
-	 * Load and attach app elements to the app class.
+	 * Attach items to our app.
+	 *
+	 * @author __YourName__
+	 * @since  __NEXT__
+	 */
+	public function attach() {
+		$this->attach_services();
+	}
+
+	/**
+	 * Load and attach app services to the app class.
 	 *
 	 * Make your classes/element small and do only one thing. If you
 	 * need to pass $this to it so you can access other classes
@@ -278,7 +288,7 @@ class App {
 	 * @author __YourName__
 	 * @since  __NEXT__
 	 */
-	public function attach() {
+	public function attach_services() {
 		$this->shared = new Shared();
 		// $this->example_feature = new Example_Feature();
 	}
@@ -290,21 +300,54 @@ class App {
 	 * @since  __NEXT__
 	 */
 	public function hooks() {
-		$this->autoload_hooks(); // If you want to run your own hook methods, just strip this.
+		$this->auto_call_hooks(); // If you want to run your own hook methods, just strip this.
 		// $this->attached_thing->hooks(); // You could do it this way if you want.
 	}
 
 	/**
 	 * Autoload hooks method.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author __YourName__
 	 * @since  __NEXT__
 	 */
-	private function autoload_hooks() {
+	private function auto_call_hooks() {
+		$this->autocall( 'hooks' );
+	}
+
+	/**
+	 * Run the app.
+	 *
+	 * @author __YourName__
+	 * @since  __NEXT__
+	 */
+	public function run() {
+		$this->auto_call_run();
+		// $this->attached_thing->run(); // You could do them manually this way if you want.
+	}
+
+	/**
+	 * Automatically call run methods.
+	 *
+	 * @author __YourName__
+	 * @since  __NEXT__
+	 */
+	private function auto_call_run() {
+		$this->autocall( 'run' );
+	}
+
+	/**
+	 * Call a property on attached objects.
+	 *
+	 * @author __YourName__
+	 * @since  __NEXT__
+	 *
+	 * @param  string $call The call.
+	 */
+	private function autocall( $call ) {
 		foreach ( get_object_vars( $this ) as $prop ) {
 			if ( is_object( $prop ) ) {
-				if ( method_exists( $prop, 'hooks' ) ) {
-					$prop->hooks();
+				if ( method_exists( $prop, $call ) ) {
+					$prop->$call();
 				}
 			}
 		}
