@@ -137,9 +137,14 @@ class Replace_CLI {
 	 * @since  2.0.0
 	 *
 	 * @param  string $file The file.
+	 * @return void         Early bail if file does not exist or is empty.
 	 */
 	public function replace_strings( string $file ) {
 		$replacements = $this->get_replacements();
+
+		if ( ! file_exists( $file ) ) {
+			return;
+		}
 
 		$file_contents = file_get_contents( $file ); // @codingStandardsIgnoreLine: We want this.
 
