@@ -128,6 +128,25 @@ class Replace_CLI {
 		add_action( 'wp_kickstart_file', [ $this, 'remove_lines' ] );
 		add_action( 'wp_kickstart_file', [ $this, 'remove_file' ] );
 		add_action( 'wp_kickstart_file', [ $this, 'replace_strings' ] );
+		add_action( 'wp_kickstart_file', [ $this, 'rename_plugin_file' ] );
+	}
+
+	/**
+	 * Rename the plugin file.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  2.0.0
+	 *
+	 * @param  string $file The file.
+	 */
+	public function rename_plugin_file( string $file ) {
+		$file = $this->get_relative_file( $file );
+
+		// Only when the file is the kickstart file.
+		if ( 'wpkickstart.php' === $file ) {
+			$slug = $this->slugify( $this->cli_args->get_arg( 'name' ) );
+			$this->fs->move( $file, "{$slug}.php" );
+		}
 	}
 
 	/**
@@ -303,9 +322,9 @@ class Replace_CLI {
 
 		$dir = dirname( $file );
 
-		$relative_dir = ltrim( str_replace( $plugin_dir, '', $dir ), '/' );
+		$relative_dir = $this->get_relative_file( $dir );
 
-		$relative_file = ltrim( str_replace( $plugin_dir, '', $file ), '/' );
+		$relative_file = $this->get_relative_file( $file );
 
 		if ( ! file_exists( $dir ) ) {
 			return; // The directory doesn't even exist, already done.
@@ -323,6 +342,19 @@ class Replace_CLI {
 		if ( in_array( $relative_file, $this->file_removals, true ) ) {
 			$this->fs->delete( $file );
 		}
+	}
+
+	/**
+	 * Get a relative version of a file.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  2.0.0
+	 *
+	 * @param  string $file The file.
+	 * @return string       The relative file.
+	 */
+	private function get_relative_file( string $file ) {
+		return ltrim( str_replace( dirname( app()->plugin_file ), '', $file ), '/' );
 	}
 
 	/**
