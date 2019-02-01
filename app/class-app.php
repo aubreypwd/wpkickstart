@@ -199,7 +199,11 @@ class App {
 	 * @param  string $file The file.
 	 * @return boolean      True if it is and exists.
 	 */
-	public function is_our_file( string $file ) {
+	public function is_our_file( $file ) {
+		if ( ! is_string( $file ) ) {
+			return false;
+		}
+
 		return stristr( $file, dirname( $this->plugin_file ) ) && stream_resolve_include_path( $file );
 	}
 

@@ -16,10 +16,7 @@ use function \__YourCompanyName__\__YourPluginName__\app;
 
 class Replace_CLI {
 	private $line_removals = [
-		'		// An example service so you can see how things work, below cli command should remove this.',
-		'		$this->example_service = new Service\Example_Service();',
-		'		// Adds wp kickstart for replacements to make this framework into your own plugin.',
-		'		$this->replace_cli = new Service\Replace_CLI();',
+		'app/class-app.php' => [ 390, 391, 392, 393, 394, 395 ]
 	];
 
 	private $file_removals = [];
@@ -36,6 +33,8 @@ class Replace_CLI {
 		'vendor',
 	];
 
+	private $fs;
+
 	public function hooks() {
 		if ( ! class_exists( '\WP_CLI' ) ) {
 			return;
@@ -46,6 +45,11 @@ class Replace_CLI {
 		if ( ! class_exists( '\WP_CLI' ) ) {
 			return;
 		}
+
+		require_once ABSPATH . '/wp-admin/includes/class-wp-filesystem-base.php';
+		require_once ABSPATH . '/wp-admin/includes/class-wp-filesystem-direct.php';
+
+		$this->fs = new \WP_Filesystem_Direct( true );
 
 		$this->cli_args = new \WebDevStudios\CLI_Args\CLI_Args();
 	}
@@ -76,9 +80,15 @@ class Replace_CLI {
 	}
 
 	private function remove_lines() {
-		$recursive_dir = new \RecursiveDirectoryIterator( dirname( app()->plugin_file ) );
+		$plugin_dir = dirname( app()->plugin_file );
+
+		$recursive_dir = new \RecursiveDirectoryIterator( $plugin_dir );
 
 		foreach ( new \RecursiveIteratorIterator( $recursive_dir ) as $file => $file_obj ) {
+			if ( ! is_string( $file ) ) {
+				continue;
+			}
+
 			if ( is_dir( $file ) ) {
 				continue;
 			}
@@ -95,13 +105,26 @@ class Replace_CLI {
 				continue;
 			}
 
-			$code = file_get_contents( $file );
+			$relative_file = ltrim( str_replace( $plugin_dir, '', $file ), '/' );
 
-			foreach ( $this->line_removals as $remove ) {
-				$code = str_replace( "{$remove}\n", '', $code );
+			if ( ! in_array( $relative_file, array_keys( $this->line_removals ) ) ) {
+				continue;
 			}
 
-			file_put_contents( $file, $code );
+			$lines = $this->line_removals[ $relative_file ];
+
+			$file_content_array = $this->fs->get_contents_array( $file );
+
+			foreach ( $lines as $line ) {
+				if ( ! isset( $file_content_array[ $line ] ) ) {
+					throw new \Exception( "{$line} is not in {$file}." );
+				}
+
+				// Remove that line.
+				unset( $file_content_array[ $line ] );
+			}
+
+			file_put_contents( $file, $file_content_array );
 		}
 	}
 
