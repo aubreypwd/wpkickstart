@@ -96,7 +96,7 @@ class Replace_CLI {
 			$code = file_get_contents( $file );
 
 			foreach ( $this->line_removals as $remove ) {
-				$code = str_replace( "{$remove}\n", "\n", $code );
+				$code = str_replace( "{$remove}\n", '', $code );
 
 				error_log( print_r( (object) array(
 					'line' => __LINE__,
