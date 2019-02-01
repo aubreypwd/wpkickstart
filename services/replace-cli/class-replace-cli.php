@@ -125,8 +125,8 @@ class Replace_CLI {
 			return;
 		}
 
-		// add_action( 'wp_kickstart_file', [ $this, 'remove_lines' ] );
-		// add_action( 'wp_kickstart_file', [ $this, 'remove_file' ] );
+		add_action( 'wp_kickstart_file', [ $this, 'remove_lines' ] );
+		add_action( 'wp_kickstart_file', [ $this, 'remove_file' ] );
 		add_action( 'wp_kickstart_file', [ $this, 'replace_strings' ] );
 	}
 
