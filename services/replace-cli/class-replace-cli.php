@@ -30,6 +30,10 @@ class Replace_CLI {
 		'.js',
 	];
 
+	private $ignore_dirs = [
+		'vendor',
+	];
+
 	public function hooks() {
 		if ( ! class_exists( '\WP_CLI' ) ) {
 			return;
@@ -77,11 +81,21 @@ class Replace_CLI {
 				continue;
 			}
 
-			if ( ! $this->string_has_valid_extension( $file ) ) {
+			if ( ! app()->is_our_file( $file ) ) {
+				continue;
+			}
+
+			if ( ! $this->has_valid_extension( $file ) ) {
+				continue;
+			}
+
+			if ( $this->ignore( $file ) ) {
 				continue;
 			}
 
 			$code = file_get_contents( $file );
+
+
 
 			foreach ( $this->line_removals as $remove ) {
 				$code = str_replace( $remove, '', $code );
@@ -91,9 +105,19 @@ class Replace_CLI {
 		}
 	}
 
-	private function string_has_valid_extension( string $string ) {
+	private function ignore( string $file ) {
+		foreach ( $this->ignore_dirs as $ignore_dir ) {
+			if ( stristr( $file, trailingslashit( $ignore_dir ) ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	private function has_valid_extension( string $file ) {
 		foreach ( $this->extensions as $extension ) {
-			if ( stristr( $string, $extension ) ) {
+			if ( stristr( $file, $extension ) ) {
 				return true;
 			}
 		}
