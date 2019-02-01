@@ -258,14 +258,26 @@ class App {
 	 * @throws \Exception   If $parts does not have a valid 2 index set.
 	 */
 	public function autoload_service_file( $parts ) {
-		if ( isset( $parts[2] ) ) {
+		$dirs = [
+			'services',
+			'features', // This is here for backwards compatibility.
+		];
 
-			// Where would it be?
-			$file = $this->autoload_class_file( $parts );
-			$dir  = $this->autoload_dir( 'services/' . strtolower( str_replace( '_', '-', $parts[2] ) ) );
+		foreach ( $dirs as $dir ) {
+			if ( isset( $parts[2] ) ) {
 
-			// Pass back that path.
-			return "{$dir}{$file}";
+				// Where would it be?
+				$file = $this->autoload_class_file( $parts );
+				$dir  = $this->autoload_dir( trailingslashit( $dir ) . strtolower( str_replace( '_', '-', $parts[2] ) ) );
+				$path = "{$dir}{$file}";
+
+				if ( ! file_exists( $path ) ) {
+					continue; // Try again in another directory.
+				}
+
+				// Pass back that path.
+				return $path;
+			}
 		}
 
 		throw new \Exception( '$parts[2] must be set.' );
