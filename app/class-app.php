@@ -296,10 +296,8 @@ class App {
 	 *
 	 * @param  array $parts The parts from self::autoload().
 	 * @return string       The path to that file.
-	 * @throws \Exception   If $parts does not have a valid 2 index set.
 	 */
 	private function autoload_component_file( $parts ) {
-
 		$class = end( $parts );
 
 		// Where would it be?
@@ -308,8 +306,6 @@ class App {
 
 		// Pass back that path.
 		return "{$dir}{$file}";
-
-		throw new \Exception( "Could not load class {$class}." );
 	}
 
 	/**
