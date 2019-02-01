@@ -205,39 +205,38 @@ class App {
 	 * @throws \Exception   If $parts does not have a valid 2 index set.
 	 */
 	public function autoload_recursive_file( $parts ) {
-		if ( isset( $parts[2] ) ) {
+		$class = end( $parts );
 
-			// Where would it be?
-			$file  = $this->autoload_class_file( $parts );
-			$class = strtolower( str_replace( '_', '-', $parts[2] ) );
+		// Where would it be?
+		$file  = $this->autoload_class_file( $parts );
+		$class = strtolower( str_replace( '_', '-', $class ) );
 
-			$dirs = [
+		$dirs = [
 
-				// Search these directories in the structure.
-				$this->autoload_dir( 'app' ),
-				$this->autoload_dir( 'components' ),
-				$this->autoload_dir( 'services' ),
-			];
+			// Search these directories in the structure.
+			$this->autoload_dir( 'app' ),
+			$this->autoload_dir( 'components' ),
+			$this->autoload_dir( 'services' ),
+		];
 
-			foreach ( $dirs as $dir ) {
+		foreach ( $dirs as $dir ) {
 
-				$recursive_dir = new \RecursiveDirectoryIterator( $dir );
+			$recursive_dir = new \RecursiveDirectoryIterator( $dir );
 
-				foreach ( new \RecursiveIteratorIterator( $recursive_dir ) as $recursive_file => $file_obj ) {
-					if ( ! stristr( $recursive_file, '.php' ) ) {
-						continue;
-					}
-
-					if ( basename( $recursive_file ) !== $file ) {
-						continue;
-					}
-
-					return $recursive_file;
+			foreach ( new \RecursiveIteratorIterator( $recursive_dir ) as $recursive_file => $file_obj ) {
+				if ( ! stristr( $recursive_file, '.php' ) ) {
+					continue;
 				}
+
+				if ( basename( $recursive_file ) !== $file ) {
+					continue;
+				}
+
+				return $recursive_file;
 			}
 		}
 
-		throw new \Exception( '$parts[2] must be set.' );
+		throw new \Exception( "Could not load class {$class}." );
 	}
 
 	/**
@@ -256,24 +255,24 @@ class App {
 			'features', // This is here for backwards compatibility.
 		];
 
+		$class = end( $parts );
+
 		foreach ( $dirs as $dir ) {
-			if ( isset( $parts[3] ) ) {
 
-				// Where would it be?
-				$file = $this->autoload_class_file( $parts );
-				$dir  = $this->autoload_dir( trailingslashit( $dir ) . strtolower( str_replace( '_', '-', $parts[3] ) ) );
-				$path = "{$dir}{$file}";
+			// Where would it be?
+			$file = $this->autoload_class_file( $parts );
+			$dir  = $this->autoload_dir( trailingslashit( $dir ) . strtolower( str_replace( '_', '-', $class ) ) );
+			$path = "{$dir}{$file}";
 
-				if ( ! file_exists( $path ) ) {
-					continue; // Try again in another directory.
-				}
-
-				// Pass back that path.
-				return $path;
+			if ( ! file_exists( $path ) ) {
+				continue; // Try again in another directory.
 			}
+
+			// Pass back that path.
+			return $path;
 		}
 
-		throw new \Exception( '$parts[2] must be set.' );
+		throw new \Exception( "Could not load class {$class}." );
 	}
 
 	/**
@@ -300,17 +299,17 @@ class App {
 	 * @throws \Exception   If $parts does not have a valid 2 index set.
 	 */
 	private function autoload_component_file( $parts ) {
-		if ( isset( $parts[2] ) ) {
 
-			// Where would it be?
-			$file = $this->autoload_class_file( $parts );
-			$dir  = $this->autoload_dir( 'components/' . strtolower( str_replace( '_', '-', $parts[2] ) ) );
+		$class = end( $parts );
 
-			// Pass back that path.
-			return "{$dir}{$file}";
-		}
+		// Where would it be?
+		$file = $this->autoload_class_file( $parts );
+		$dir  = $this->autoload_dir( 'components/' . strtolower( str_replace( '_', '-', $parts[2] ) ) );
 
-		throw new \Exception( '$parts[2] must be set.' );
+		// Pass back that path.
+		return "{$dir}{$file}";
+
+		throw new \Exception( "Could not load class {$class}." );
 	}
 
 	/**
