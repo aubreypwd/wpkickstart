@@ -207,7 +207,7 @@ class Replace_CLI {
 			 *
 			 * @param string $file       The file.
 			 */
-			do_action( 'wds_kickstart_file', $file );
+			do_action( 'wp_kickstart_file', $file );
 		}
 	}
 
@@ -222,10 +222,18 @@ class Replace_CLI {
 	private function remove_lines( $file ) {
 		$plugin_dir = dirname( app()->plugin_file );
 
+		error_log( print_r( (object) array(
+			'line' => __LINE__,
+			'file' => __FILE__,
+			'dump' => array(
+				$file,
+			),
+		), true ) );
+
 		$relative_file = ltrim( str_replace( $plugin_dir, '', $file ), '/' );
 
 		if ( ! in_array( $relative_file, array_keys( $this->line_removals ), true ) ) {
-			continue;
+			return;
 		}
 
 		$lines = $this->line_removals[ $relative_file ];
