@@ -147,11 +147,6 @@ class App {
 	 */
 	public function autoload( $class_name ) {
 
-		// If our class doesn't have our namespace, don't load it.
-		if ( 0 !== strpos( $class_name, '__YourCompanyName__\\__YourPluginName__\\' ) ) {
-			return;
-		}
-
 		// Autoload files from parts.
 		$this->autoload_from_parts( explode( '\\', $class_name ) );
 	}
@@ -162,7 +157,8 @@ class App {
 	 * Note, if you pass any class in here it will look for it in:
 	 *
 	 * - /app/
-	 * - /components/class-name/
+	 * - /components/
+	 * - /services/
 	 *
 	 * @author __YourName__
 	 * @since  __NEXT__
@@ -191,7 +187,7 @@ class App {
 			return;
 		}
 
-		// Try and find a file in all the directories, maybe you're using some new file.
+		// Try and find a file in all the directories (recursive), maybe you're using some new file that you aren't even attaching to App.
 		if ( stream_resolve_include_path( $this->autoload_recursive_file( $parts ) ) ) {
 			require_once $this->autoload_recursive_file( $parts );
 			return;
@@ -223,7 +219,6 @@ class App {
 				$this->autoload_dir( 'app' ),
 				$this->autoload_dir( 'components' ),
 				$this->autoload_dir( 'services' ),
-				$this->autoload_dir( 'vendor' ), // Maybe even in composer's vendor folder, maybe composer isn't autoloading it for you?
 			];
 
 			foreach ( $dirs as $dir ) {

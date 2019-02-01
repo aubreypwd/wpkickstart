@@ -9,7 +9,7 @@
  * @package  aubreypwd\ExampleComponent
  */
 
-namespace __YourCompanyName__\__YourPluginName__;
+namespace FakeCompany\Fake;
 
 /**
  * Example Feature.
