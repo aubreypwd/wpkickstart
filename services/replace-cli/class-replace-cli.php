@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Command line replacements.
  *
@@ -170,6 +169,15 @@ class Replace_CLI {
 		$this->loop_through_files_and_fire_hook();
 	}
 
+	/**
+	 * Remove a file.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  2.0.0
+	 *
+	 * @param  string $file The file.
+	 * @return void         Early bail if already done.
+	 */
 	public function remove_file( string $file ) {
 		$plugin_dir = dirname( app()->plugin_file );
 
@@ -197,6 +205,12 @@ class Replace_CLI {
 		}
 	}
 
+	/**
+	 * Loop through our files and pass it to a hook.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  2.0.0
+	 */
 	private function loop_through_files_and_fire_hook() {
 		$plugin_dir = dirname( app()->plugin_file );
 
@@ -241,7 +255,10 @@ class Replace_CLI {
 	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
 	 * @since  2.0.0
 	 *
+	 * @param string $file The file.
+	 *
 	 * @throws \Exception If we can't remove a line you've specified.
+	 * @return void       Early bail if not a file to remove lines.
 	 */
 	public function remove_lines( $file ) {
 		$plugin_dir = dirname( app()->plugin_file );
