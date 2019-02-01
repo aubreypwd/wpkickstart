@@ -340,7 +340,14 @@ class Replace_CLI {
 	 * @since  2.0.0
 	 */
 	private function finalize() {
-		$plugin_slug = $this->slugify( $this->cli_args->get_arg( 'name' ) );
+
+		// Remove git before it's moved.
+		$plugin_dir = untrailingslashit( dirname( app()->plugin_file ) );
+		$this->fs->delete( "{$plugin_dir}/.git", true ); // Remove git.
+
+		// Move it.
+		$slug = $this->slugify( $this->cli_args->get_arg( 'name' ) );
+
 		$plugins_dir = untrailingslashit( dirname( dirname( app()->plugin_file ) ) );
 
 		$olddir = dirname( app()->plugin_file );
@@ -350,6 +357,7 @@ class Replace_CLI {
 			$this->fs->move( $olddir, $newdir );
 		}
 
+		// Activate it.
 		if ( function_exists( 'shell_exec' ) ) {
 
 			// @codingStandardsIgnoreLine: Try and activate that plugin.
