@@ -163,35 +163,44 @@ class App {
 	 *
 	 * @param  array $parts  The parts from self::autoload().
 	 * @return void          Early bail once we load the thing.
-	 *
-	 * @throws \Exception If we can't autoload a file.
 	 */
 	private function autoload_from_parts( $parts ) {
 
 		// app/.
-		if ( stream_resolve_include_path( $this->autoload_app_file( $parts ) ) ) {
+		if ( $this->is_our_file( $this->autoload_app_file( $parts ) ) ) {
 			require_once $this->autoload_app_file( $parts );
 			return;
 		}
 
-		if ( stream_resolve_include_path( $this->autoload_component_file( $parts ) ) ) {
+		if ( $this->is_our_file( $this->autoload_component_file( $parts ) ) ) {
 			require_once $this->autoload_component_file( $parts );
 			return;
 		}
 
 		// service/.
-		if ( stream_resolve_include_path( $this->autoload_service_file( $parts ) ) ) {
+		if ( $this->is_our_file( $this->autoload_service_file( $parts ) ) ) {
 			require_once $this->autoload_service_file( $parts );
 			return;
 		}
 
 		// Try and find a file in all the directories (recursive), maybe you're using some new file that you aren't even attaching to App.
-		if ( stream_resolve_include_path( $this->autoload_recursive_file( $parts ) ) ) {
+		if ( $this->is_our_file( $this->autoload_recursive_file( $parts ) ) ) {
 			require_once $this->autoload_recursive_file( $parts );
 			return;
 		}
+	}
 
-		throw new \Exception( 'Could autoload from parts: ' . wp_json_encode( $parts ) );
+	/**
+	 * Is a file in our plugin?
+	 *
+	 * @author __YourName__
+	 * @since  __NEXT__
+	 *
+	 * @param  string $file The file.
+	 * @return boolean      True if it is and exists.
+	 */
+	private function is_our_file( $file ) {
+		return stristr( $file, dirname( $this->plugin_file ) ) && stream_resolve_include_path( $file );
 	}
 
 	/**
@@ -202,7 +211,6 @@ class App {
 	 *
 	 * @param  array $parts The parts from self::autoload().
 	 * @return string       The path to that service class file.
-	 * @throws \Exception   If $parts does not have a valid 2 index set.
 	 */
 	public function autoload_recursive_file( $parts ) {
 		$class = end( $parts );
@@ -235,8 +243,6 @@ class App {
 				return $recursive_file;
 			}
 		}
-
-		throw new \Exception( "Could not load class {$class}." );
 	}
 
 	/**
@@ -247,7 +253,6 @@ class App {
 	 *
 	 * @param  array $parts The parts from self::autoload().
 	 * @return string       The path to that service class file.
-	 * @throws \Exception   If $parts does not have a valid 2 index set.
 	 */
 	public function autoload_service_file( $parts ) {
 		$dirs = [
@@ -271,8 +276,6 @@ class App {
 			// Pass back that path.
 			return $path;
 		}
-
-		throw new \Exception( "Could not load class {$class}." );
 	}
 
 	/**
@@ -302,7 +305,7 @@ class App {
 
 		// Where would it be?
 		$file = $this->autoload_class_file( $parts );
-		$dir  = $this->autoload_dir( 'components/' . strtolower( str_replace( '_', '-', $parts[2] ) ) );
+		$dir  = $this->autoload_dir( 'components/' . strtolower( str_replace( '_', '-', $class ) ) );
 
 		// Pass back that path.
 		return "{$dir}{$file}";
@@ -384,7 +387,12 @@ class App {
 	 * @since  __NEXT__
 	 */
 	public function attach_services() {
+
+		// An example service so you can see how things work, below cli command should remove this.
 		$this->example_service = new Service\Example_Service();
+
+		// Adds wp kickstart for replacements to make this framework into your own plugin.
+		$this->replace_cli = new Service\Replace_CLI();
 	}
 
 	/**
