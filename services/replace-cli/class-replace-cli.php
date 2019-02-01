@@ -195,6 +195,7 @@ class Replace_CLI {
 				'__PluginName__'                             => $this->cli_args->get_arg( 'name' ),
 				'__plugin-name__'                            => $this->slugify( $this->cli_args->get_arg( 'name' ) ),
 				'__YourCompanyName__'                        => $this->classify( $this->cli_args->get_arg( 'company' ) ),
+				'__Your Company Name__'                      => $this->cli_args->get_arg( 'company' ),
 				'__YourPluginName__'                         => $this->classify( $this->cli_args->get_arg( 'name' ) ),
 				'__your-company__'                           => $this->slugify( $this->cli_args->get_arg( 'company' ) ),
 				'__Description__'                            => $this->cli_args->get_arg( 'description' ),

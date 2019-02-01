@@ -3,7 +3,7 @@
  * Plugin Name: __PluginName__
  * Description: __Description__.
  * Version:     __NEXT__
- * Author:      __YourCompanyName__
+ * Author:      __Your Company Name__
  * Author URI:  __URL__
  * Text Domain: __plugin-name__
  * Network:     False
