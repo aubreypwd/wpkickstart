@@ -163,41 +163,50 @@ class App {
 	 * @since  __NEXT__
 	 *
 	 * @param  array $parts  The parts from self::autoload().
+	 * @return void          Early bail once we load the thing.
 	 */
 	private function autoload_from_parts( $parts ) {
 
 		// includes/.
-		if ( stream_resolve_include_path( $this->autoload_include_file( $parts, 'includes' ) ) ) {
+		if ( stream_resolve_include_path( $this->autoload_include_file( $parts ) ) ) {
 			require_once $this->autoload_include_file( $parts );
+			return;
 		}
 
-		// feature/.
-		if ( stream_resolve_include_path( $this->autoload_feature_file( $parts ) ) ) {
-			require_once $this->autoload_feature_file( $parts );
+		if ( stream_resolve_include_path( $this->autoload_component_file( $parts ) ) ) {
+			require_once $this->autoload_component_file( $parts );
+			return;
+		}
+
+		// service/.
+		if ( stream_resolve_include_path( $this->autoload_service_file( $parts ) ) ) {
+			require_once $this->autoload_service_file( $parts );
+			return;
 		}
 	}
 
 	/**
-	 * Autoload a feature e.g. feature/class-feature.php.
+	 * Autoload a service e.g. service/class-service.php.
 	 *
 	 * @author __YourName__
 	 * @since  __NEXT__
 	 *
 	 * @param  array $parts The parts from self::autoload().
-	 * @return string       The path to that feature class file.
+	 * @return string       The path to that service class file.
+	 * @throws \Exception   If $parts does not have a valid 2 index set.
 	 */
-	public function autoload_feature_file( $parts ) {
+	public function autoload_service_file( $parts ) {
 		if ( isset( $parts[2] ) ) {
 
 			// Where would it be?
 			$file = $this->autoload_class_file( $parts );
-			$dir  = $this->autoload_dir( 'features/' . strtolower( str_replace( '_', '-', $parts[2] ) ) );
+			$dir  = $this->autoload_dir( 'services/' . strtolower( str_replace( '_', '-', $parts[2] ) ) );
 
 			// Pass back that path.
 			return "{$dir}{$file}";
 		}
 
-		return '';
+		throw new \Exception( '$parts[2] must be set.' );
 	}
 
 	/**
@@ -211,6 +220,30 @@ class App {
 	 */
 	private function autoload_include_file( $parts ) {
 		return $this->autoload_dir( 'includes' ) . $this->autoload_class_file( $parts );
+	}
+
+	/**
+	 * Get a file for including from components/.
+	 *
+	 * @author __YourName__
+	 * @since  __NEXT__
+	 *
+	 * @param  array $parts The parts from self::autoload().
+	 * @return string       The path to that file.
+	 * @throws \Exception   If $parts does not have a valid 2 index set.
+	 */
+	private function autoload_component_file( $parts ) {
+		if ( isset( $parts[2] ) ) {
+
+			// Where would it be?
+			$file = $this->autoload_class_file( $parts );
+			$dir  = $this->autoload_dir( 'components/' . strtolower( str_replace( '_', '-', $parts[2] ) ) );
+
+			// Pass back that path.
+			return "{$dir}{$file}";
+		}
+
+		throw new \Exception( '$parts[2] must be set.' );
 	}
 
 	/**
@@ -290,7 +323,8 @@ class App {
 	 */
 	public function attach_services() {
 		$this->shared = new Shared();
-		// $this->example_feature = new Example_Feature();
+
+		$this->example_service = new Example_Service();
 	}
 
 	/**
