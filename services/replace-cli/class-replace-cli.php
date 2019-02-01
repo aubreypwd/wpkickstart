@@ -159,8 +159,8 @@ class Replace_CLI {
 
 			if ( function_exists( 'shell_exec' ) ) {
 
-				// Try and activate that plugin.
-				shell_exec( "wp plugin activate {$slug}" );
+				// @codingStandardsIgnoreLine: Try and activate that plugin.
+				shell_exec( "wp plugin activate {$slug} --allow-root" );
 			}
 		}
 	}
