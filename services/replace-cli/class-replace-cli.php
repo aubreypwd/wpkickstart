@@ -70,6 +70,7 @@ class Replace_CLI {
 		'.php',
 		'.md',
 		'.js',
+		'.json',
 	];
 
 	/**
