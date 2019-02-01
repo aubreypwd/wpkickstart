@@ -18,6 +18,8 @@ class Replace_CLI {
 	private $line_removals = [
 		'		// An example service so you can see how things work, below cli command should remove this.',
 		'		$this->example_service = new Service\Example_Service();',
+		'		// Adds wp kickstart for replacements to make this framework into your own plugin.',
+		'		$this->replace_cli = new Service\Replace_CLI();',
 	];
 
 	private $file_removals = [];
