@@ -257,11 +257,11 @@ class App {
 		];
 
 		foreach ( $dirs as $dir ) {
-			if ( isset( $parts[2] ) ) {
+			if ( isset( $parts[3] ) ) {
 
 				// Where would it be?
 				$file = $this->autoload_class_file( $parts );
-				$dir  = $this->autoload_dir( trailingslashit( $dir ) . strtolower( str_replace( '_', '-', $parts[2] ) ) );
+				$dir  = $this->autoload_dir( trailingslashit( $dir ) . strtolower( str_replace( '_', '-', $parts[3] ) ) );
 				$path = "{$dir}{$file}";
 
 				if ( ! file_exists( $path ) ) {
@@ -389,7 +389,7 @@ class App {
 	 * @since  __NEXT__
 	 */
 	public function attach_services() {
-		$this->example_service = new Example_Service();
+		$this->example_service = new Service\Example_Service();
 	}
 
 	/**

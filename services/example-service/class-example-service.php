@@ -9,7 +9,10 @@
  * @package  __YourCompanyName__\__YourPluginName__
  */
 
-namespace __YourCompanyName__\__YourPluginName__;
+namespace __YourCompanyName__\__YourPluginName__\Service;
+
+// Since we're using the \Service namespace to separate from conflicts with components, we need to use app() from the base.
+use function \__YourCompanyName__\__YourPluginName__\app;
 
 /**
  * Example Feature.
