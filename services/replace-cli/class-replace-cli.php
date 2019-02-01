@@ -151,8 +151,8 @@ class Replace_CLI {
 				'__YourName__'        => $this->cli_args->get_arg( 'author' ),
 				'__PluginName__'      => $this->cli_args->get_arg( 'name' ),
 				'__plugin-name__'     => $this->slugify( $this->cli_args->get_arg( 'name' ) ),
-				'__YourCompanyName__' => $this->camelcase( $this->cli_args->get_arg( 'company' ) ),
-				'__YourPluginName__'  => $this->camelcase( $this->cli_args->get_arg( 'name' ) ),
+				'__YourCompanyName__' => $this->classify( $this->cli_args->get_arg( 'company' ) ),
+				'__YourPluginName__'  => $this->classify( $this->cli_args->get_arg( 'name' ) ),
 				'__your-company__'    => $this->slugify( $this->cli_args->get_arg( 'company' ) ),
 			];
 		}
@@ -164,17 +164,14 @@ class Replace_CLI {
 		return sanitize_title_with_dashes( $string );
 	}
 
-	private function camelcase( $str, $noStrip = [] ) {
-		// non-alpha and non-numeric characters become spaces
-		$str = preg_replace('/[^a-z0-9' . implode("", $noStrip) . ']+/i', ' ', $str);
-		$str = trim($str);
+	private function classify( $string, $strip = [] ) {
+		$string = preg_replace( '/[^a-z0-9' . implode( '', $strip ) . ']+/i', ' ', $string );
+		$string = trim( $string );
+		$string = ucwords( $string );
+		$string = str_replace( ' ', '', $string );
+		$string = lcfirst( $string );
 
-		// uppercase the first character of each word
-		$str = ucwords($str);
-		$str = str_replace(" ", "", $str);
-		$str = lcfirst($str);
-
-		return $str;
+		return ucwords( $string );
 	}
 
 	/**
