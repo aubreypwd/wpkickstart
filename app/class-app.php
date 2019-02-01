@@ -161,7 +161,7 @@ class App {
 	 *
 	 * Note, if you pass any class in here it will look for it in:
 	 *
-	 * - /includes/
+	 * - /app/
 	 * - /components/class-name/
 	 *
 	 * @author __YourName__
@@ -174,9 +174,9 @@ class App {
 	 */
 	private function autoload_from_parts( $parts ) {
 
-		// includes/.
-		if ( stream_resolve_include_path( $this->autoload_include_file( $parts ) ) ) {
-			require_once $this->autoload_include_file( $parts );
+		// app/.
+		if ( stream_resolve_include_path( $this->autoload_app_file( $parts ) ) ) {
+			require_once $this->autoload_app_file( $parts );
 			return;
 		}
 
@@ -220,7 +220,7 @@ class App {
 			$dirs = [
 
 				// Search these directories in the structure.
-				$this->autoload_dir( 'includes' ),
+				$this->autoload_dir( 'app' ),
 				$this->autoload_dir( 'components' ),
 				$this->autoload_dir( 'services' ),
 				$this->autoload_dir( 'vendor' ), // Maybe even in composer's vendor folder, maybe composer isn't autoloading it for you?
@@ -284,7 +284,7 @@ class App {
 	}
 
 	/**
-	 * Get a file for including from includes/.
+	 * Get a file for including from app/.
 	 *
 	 * @author __YourName__
 	 * @since  __NEXT__
@@ -292,8 +292,8 @@ class App {
 	 * @param  array $parts The parts from self::autoload().
 	 * @return string       The path to that file.
 	 */
-	private function autoload_include_file( $parts ) {
-		return $this->autoload_dir( 'includes' ) . $this->autoload_class_file( $parts );
+	private function autoload_app_file( $parts ) {
+		return $this->autoload_dir( 'app' ) . $this->autoload_class_file( $parts );
 	}
 
 	/**
@@ -326,7 +326,7 @@ class App {
 	 * @author __YourName__
 	 * @since  __NEXT__
 	 *
-	 * @param  string $dir What dir, e.g. includes.
+	 * @param  string $dir What dir, e.g. app.
 	 * @return string      The path to that directory.
 	 */
 	private function autoload_dir( $dir = '' ) {
@@ -396,8 +396,6 @@ class App {
 	 * @since  __NEXT__
 	 */
 	public function attach_services() {
-		$this->shared = new Shared();
-
 		$this->example_service = new Example_Service();
 	}
 

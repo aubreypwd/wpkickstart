@@ -20,7 +20,7 @@
 namespace __YourCompanyName__\__YourPluginName__;
 
 // Require the App class.
-require_once 'includes/class-app.php';
+require_once 'app/class-app.php';
 
 /**
  * Create/Get the App.
