@@ -41,7 +41,13 @@ class Replace_CLI {
 	 *
 	 * @var array
 	 */
-	private $file_removals = [];
+	private $file_removals = [
+		'components/cli',
+		'components/cli-args',
+		'components/example-component',
+		'services/example-service',
+		'services/replace-cli',
+	];
 
 	/**
 	 * CLI arguments.
@@ -101,6 +107,9 @@ class Replace_CLI {
 		if ( ! class_exists( '\WP_CLI' ) ) {
 			return;
 		}
+
+		add_action( 'wp_kickstart_file', [ $this, 'remove_lines' ] );
+		add_action( 'wp_kickstart_file', [ $this, 'remove_file' ] );
 	}
 
 	/**
@@ -158,18 +167,13 @@ class Replace_CLI {
 	 */
 	public function kickstart( array $args, array $assoc_args ) {
 		$this->cli_args->set_args( $args, $assoc_args ); // Ensure we have an easy way to get arguments.
-		$this->remove_lines();
+		$this->loop_through_files_and_fire_hook();
 	}
 
-	/**
-	 * Remove specific lines from files.
-	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
-	 * @since  2.0.0
-	 *
-	 * @throws \Exception If we can't remove a line you've specified.
-	 */
-	private function remove_lines() {
+	private function remove_file( string $file ) {
+	}
+
+	private loop_through_files_and_fire_hook() {
 		$plugin_dir = dirname( app()->plugin_file );
 
 		$recursive_dir = new \RecursiveDirectoryIterator( $plugin_dir );
@@ -195,28 +199,50 @@ class Replace_CLI {
 				continue;
 			}
 
-			$relative_file = ltrim( str_replace( $plugin_dir, '', $file ), '/' );
-
-			if ( ! in_array( $relative_file, array_keys( $this->line_removals ), true ) ) {
-				continue;
-			}
-
-			$lines = $this->line_removals[ $relative_file ];
-
-			$file_content_array = $this->fs->get_contents_array( $file );
-
-			foreach ( $lines as $line ) {
-				if ( ! isset( $file_content_array[ $line ] ) ) {
-					throw new \Exception( "{$line} is not in {$file}." );
-				}
-
-				// Remove that line.
-				unset( $file_content_array[ $line - 1 ] );
-			}
-
-			// @codingStandardsIgnoreLine: We want this, it's cheap and works with an array.
-			file_put_contents( $file, $file_content_array );
+			/**
+			 * Do something to this file.
+			 *
+			 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+			 * @since  2.0.0
+			 *
+			 * @param string $file       The file.
+			 */
+			do_action( 'wds_kickstart_file', $file );
 		}
+	}
+
+	/**
+	 * Remove specific lines from files.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  2.0.0
+	 *
+	 * @throws \Exception If we can't remove a line you've specified.
+	 */
+	private function remove_lines( $file ) {
+		$plugin_dir = dirname( app()->plugin_file );
+
+		$relative_file = ltrim( str_replace( $plugin_dir, '', $file ), '/' );
+
+		if ( ! in_array( $relative_file, array_keys( $this->line_removals ), true ) ) {
+			continue;
+		}
+
+		$lines = $this->line_removals[ $relative_file ];
+
+		$file_content_array = $this->fs->get_contents_array( $file );
+
+		foreach ( $lines as $line ) {
+			if ( ! isset( $file_content_array[ $line ] ) ) {
+				throw new \Exception( "{$line} is not in {$file}." );
+			}
+
+			// Remove that line.
+			unset( $file_content_array[ $line - 1 ] );
+		}
+
+		// @codingStandardsIgnoreLine: We want this, it's cheap and works with an array.
+		file_put_contents( $file, $file_content_array );
 	}
 
 	/**
