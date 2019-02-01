@@ -95,23 +95,6 @@ class Replace_CLI {
 	private $fs;
 
 	/**
-	 * Hooks.
-	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
-	 * @since  2.0.0
-	 *
-	 * @return void Early bail if not CLI.
-	 */
-	public function hooks() {
-		if ( ! class_exists( '\WP_CLI' ) ) {
-			return;
-		}
-
-		add_action( 'wp_kickstart_file', [ $this, 'remove_lines' ] );
-		add_action( 'wp_kickstart_file', [ $this, 'remove_file' ] );
-	}
-
-	/**
 	 * Construct.
 	 *
 	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
@@ -126,6 +109,71 @@ class Replace_CLI {
 
 			$this->cli_args = new \WebDevStudios\CLI_Args\CLI_Args();
 		}
+	}
+
+	/**
+	 * Hooks.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  2.0.0
+	 *
+	 * @return void Early bail if not CLI.
+	 */
+	public function hooks() {
+		if ( ! class_exists( '\WP_CLI' ) ) {
+			return;
+		}
+
+		// add_action( 'wp_kickstart_file', [ $this, 'remove_lines' ] );
+		// add_action( 'wp_kickstart_file', [ $this, 'remove_file' ] );
+		add_action( 'wp_kickstart_file', [ $this, 'replace_strings' ] );
+	}
+
+	public function replace_strings( string $file ) {
+		$replacements = $this->get_replacements();
+
+		$file_contents = file_get_contents( $file );
+
+		foreach ( $replacements as $search => $replace ) {
+			$file_contents = str_replace( $search, $replace, $file_contents );
+		}
+
+		file_put_contents( $file, $file_contents );
+	}
+
+	private function get_replacements() {
+		static $cached;
+
+		if ( ! is_array( $cached ) ) {
+			$cached = [
+				'__NEXT__'            => $this->cli_args->get_arg( 'since' ),
+				'__YourName__'        => $this->cli_args->get_arg( 'author' ),
+				'__PluginName__'      => $this->cli_args->get_arg( 'name' ),
+				'__plugin-name__'     => $this->slugify( $this->cli_args->get_arg( 'name' ) ),
+				'__YourCompanyName__' => $this->camelcase( $this->cli_args->get_arg( 'company' ) ),
+				'__YourPluginName__'  => $this->camelcase( $this->cli_args->get_arg( 'name' ) ),
+				'__your-company__'    => $this->slugify( $this->cli_args->get_arg( 'company' ) ),
+			];
+		}
+
+		return $cached;
+	}
+
+	private function slugify( $string ) {
+		return sanitize_title_with_dashes( $string );
+	}
+
+	private function camelcase( $str, $noStrip = [] ) {
+		// non-alpha and non-numeric characters become spaces
+		$str = preg_replace('/[^a-z0-9' . implode("", $noStrip) . ']+/i', ' ', $str);
+		$str = trim($str);
+
+		// uppercase the first character of each word
+		$str = ucwords($str);
+		$str = str_replace(" ", "", $str);
+		$str = lcfirst($str);
+
+		return $str;
 	}
 
 	/**
@@ -150,6 +198,24 @@ class Replace_CLI {
 					'optional'    => true,
 					'description' => __( 'What @since will be set to, defaults to `1.0.0`.', 'wpkickstart' ),
 					'default'     => '1.0.0',
+				],
+				[
+					'type'        => 'assoc',
+					'name'        => 'author',
+					'optional'    => false,
+					'description' => __( 'What @author will say, e.g. `Aubrey Portwood <aubrey@webdevstudios.com>`.', 'wpkickstart' ),
+				],
+				[
+					'type'        => 'assoc',
+					'name'        => 'name',
+					'optional'    => false,
+					'description' => __( 'What is your plugin name? E.g. `My Awesome Plugin``.', 'wpkickstart' ),
+				],
+				[
+					'type'        => 'assoc',
+					'name'        => 'company',
+					'optional'    => false,
+					'description' => __( 'What is your company name? E.g. `My Company``.', 'wpkickstart' ),
 				],
 			],
 		] );
