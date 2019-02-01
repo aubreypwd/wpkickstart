@@ -130,23 +130,40 @@ class Replace_CLI {
 		add_action( 'wp_kickstart_file', [ $this, 'replace_strings' ] );
 	}
 
+	/**
+	 * Make string replacements.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  2.0.0
+	 *
+	 * @param  string $file The file.
+	 */
 	public function replace_strings( string $file ) {
 		$replacements = $this->get_replacements();
 
-		$file_contents = file_get_contents( $file );
+		$file_contents = file_get_contents( $file ); // @codingStandardsIgnoreLine: We want this.
 
 		foreach ( $replacements as $search => $replace ) {
 			$file_contents = str_replace( $search, $replace, $file_contents );
 		}
 
-		file_put_contents( $file, $file_contents );
+		file_put_contents( $file, $file_contents ); // @codingStandardsIgnoreLine: We want this.
 	}
 
+	/**
+	 * Collect the replacements.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  2.0.0
+	 *
+	 * @return array The replacements.
+	 */
 	private function get_replacements() {
 		static $cached;
 
 		if ( ! is_array( $cached ) ) {
 			$cached = [
+				'2.0.0'               => $this->cli_args->get_arg( 'since' ),
 				'__NEXT__'            => $this->cli_args->get_arg( 'since' ),
 				'__YourName__'        => $this->cli_args->get_arg( 'author' ),
 				'__PluginName__'      => $this->cli_args->get_arg( 'name' ),
@@ -160,10 +177,29 @@ class Replace_CLI {
 		return $cached;
 	}
 
+	/**
+	 * Convert a string to a slug.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  2.0.0
+	 *
+	 * @param  string $string The string.
+	 * @return string         The slug.
+	 */
 	private function slugify( $string ) {
 		return sanitize_title_with_dashes( $string );
 	}
 
+	/**
+	 * Convert this to a class format.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  2.0.0
+	 *
+	 * @param  string $string The string.
+	 * @param  array  $strip  What to strip (unused).
+	 * @return string         The ClassFormat format.
+	 */
 	private function classify( $string, $strip = [] ) {
 		$string = preg_replace( '/[^a-z0-9' . implode( '', $strip ) . ']+/i', ' ', $string );
 		$string = trim( $string );
