@@ -67,6 +67,9 @@ class Replace_CLI {
 		$recursive_dir = new \RecursiveDirectoryIterator( dirname( app()->plugin_file ) );
 
 		foreach ( new \RecursiveIteratorIterator( $recursive_dir ) as $file => $file_obj ) {
+			if ( is_dir( $file ) ) {
+				continue;
+			}
 
 			$code = file_get_contents( $file );
 
