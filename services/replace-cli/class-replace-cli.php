@@ -171,6 +171,16 @@ class Replace_CLI {
 	}
 
 	public function remove_file( string $file ) {
+		$dir = dirname( $file );
+
+		if ( in_array( $dir, $this->file_removals, true ) ) {
+			$this->fs->delete( $dir, true );
+			return;
+		}
+
+		if ( in_array( $file, $this->file_removals, true ) ) {
+			$this->fs->delete( $file );
+		}
 	}
 
 	private function loop_through_files_and_fire_hook() {
