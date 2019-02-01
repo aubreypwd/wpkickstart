@@ -16,13 +16,19 @@ use function \__YourCompanyName__\__YourPluginName__\app;
 
 class Replace_CLI {
 	private $line_removals = [
-		'		// An example service so you can see how things work, below cli command should remove this.',
-		'$this->example_service = new Service\Example_Service();',
+		'',
+		'',
 	];
 
 	private $file_removals = [];
 
 	private $cli_args;
+
+	private $extensions = [
+		'.php',
+		'.md',
+		'.js',
+	];
 
 	public function hooks() {
 		if ( ! class_exists( '\WP_CLI' ) ) {
@@ -71,6 +77,10 @@ class Replace_CLI {
 				continue;
 			}
 
+			if ( ! $this->string_has_valid_extension( $file ) ) {
+				continue;
+			}
+
 			$code = file_get_contents( $file );
 
 			foreach ( $this->line_removals as $remove ) {
@@ -79,5 +89,15 @@ class Replace_CLI {
 
 			file_put_contents( $file, $code );
 		}
+	}
+
+	private function string_has_valid_extension( string $string ) {
+		foreach ( $this->extensions as $extension ) {
+			if ( stristr( $string, $extension ) ) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 }
