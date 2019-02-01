@@ -163,14 +163,15 @@ class Replace_CLI {
 
 		if ( ! is_array( $cached ) ) {
 			$cached = [
-				'2.0.0'               => $this->cli_args->get_arg( 'since' ),
-				'__NEXT__'            => $this->cli_args->get_arg( 'since' ),
-				'__YourName__'        => $this->cli_args->get_arg( 'author' ),
-				'__PluginName__'      => $this->cli_args->get_arg( 'name' ),
-				'__plugin-name__'     => $this->slugify( $this->cli_args->get_arg( 'name' ) ),
-				'__YourCompanyName__' => $this->classify( $this->cli_args->get_arg( 'company' ) ),
-				'__YourPluginName__'  => $this->classify( $this->cli_args->get_arg( 'name' ) ),
-				'__your-company__'    => $this->slugify( $this->cli_args->get_arg( 'company' ) ),
+				'2.0.0'                                      => $this->cli_args->get_arg( 'since' ),
+				'__NEXT__'                                   => $this->cli_args->get_arg( 'since' ),
+				'__YourName__'                               => $this->cli_args->get_arg( 'author' ),
+				'__PluginName__'                             => $this->cli_args->get_arg( 'name' ),
+				'__plugin-name__'                            => $this->slugify( $this->cli_args->get_arg( 'name' ) ),
+				'__YourCompanyName__'                        => $this->classify( $this->cli_args->get_arg( 'company' ) ),
+				'__YourPluginName__'                         => $this->classify( $this->cli_args->get_arg( 'name' ) ),
+				'__your-company__'                           => $this->slugify( $this->cli_args->get_arg( 'company' ) ),
+				'Aubrey Portwood <aubrey@webdevstudios.com>' => $this->cli_args->get_arg( 'authors' ),
 			];
 		}
 
