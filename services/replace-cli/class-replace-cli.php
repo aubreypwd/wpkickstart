@@ -46,6 +46,7 @@ class Replace_CLI {
 		'components/example-component',
 		'services/example-service',
 		'services/replace-cli',
+		'.git',
 	];
 
 	/**
