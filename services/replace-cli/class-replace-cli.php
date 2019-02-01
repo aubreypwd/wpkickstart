@@ -173,7 +173,7 @@ class Replace_CLI {
 	private function remove_file( string $file ) {
 	}
 
-	private loop_through_files_and_fire_hook() {
+	private function loop_through_files_and_fire_hook() {
 		$plugin_dir = dirname( app()->plugin_file );
 
 		$recursive_dir = new \RecursiveDirectoryIterator( $plugin_dir );
