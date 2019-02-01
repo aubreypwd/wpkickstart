@@ -96,6 +96,15 @@ class Replace_CLI {
 	private $fs;
 
 	/**
+	 * CLI.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  2.0.0
+	 * @var \WebDevStudios\CLI\CLI
+	 */
+	private $cli;
+
+	/**
 	 * Construct.
 	 *
 	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
@@ -107,6 +116,8 @@ class Replace_CLI {
 			require_once ABSPATH . '/wp-admin/includes/class-wp-filesystem-direct.php';
 
 			$this->fs = new \WP_Filesystem_Direct( true );
+
+			$this->cli = new \WebDevStudios\CLI\CLI();
 
 			$this->cli_args = new \WebDevStudios\CLI_Args\CLI_Args();
 		}
@@ -202,19 +213,23 @@ class Replace_CLI {
 		static $cached;
 
 		if ( ! is_array( $cached ) ) {
+
+			// Glitches coding standards ¯\_(ツ)_/¯.
+			$aubrey = 'Aubrey Portwood <aubrey@webdevstudios.com>';
+
 			$cached = [
-				'2.0.0'                                      => $this->cli_args->get_arg( 'since' ),
-				'__NEXT__'                                   => $this->cli_args->get_arg( 'since' ),
-				'__YourName__'                               => $this->cli_args->get_arg( 'author' ),
-				'__PluginName__'                             => $this->cli_args->get_arg( 'name' ),
-				'__plugin-name__'                            => $this->slugify( $this->cli_args->get_arg( 'name' ) ),
-				'__YourCompanyName__'                        => $this->classify( $this->cli_args->get_arg( 'company' ) ),
-				'__Your Company Name__'                      => $this->cli_args->get_arg( 'company' ),
-				'__YourPluginName__'                         => $this->classify( $this->cli_args->get_arg( 'name' ) ),
-				'__your-company__'                           => $this->slugify( $this->cli_args->get_arg( 'company' ) ),
-				'__Description__'                            => $this->cli_args->get_arg( 'description' ),
-				'__URL__'                                    => esc_url( $this->cli_args->get_arg( 'website' ) ),
-				'Aubrey Portwood <aubrey@webdevstudios.com>' => $this->cli_args->get_arg( 'author' ),
+				'2.0.0'                 => $this->cli_args->get_arg( 'since' ),
+				'__NEXT__'              => $this->cli_args->get_arg( 'since' ),
+				'__YourName__'          => $this->cli_args->get_arg( 'author' ),
+				'__PluginName__'        => $this->cli_args->get_arg( 'name' ),
+				'__plugin-name__'       => $this->slugify( $this->cli_args->get_arg( 'name' ) ),
+				'__YourCompanyName__'   => $this->classify( $this->cli_args->get_arg( 'company' ) ),
+				'__Your Company Name__' => $this->cli_args->get_arg( 'company' ),
+				'__YourPluginName__'    => $this->classify( $this->cli_args->get_arg( 'name' ) ),
+				'__your-company__'      => $this->slugify( $this->cli_args->get_arg( 'company' ) ),
+				'__Description__'       => $this->cli_args->get_arg( 'description' ),
+				'__URL__'               => esc_url( $this->cli_args->get_arg( 'website' ) ),
+				$aubrey                 => $this->cli_args->get_arg( 'author' ),
 			];
 		}
 
@@ -267,7 +282,7 @@ class Replace_CLI {
 			return;
 		}
 
-		\WP_CLI::add_command( 'kickstart', [ $this, 'kickstart' ], [
+		\WP_CLI::add_command( 'kickstart', [ $this, 'command' ], [
 			'shortdesc' => __( 'Will help you convert the installed wpkickstart plugin into a new plugin and perform all of the search/replacements.', 'wds-migrate-subsite' ),
 			'synopsis'  => [
 				[
@@ -320,9 +335,14 @@ class Replace_CLI {
 	 * @param  array $args       Arguments.
 	 * @param  array $assoc_args Arguments.
 	 */
-	public function kickstart( array $args, array $assoc_args ) {
+	public function command( array $args, array $assoc_args ) {
 		$this->cli_args->set_args( $args, $assoc_args ); // Ensure we have an easy way to get arguments.
+
 		$this->loop_through_files_and_fire_hook();
+
+		$plugin_slug = $this->slugify( $this->cli_args->get_arg( 'name' ) );
+
+		$this->cli->success( "Done! Your new is in plugins/{$plugin_slug} and has been activated and is ready to be worked on." );
 	}
 
 	/**
