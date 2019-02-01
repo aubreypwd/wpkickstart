@@ -14,8 +14,6 @@ each file and start globally replacing things like `Plugin Name`,
 it up for your needs. Just make sure you examine all the base files
 and customize it for your needs.
 
-**Also remember to rename the `__plugin-name__.php` file to be the same.**
-
 The easiest way to create a new class is to duplicate the `class-shared.php`
 file and clear out it's contents. Then attach it in the `App::attach()` method,
 and if you're hooking into WordPress, create and call your new class' `hooks` method
@@ -33,16 +31,6 @@ in the `App::hooks()` method and start writing new code!
 - `__YourName__` e.g. `Aubrey Portwood`
 - `__your-company__` e.g. `my-company-name`
 - You'll also want to rename `/wpkickstart/wpkickstart.php` e.g. `/my-plugin-name/my-plugin-name.php`
-
-#### Using `replace.php`
-
-You can do this using `replace.php`, e.g.:
-
-```
-php replace.php --__PluginName__="My Plugin Name" --__NEXT__="1.0.0" --__plugin-name__="my-plugin-name" --__YourCompanyName__=MyCompanyName --__YourPluginName__=MyPluginName --__YourName__="Aubrey Portwood" --__your-company__="my-comoany"
-```
-
-But, after that please also check for minor adjustments.
 
 ### `app()`
 

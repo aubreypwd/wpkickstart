@@ -5,7 +5,7 @@
  * Version:     __NEXT__
  * Author:      __Your Company Name__
  * Author URI:  __URL__
- * Text Domain: __plugin-name__
+ * Text Domain: __your-company__-__plugin-name__
  * Network:     False
  * License:     GPLv2
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt

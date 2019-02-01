@@ -93,7 +93,7 @@ class App {
 		if ( empty( $plugin_file ) || ! stream_resolve_include_path( $plugin_file ) ) {
 
 			// Translators: Displays a message if a plugin file is not passed.
-			throw new Exception( sprintf( esc_html__( 'Invalid plugin file %1$s supplied to %2$s', '__plugin-name__' ), $plugin_file, __METHOD__ ) );
+			throw new Exception( sprintf( esc_html__( 'Invalid plugin file %1$s supplied to %2$s', '__your-company__-__plugin-name__' ), $plugin_file, __METHOD__ ) );
 		}
 
 		// Plugin setup.
@@ -117,7 +117,7 @@ class App {
 		), 'plugin' );
 
 		// Load language files.
-		load_plugin_textdomain( '__plugin-name__', false, basename( dirname( $plugin_file ) ) . '/languages' );
+		load_plugin_textdomain( '__your-company__-__plugin-name__', false, basename( dirname( $plugin_file ) ) . '/languages' );
 
 		// Loaders.
 		$this->auto_loader();

@@ -84,7 +84,7 @@ class Test_App extends WP_UnitTestCase {
 
 		// ->plugin_file.
 		$this->assertTrue( property_exists( app(), 'plugin_file' ), 'App::plugin_file property is used in other places in the plugin and must exist' );
-		$this->assertNotEmpty( app()->plugin_file, 'App::plugin_file should always be set to the __plugin-name__.php file.' );
+		$this->assertNotEmpty( app()->plugin_file, 'App::plugin_file should always be set to the __your-company__-__plugin-name__ file.' );
 		$this->assertFileExists( app()->plugin_file, 'App::plugin_file should always be set to a file that exists.' );
 
 		// ->url.
@@ -94,7 +94,7 @@ class Test_App extends WP_UnitTestCase {
 
 		// ->path.
 		$this->assertTrue( property_exists( app(), 'path' ), 'App::path property is used in other places in the plugin and must exist' );
-		$this->assertNotEmpty( app()->path, 'App::path should always be set to the __plugin-name__.php file.' );
+		$this->assertNotEmpty( app()->path, 'App::path should always be set to the __your-company__-__plugin-name__ file.' );
 		if ( method_exists( $this, 'assertDirectoryExists' ) ) {
 
 			// Path must be a directory that exists.

@@ -147,7 +147,9 @@ class Replace_CLI {
 
 			$slug = $this->slugify( $this->cli_args->get_arg( 'name' ) );
 
-			$this->fs->move( $file, "{$dir}/{$slug}.php" );
+			$company_name = $this->slugify( $this->cli_args->get_arg( 'company' ) );
+
+			$this->fs->move( $file, "{$dir}/{$company_name}-{$slug}.php" );
 		}
 	}
 
