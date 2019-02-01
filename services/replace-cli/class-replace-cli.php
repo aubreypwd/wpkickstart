@@ -176,6 +176,8 @@ class Replace_CLI {
 				'__YourCompanyName__'                        => $this->classify( $this->cli_args->get_arg( 'company' ) ),
 				'__YourPluginName__'                         => $this->classify( $this->cli_args->get_arg( 'name' ) ),
 				'__your-company__'                           => $this->slugify( $this->cli_args->get_arg( 'company' ) ),
+				'__Description__'                            => $this->cli_args->get_arg( 'description' ),
+				'__URL__'                                    => esc_url( $this->cli_args->get_arg( 'url' ) ),
 				'Aubrey Portwood <aubrey@webdevstudios.com>' => $this->cli_args->get_arg( 'author' ),
 			];
 		}
@@ -256,6 +258,18 @@ class Replace_CLI {
 					'name'        => 'company',
 					'optional'    => false,
 					'description' => __( 'What is your company name? E.g. `My Company``.', 'wpkickstart' ),
+				],
+				[
+					'type'        => 'assoc',
+					'name'        => 'url',
+					'optional'    => false,
+					'description' => __( 'Your URL, e.g. `http://example.com`.', 'wpkickstart' ),
+				],
+				[
+					'type'        => 'assoc',
+					'name'        => 'description',
+					'optional'    => false,
+					'description' => __( 'Your applications description, what does it do?.', 'wpkickstart' ),
 				],
 			],
 		] );

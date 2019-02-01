@@ -1,10 +1,10 @@
 <?php
 /**
  * Plugin Name: __PluginName__
- * Description: Description of your plugin goes here.
+ * Description: __Description__.
  * Version:     __NEXT__
  * Author:      __YourCompanyName__
- * Author URI:  http://example.com
+ * Author URI:  __URL__
  * Text Domain: __plugin-name__
  * Network:     False
  * License:     GPLv2

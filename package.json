@@ -2,10 +2,10 @@
 	"name": "__your-company__-__plugin-name__",
 	"title": "__your-company__-__plugin-name__",
 	"version": "__NEXT__",
-	"description": "__your-company__-__plugin-name__",
+	"description": "__Description__",
 	"author": {
 		"name": "__YourCompanyName__",
-		"url": "http://example.com"
+		"url": "__URL__"
 	},
 	"license": "GPLv2",
 	"devDependencies": {
