@@ -128,7 +128,7 @@ class Replace_CLI {
 		add_action( 'wp_kickstart_file', [ $this, 'remove_lines' ] );
 		add_action( 'wp_kickstart_file', [ $this, 'remove_file' ] );
 		add_action( 'wp_kickstart_file', [ $this, 'replace_strings' ] );
-		add_action( 'wp_kickstart_file', [ $this, 'rename_plugin_file' ] );
+		add_action( 'wp_kickstart_file', [ $this, 'rename_plugin_file' ] ); // Must be last!
 	}
 
 	/**
@@ -143,13 +143,19 @@ class Replace_CLI {
 
 		// Only when the file is the kickstart file.
 		if ( 'wpkickstart.php' === basename( $file ) ) {
-			$dir = untrailingslashit( dirname( $file ) );
+			$olddir = untrailingslashit( dirname( $file ) );
 
 			$slug = $this->slugify( $this->cli_args->get_arg( 'name' ) );
 
-			$company_name = $this->slugify( $this->cli_args->get_arg( 'company' ) );
+			$this->fs->move( $file, "{$olddir}/{$slug}.php" );
 
-			$this->fs->move( $file, "{$dir}/{$company_name}-{$slug}.php" );
+			$plugins_dir = untrailingslashit( dirname( dirname( app()->plugin_file ) ) );
+
+			$newdir = "{$plugins_dir}/{$slug}";
+
+			if ( ! file_exists( $newdir ) ) {
+				$this->fs->copy( $olddir, $newdir );
+			}
 		}
 	}
 
