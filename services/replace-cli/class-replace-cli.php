@@ -171,14 +171,28 @@ class Replace_CLI {
 	}
 
 	public function remove_file( string $file ) {
+		$plugin_dir = dirname( app()->plugin_file );
+
 		$dir = dirname( $file );
 
-		if ( in_array( $dir, $this->file_removals, true ) ) {
+		$relative_dir = ltrim( str_replace( $plugin_dir, '', $dir ), '/' );
+
+		$relative_file = ltrim( str_replace( $plugin_dir, '', $file ), '/' );
+
+		if ( ! file_exists( $dir ) ) {
+			return; // The directory doesn't even exist, already done.
+		}
+
+		if ( in_array( $relative_dir, $this->file_removals, true ) ) {
 			$this->fs->delete( $dir, true );
 			return;
 		}
 
-		if ( in_array( $file, $this->file_removals, true ) ) {
+		if ( ! file_exists( $file ) ) {
+			return; // Somehow file is deleted already.
+		}
+
+		if ( in_array( $relative_file, $this->file_removals, true ) ) {
 			$this->fs->delete( $file );
 		}
 	}
