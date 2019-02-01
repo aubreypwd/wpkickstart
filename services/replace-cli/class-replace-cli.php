@@ -46,7 +46,6 @@ class Replace_CLI {
 		'components/example-component',
 		'services/example-service',
 		'services/replace-cli',
-		'.git',
 	];
 
 	/**
@@ -155,25 +154,11 @@ class Replace_CLI {
 
 		// Only when the file is the kickstart file.
 		if ( 'wpkickstart.php' === basename( $file ) ) {
-			$olddir = untrailingslashit( dirname( $file ) );
+			$dir = untrailingslashit( dirname( $file ) );
 
 			$slug = $this->slugify( $this->cli_args->get_arg( 'name' ) );
 
-			$this->fs->move( $file, "{$olddir}/{$slug}.php" );
-
-			$plugins_dir = untrailingslashit( dirname( dirname( app()->plugin_file ) ) );
-
-			$newdir = "{$plugins_dir}/{$slug}";
-
-			if ( ! file_exists( $newdir ) ) {
-				$this->fs->move( $olddir, $newdir );
-			}
-
-			if ( function_exists( 'shell_exec' ) ) {
-
-				// @codingStandardsIgnoreLine: Try and activate that plugin.
-				shell_exec( "wp plugin activate {$slug} --allow-root" );
-			}
+			$this->fs->move( $file, "{$dir}/{$slug}.php" );
 		}
 	}
 
@@ -341,9 +326,35 @@ class Replace_CLI {
 
 		$this->loop_through_files_and_fire_hook();
 
+		$this->finalize();
+
 		$plugin_slug = $this->slugify( $this->cli_args->get_arg( 'name' ) );
 
 		$this->cli->success( "Done! Your new is in plugins/{$plugin_slug} and has been activated and is ready to be worked on." );
+	}
+
+	/**
+	 * Move the new plugin and activate it.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  2.0.0
+	 */
+	private function finalize() {
+		$plugin_slug = $this->slugify( $this->cli_args->get_arg( 'name' ) );
+		$plugins_dir = untrailingslashit( dirname( dirname( app()->plugin_file ) ) );
+
+		$olddir = dirname( app()->plugin_file );
+		$newdir = "{$plugins_dir}/{$slug}";
+
+		if ( ! file_exists( $newdir ) ) {
+			$this->fs->move( $olddir, $newdir );
+		}
+
+		if ( function_exists( 'shell_exec' ) ) {
+
+			// @codingStandardsIgnoreLine: Try and activate that plugin.
+			shell_exec( "wp plugin activate {$slug} --allow-root" );
+		}
 	}
 
 	/**
