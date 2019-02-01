@@ -154,7 +154,13 @@ class Replace_CLI {
 			$newdir = "{$plugins_dir}/{$slug}";
 
 			if ( ! file_exists( $newdir ) ) {
-				$this->fs->copy( $olddir, $newdir );
+				$this->fs->move( $olddir, $newdir );
+			}
+
+			if ( function_exists( 'shell_exec' ) ) {
+
+				// Try and activate that plugin.
+				shell_exec( "wp activate {$slug}" );
 			}
 		}
 	}
