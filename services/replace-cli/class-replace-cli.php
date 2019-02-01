@@ -16,8 +16,8 @@ use function \__YourCompanyName__\__YourPluginName__\app;
 
 class Replace_CLI {
 	private $line_removals = [
-		'',
-		'',
+		'// An example service so you can see how things work, below cli command should remove this.',
+		'$this->example_service = new Service\Example_Service();',
 	];
 
 	private $file_removals = [];
@@ -95,10 +95,16 @@ class Replace_CLI {
 
 			$code = file_get_contents( $file );
 
-
-
 			foreach ( $this->line_removals as $remove ) {
-				$code = str_replace( $remove, '', $code );
+				$code = str_replace( "{$remove}\n", "\n", $code );
+
+				error_log( print_r( (object) array(
+					'line' => __LINE__,
+					'file' => __FILE__,
+					'dump' => array(
+						$remove => $file,
+					),
+				), true ) );
 			}
 
 			file_put_contents( $file, $code );
