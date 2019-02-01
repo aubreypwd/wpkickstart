@@ -140,12 +140,14 @@ class Replace_CLI {
 	 * @param  string $file The file.
 	 */
 	public function rename_plugin_file( string $file ) {
-		$file = $this->get_relative_file( $file );
 
 		// Only when the file is the kickstart file.
-		if ( 'wpkickstart.php' === $file ) {
+		if ( 'wpkickstart.php' === basename( $file ) ) {
+			$dir = untrailingslashit( dirname( $file ) );
+
 			$slug = $this->slugify( $this->cli_args->get_arg( 'name' ) );
-			$this->fs->move( $file, "{$slug}.php" );
+
+			$this->fs->move( $file, "{$dir}/{$slug}.php" );
 		}
 	}
 
