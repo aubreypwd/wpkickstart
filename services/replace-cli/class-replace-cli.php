@@ -175,11 +175,25 @@ class Replace_CLI {
 
 		if ( in_array( $dir, $this->file_removals, true ) ) {
 			$this->fs->delete( $dir, true );
+			error_log( print_r( (object) array(
+				'line' => __LINE__,
+				'file' => __FILE__,
+				'dump' => array(
+					$dir,
+				),
+			), true ) );
 			return;
 		}
 
 		if ( in_array( $file, $this->file_removals, true ) ) {
 			$this->fs->delete( $file );
+			error_log( print_r( (object) array(
+				'line' => __LINE__,
+				'file' => __FILE__,
+				'dump' => array(
+					$file,
+				),
+			), true ) );
 		}
 	}
 
