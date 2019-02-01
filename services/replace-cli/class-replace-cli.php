@@ -16,7 +16,7 @@ use function \__YourCompanyName__\__YourPluginName__\app;
 
 class Replace_CLI {
 	private $line_removals = [
-		'app/class-app.php' => [ 390, 391, 392, 393, 394, 395 ]
+		'app/class-app.php' => [ 394, 395, 396, 397, 398, 399 ],
 	];
 
 	private $file_removals = [];
