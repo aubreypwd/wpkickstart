@@ -170,7 +170,7 @@ class Replace_CLI {
 		$this->loop_through_files_and_fire_hook();
 	}
 
-	private function remove_file( string $file ) {
+	public function remove_file( string $file ) {
 	}
 
 	private function loop_through_files_and_fire_hook() {
@@ -219,7 +219,7 @@ class Replace_CLI {
 	 *
 	 * @throws \Exception If we can't remove a line you've specified.
 	 */
-	private function remove_lines( $file ) {
+	public function remove_lines( $file ) {
 		$plugin_dir = dirname( app()->plugin_file );
 
 		error_log( print_r( (object) array(
