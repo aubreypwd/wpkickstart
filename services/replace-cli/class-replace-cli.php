@@ -344,6 +344,7 @@ class Replace_CLI {
 		// Remove git before it's moved.
 		$plugin_dir = untrailingslashit( dirname( app()->plugin_file ) );
 		$this->fs->delete( "{$plugin_dir}/.git", true ); // Remove git.
+		$this->fs->delete( "{$plugin_dir}/.gitignore", true ); // Remove gitignore.
 
 		// Move it.
 		$slug = $this->slugify( $this->cli_args->get_arg( 'name' ) );
