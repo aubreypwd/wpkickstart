@@ -13,7 +13,7 @@
  * @since       __NEXT__
  * @package     __YourCompanyName__\__YourPluginName__
  *
- * Built with https://github.com/aubreypwd/wp-plugin-boilerplate
+ * Built with https://github.com/aubreypwd/wpkickstart
  */
 
 // Our namespace.

@@ -91,10 +91,10 @@ foreach ( new RecursiveIteratorIterator( $dir ) as $filename => $file ) {
 }
 
 // Rename the base file.
-copy( 'wp-plugin-boilerplate.php', $args[ '__plugin-name__' ] . '.php' );
+copy( 'wpkickstart.php', $args[ '__plugin-name__' ] . '.php' );
 
 // Delete the old one.
-unlink( 'wp-plugin-boilerplate.php' );
+unlink( 'wpkickstart.php' );
 
 // Ger rid of myself.
 unlink( __FILE__ );

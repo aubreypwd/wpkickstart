@@ -1,4 +1,4 @@
-# WP Plugin Boilerplate
+# wpkickstart
 
 Version: `2.0.0`
 
@@ -32,7 +32,7 @@ in the `App::hooks()` method and start writing new code!
 - `__YourPluginName__` e.g. `MyPluginName`
 - `__YourName__` e.g. `Aubrey Portwood`
 - `__your-company__` e.g. `my-company-name`
-- You'll also want to rename `/wp-plugin-boilerplate/wp-plugin-boilerplate.php` e.g. `/my-plugin-name/my-plugin-name.php`
+- You'll also want to rename `/wpkickstart/wpkickstart.php` e.g. `/my-plugin-name/my-plugin-name.php`
 
 #### Using `replace.php`
 
