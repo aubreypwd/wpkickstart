@@ -381,11 +381,12 @@ class App {
 	/**
 	 * Load and attach app services to the app class.
 	 *
-	 * Make your classes/element small and do only one thing. If you
-	 * need to pass $this to it so you can access other classes
-	 * functionality.
+	 * To add a new service go add a new class to e.g. `services/my-service/class-my-service.php`,
+	 * then add it below like:
 	 *
-	 * When you add something that gets attached
+	 *     $this->my_service = new Service\My_Service();
+	 *
+	 * The app will autoload it, run hooks and run methods automatically.
 	 *
 	 * @author __YourName__
 	 * @since  __NEXT__
