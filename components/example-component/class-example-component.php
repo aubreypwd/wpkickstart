@@ -9,10 +9,19 @@
  * @package  aubreypwd\ExampleComponent
  */
 
+/*
+ * Note on namespace.
+ *
+ * This component actually uses a namespace outside of the plugin
+ * and of it's services, so we use it in the example service appropriately.
+ *
+ * This allows this component to move between wpkickstart frameworks easily
+ * and _could_ even be packages!
+ */
 namespace FakeCompany\Fake;
 
 /**
- * Example Feature.
+ * Example component.
  *
  * @author Aubrey Portwood
  * @since 2.0.0

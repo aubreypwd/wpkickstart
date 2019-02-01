@@ -142,8 +142,6 @@ class App {
 	 * @since  __NEXT__
 	 *
 	 * @param string $class_name Fully qualified name of class to try and load.
-	 *
-	 * @return  void Early exit if we can't load the class.
 	 */
 	public function autoload( $class_name ) {
 
