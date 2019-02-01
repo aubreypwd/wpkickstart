@@ -171,7 +171,7 @@ class Replace_CLI {
 				'__YourCompanyName__'                        => $this->classify( $this->cli_args->get_arg( 'company' ) ),
 				'__YourPluginName__'                         => $this->classify( $this->cli_args->get_arg( 'name' ) ),
 				'__your-company__'                           => $this->slugify( $this->cli_args->get_arg( 'company' ) ),
-				'Aubrey Portwood <aubrey@webdevstudios.com>' => $this->cli_args->get_arg( 'authors' ),
+				'Aubrey Portwood <aubrey@webdevstudios.com>' => $this->cli_args->get_arg( 'author' ),
 			];
 		}
 
