@@ -15,7 +15,10 @@ namespace __YourCompanyName__\__YourPluginName__\Service;
 use function \__YourCompanyName__\__YourPluginName__\app;
 
 class Replace_CLI {
-	private $line_removals = [];
+	private $line_removals = [
+		'		// An example service so you can see how things work, below cli command should remove this.',
+		'$this->example_service = new Service\Example_Service();',
+	];
 
 	private $file_removals = [];
 
@@ -57,6 +60,21 @@ class Replace_CLI {
 	public function kickstart( array $args, array $assoc_args ) {
 		$this->cli_args->set_args( $args, $assoc_args ); // Ensure we have an easy way to get arguments.
 
+		$this->remove_lines();
+	}
 
+	private function remove_lines() {
+		$recursive_dir = new \RecursiveDirectoryIterator( dirname( app()->plugin_file ) );
+
+		foreach ( new \RecursiveIteratorIterator( $recursive_dir ) as $file => $file_obj ) {
+
+			$code = file_get_contents( $file );
+
+			foreach ( $this->line_removals as $remove ) {
+				$code = str_replace( $remove, '', $code );
+			}
+
+			file_put_contents( $file, $code );
+		}
 	}
 }
