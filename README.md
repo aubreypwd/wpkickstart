@@ -6,6 +6,8 @@ This is a flexible WordPress Plugin framework I like to use. It uses namespacing
 
 _Note this is intended for plugins, but can really go anywhere once it's converted._
 
+Want to see how it works, see below and [/services/example-service](/services/example-service) and even [services/replace-cli](/services/replace-cli) for examples on what it can do.
+
 ## To Use
 
 - Clone down in the `plugins/` directory
@@ -20,7 +22,6 @@ _Note, the `wp kickstart` step is required as it gets rid of cruft you would oth
 ### What are [Services](/services/README.md)?
 ### What are [Components](/components/README.md)?
 ### [Generating POT files](/languages/README.md)...
-
 
 _______________
 
