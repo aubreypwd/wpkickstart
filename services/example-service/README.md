@@ -1,6 +1,6 @@
 # Example Service
 
-This is a small example of what a [service](/services) is and how it uses a component separate from itself.
+This is a small example of what a [service](/services) is and how it uses a component separate from itself. You'll also notice that the service has it's own `js` and `css` files that go along with it. 
 
 [/services/example-service/class-example-service.php](/services/example-service/class-example-service.php)
 

@@ -38,3 +38,7 @@ Your component may just be a single class, but since it's loaded from the `/my-c
 Now, even from another [service](/services/README.md) you can call this component via `app()->my_service->my_component`.
 
 You can even (if you want to) attach components to `app()` via the same method we attach a [service](/services/README.md) to `app()` if you wanted to. Components are reusable tools meant to help services.
+
+__________
+
+The idea behind components are incredibly mobile groups of classes, javascript, css, etc _as a tool_ that can move around project to project. Components are grouped into folders because they, themselves, may also have their own `js` and `css` and dependencies that all move around with the component.
