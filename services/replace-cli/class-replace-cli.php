@@ -23,7 +23,7 @@ class Replace_CLI {
 	/**
 	 * Line removals.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since 2.0.0
 	 *
 	 * @var array
@@ -35,7 +35,7 @@ class Replace_CLI {
 	/**
 	 * File removals.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since 2.0.0
 	 *
 	 * @var array
@@ -51,7 +51,7 @@ class Replace_CLI {
 	/**
 	 * CLI arguments.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since 2.0.0
 	 *
 	 * @var \WebDevStudios\CLI_Args\CLI_Args
@@ -61,7 +61,7 @@ class Replace_CLI {
 	/**
 	 * Only work on these extensions.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since 2.0.0
 	 *
 	 * @var array
@@ -76,7 +76,7 @@ class Replace_CLI {
 	/**
 	 * Directories to ignore modifications.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since 2.0.0
 	 *
 	 * @var array
@@ -88,7 +88,7 @@ class Replace_CLI {
 	/**
 	 * WP File System.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since  2.0.0
 	 *
 	 * @var \WP_Filesystem_Direct
@@ -98,7 +98,7 @@ class Replace_CLI {
 	/**
 	 * CLI.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since  2.0.0
 	 * @var \WebDevStudios\CLI\CLI
 	 */
@@ -107,7 +107,7 @@ class Replace_CLI {
 	/**
 	 * Construct.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since  2.0.0
 	 */
 	public function __construct() {
@@ -126,7 +126,7 @@ class Replace_CLI {
 	/**
 	 * Hooks.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since  2.0.0
 	 *
 	 * @return void Early bail if not CLI.
@@ -145,7 +145,7 @@ class Replace_CLI {
 	/**
 	 * Rename the plugin file.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since  2.0.0
 	 *
 	 * @param  string $file The file.
@@ -165,7 +165,7 @@ class Replace_CLI {
 	/**
 	 * Make string replacements.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since  2.0.0
 	 *
 	 * @param  string $file The file.
@@ -190,7 +190,7 @@ class Replace_CLI {
 	/**
 	 * Collect the replacements.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since  2.0.0
 	 *
 	 * @return array The replacements.
@@ -201,7 +201,7 @@ class Replace_CLI {
 		if ( ! is_array( $cached ) ) {
 
 			// Glitches coding standards ¯\_(ツ)_/¯.
-			$aubrey = 'Aubrey Portwood <aubrey@webdevstudios.com>';
+			$aubrey = 'Aubrey Portwood <aubreypwd@icloud.com>';
 
 			$cached = [
 				'2.0.0'                 => $this->cli_args->get_arg( 'since' ),
@@ -225,7 +225,7 @@ class Replace_CLI {
 	/**
 	 * Convert a string to a slug.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since  2.0.0
 	 *
 	 * @param  string $string The string.
@@ -238,7 +238,7 @@ class Replace_CLI {
 	/**
 	 * Convert this to a class format.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since  2.0.0
 	 *
 	 * @param  string $string The string.
@@ -258,7 +258,7 @@ class Replace_CLI {
 	/**
 	 * Run.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since  2.0.0
 	 *
 	 * @return void Early bail if not CLI.
@@ -282,7 +282,7 @@ class Replace_CLI {
 					'type'        => 'assoc',
 					'name'        => 'author',
 					'optional'    => false,
-					'description' => __( 'What @author will say, e.g. `Aubrey Portwood <aubrey@webdevstudios.com>`.', 'wpkickstart' ),
+					'description' => __( 'What @author will say, e.g. `Aubrey Portwood <aubreypwd@icloud.com>`.', 'wpkickstart' ),
 				],
 				[
 					'type'        => 'assoc',
@@ -315,7 +315,7 @@ class Replace_CLI {
 	/**
 	 * WP CLI command.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since  2.0.0
 	 *
 	 * @param  array $args       Arguments.
@@ -336,7 +336,7 @@ class Replace_CLI {
 	/**
 	 * Move the new plugin and activate it.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since  2.0.0
 	 */
 	private function finalize() {
@@ -369,7 +369,7 @@ class Replace_CLI {
 	/**
 	 * Remove a file.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since  2.0.0
 	 *
 	 * @param  string $file The file.
@@ -405,7 +405,7 @@ class Replace_CLI {
 	/**
 	 * Get a relative version of a file.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since  2.0.0
 	 *
 	 * @param  string $file The file.
@@ -418,7 +418,7 @@ class Replace_CLI {
 	/**
 	 * Loop through our files and pass it to a hook.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since  2.0.0
 	 */
 	private function loop_through_files_and_fire_hook() {
@@ -450,7 +450,7 @@ class Replace_CLI {
 			/**
 			 * Do something to this file.
 			 *
-			 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+			 * @author Aubrey Portwood <aubreypwd@icloud.com>
 			 * @since  2.0.0
 			 *
 			 * @param string $file       The file.
@@ -462,7 +462,7 @@ class Replace_CLI {
 	/**
 	 * Remove specific lines from files.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since  2.0.0
 	 *
 	 * @param string $file The file.
@@ -499,7 +499,7 @@ class Replace_CLI {
 	/**
 	 * Should we ignore a file?
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since  2.0.0
 	 *
 	 * @param  string $file The file.
@@ -518,7 +518,7 @@ class Replace_CLI {
 	/**
 	 * Does a file have a valid extension?
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since  2.0.0
 	 *
 	 * @param  string $file The file.

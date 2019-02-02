@@ -20,7 +20,7 @@ class CLI {
 	/**
 	 * Construct.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since  2.0.0
 	 */
 	public function __construct() {
@@ -30,7 +30,7 @@ class CLI {
 	/**
 	 * Ensure CLI is installed.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since  2.0.0
 	 *
 	 * @throws \Exception If WP_CLI is not installed.
@@ -44,7 +44,7 @@ class CLI {
 	/**
 	 * Show success message.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since  2.0.0
 	 *
 	 * @param string $message The message.
@@ -56,7 +56,7 @@ class CLI {
 	/**
 	 * Show an error.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since  2.0.0
 	 *
 	 * @param string $message The message.
@@ -68,7 +68,7 @@ class CLI {
 	/**
 	 * Show a warning.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since  2.0.0
 	 *
 	 * @param string $message The message.
@@ -80,7 +80,7 @@ class CLI {
 	/**
 	 * Log a message.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since  2.0.0
 	 *
 	 * @param string $message The message.

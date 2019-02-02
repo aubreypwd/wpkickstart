@@ -25,7 +25,7 @@ class Example_Service {
 	/**
 	 * Construct.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since  2.0.0
 	 */
 	public function __construct() {

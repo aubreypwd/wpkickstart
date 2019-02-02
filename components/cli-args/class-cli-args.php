@@ -11,7 +11,7 @@ namespace WebDevStudios\CLI_Args;
 /**
  * CLI Arguments.
  *
- * @author Aubrey Portwood <aubrey@webdevstudios.com>
+ * @author Aubrey Portwood <aubreypwd@icloud.com>
  * @since 2.0.0
  */
 class CLI_Args {
@@ -19,7 +19,7 @@ class CLI_Args {
 	/**
 	 * The merged CLI args.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since 2.0.0
 	 *
 	 * @var array
@@ -29,7 +29,7 @@ class CLI_Args {
 	/**
 	 * Set the arguments.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since 2.0.0
 	 *
 	 * @param  array $args       Arguments from CLI class.
@@ -44,7 +44,7 @@ class CLI_Args {
 	/**
 	 * Merge $args and $assoc_args so we have one format to work with.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since 2.0.0
 	 *
 	 * @param  array $args       Args e.g. array( "sleep' ).
@@ -63,7 +63,7 @@ class CLI_Args {
 	/**
 	 * Is an argument set?
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since  2.0.0
 	 *
 	 * @param  string $arg The argument.
@@ -76,7 +76,7 @@ class CLI_Args {
 	/**
 	 * Get an argument value.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since 2.0.0
 	 *
 	 * @param  string $arg The argument.
