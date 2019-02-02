@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: wpkickstart
- * Description: A great way to kickstart a new WordPress plugin or project. Just activate and run <code>wp kickstart</code> to get started.
+ * Description: A great way to kickstart a new WordPress plugin. Just activate and run <code>wp kickstart</code> to get started.
  * Version:     2.0.0
  * Author:      Aubrey Portwood
  * Author URI:  http://github.com/aubreypwd/wpkickstart

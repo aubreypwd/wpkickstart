@@ -210,7 +210,7 @@ class Replace_CLI {
 			// @codingStandardsIgnoreStart: Alignment below is madness.
 			$cached = [
 				'Plugin Name: wpkickstart'     => "Plugin Name: {$name}",
-				'A great way to kickstart a new WordPress plugin or project. Just activate and run <code>wp kickstart</code> to get started.'
+				'A great way to kickstart a new WordPress plugin. Just activate and run <code>wp kickstart</code> to get started.'
 				                               => $this->cli_args->get_arg( 'description' ),
 				'Author:      Aubrey Portwood' => "Author:      {$author}",
 				'Author URI:  http://github.com/aubreypwd/wpkickstart'
