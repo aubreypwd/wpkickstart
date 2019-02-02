@@ -18,10 +18,10 @@ Want to see how it works, see below and [/services/example-service](/services/ex
 
 _Note, the `wp kickstart` step is required as it gets rid of cruft you would otherwise have to do yourself._
 
-### [app()](/app/README.md) function...
-### What are [Services](/services/README.md)?
-### What are [Components](/components/README.md)?
-### [Generating POT files](/languages/README.md)...
+### [app()](/app/) function...
+### What are [Services](/services/)?
+### What are [Components](/components/)?
+### [Generating POT files](/languages/)...
 
 _______________
 
@@ -31,7 +31,7 @@ _______________
 
 This release introduces a new concept of "features" which are folders that contain the entire component of a feature. This allows you to more easily move features, their JS, CSS, etc as a whole to other projects, drop them in the `features/` folder, attach them and use them without having to figure out where files go.
 
-- New [Services](/services/README.md) and [Components](/components/README.md) architecture
+- New [Services](/services/) and [Components](/components/) architecture
 - `wp` CLI replacements, see `wp kickstart help` when the plugin is active
 
 ## 1.2
