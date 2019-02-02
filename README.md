@@ -1,7 +1,5 @@
 # wpkickstart
 
-Version: `2.0.0`
-
 This is a flexible WordPress Plugin framework I like to use. It uses namespacing, a class-based structure, a simple `app()` callable for calling different services, and Grunt for language management.
 
 _Note this is intended for plugins, but can really go anywhere once it's converted._
