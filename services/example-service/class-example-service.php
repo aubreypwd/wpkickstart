@@ -6,13 +6,13 @@
  * for easy duplication.
  *
  * @since 2.0.0
- * @package  __YourCompanyName__\__YourPluginName__
+ * @package  CompanyNamespace\ProjectNamespace
  */
 
-namespace __YourCompanyName__\__YourPluginName__\Service;
+namespace CompanyNamespace\ProjectNamespace\Service;
 
 // Since we're using the \Service namespace to separate from conflicts with components, we need to use app() from the base.
-use function \__YourCompanyName__\__YourPluginName__\app;
+use function \CompanyNamespace\ProjectNamespace\app;
 
 /**
  * Example Feature.

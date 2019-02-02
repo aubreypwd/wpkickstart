@@ -1,11 +1,11 @@
 {
-	"name": "__your-company__-__plugin-name__",
-	"title": "__your-company__-__plugin-name__",
+	"name": "company-slug-project-slug",
+	"title": "company-slug-project-slug",
 	"version": "__NEXT__",
-	"description": "__Description__",
+	"description": "Project Description",
 	"author": {
-		"name": "__Your Company Name__",
-		"url": "__URL__"
+		"name": "Company Name",
+		"url": "http://your-website.com"
 	},
 	"license": "GPLv2",
 	"devDependencies": {
@@ -17,7 +17,7 @@
 		"glob": "latest"
 	},
 	"scripts": {
-		"__your-company__-__plugin-name__": "dockunit",
+		"company-slug-project-slug": "dockunit",
 		"preversion": "npm test",
 		"version": "grunt version && git add ."
 	}

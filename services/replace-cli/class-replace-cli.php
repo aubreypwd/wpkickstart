@@ -6,12 +6,12 @@
  * for easy duplication.
  *
  * @since 2.0.0
- * @package  __YourCompanyName__\__YourPluginName__
+ * @package  CompanyNamespace\ProjectNamespace
  */
 
-namespace __YourCompanyName__\__YourPluginName__\Service;
+namespace CompanyNamespace\ProjectNamespace\Service;
 
-use function \__YourCompanyName__\__YourPluginName__\app;
+use function \CompanyNamespace\ProjectNamespace\app;
 
 /**
  * Replaces stuff to convert this to your plugin.
@@ -209,23 +209,24 @@ class Replace_CLI {
 
 			// @codingStandardsIgnoreStart: Alignment below is madness.
 			$cached = [
-				'Plugin Name: wpkickstart' => "Plugin Name: {$name}",
-				'A great way to kickstart a new WordPress plugin or project. Just activate and run <code>wp kickstart</code> to get started' => $this->cli_args->get_arg( 'description' ),
+				'Plugin Name: wpkickstart'     => "Plugin Name: {$name}",
+				'A great way to kickstart a new WordPress plugin or project. Just activate and run <code>wp kickstart</code> to get started'
+				                               => $this->cli_args->get_arg( 'description' ),
 				'Author:      Aubrey Portwood' => "Author:      {$author}",
-				'Author URI:  http://github.com/aubreypwd/wpkickstart' => "Author URI:  {$website}",
+				'Author URI:  http://github.com/aubreypwd/wpkickstart'
+				                               => "Author URI:  {$website}",
 
-				'2.0.0'                 => $this->cli_args->get_arg( 'since' ),
-				'__NEXT__'              => $this->cli_args->get_arg( 'since' ),
-				'__YourName__'          => $author,
-				'__PluginName__'        => $name,
-				'__plugin-name__'       => $this->slugify( $name ),
-				'__YourCompanyName__'   => $this->classify( $this->cli_args->get_arg( 'company' ) ),
-				'__Your Company Name__' => $this->cli_args->get_arg( 'company' ),
-				'__YourPluginName__'    => $this->classify( $name ),
-				'__your-company__'      => $this->slugify( $this->cli_args->get_arg( 'company' ) ),
-				'__Description__'       => $this->cli_args->get_arg( 'description' ),
-				'__URL__'               => $website,
-				$aubrey                 => $author,
+				'2.0.0'                        => $this->cli_args->get_arg( 'since' ),
+				'__NEXT__'                     => $this->cli_args->get_arg( 'since' ),
+				'Your Name <your@email.com>'   => $author,
+				'project-slug'                 => $this->slugify( $name ),
+				'CompanyNamespace'             => $this->classify( $this->cli_args->get_arg( 'company' ) ),
+				'Company Name'                 => $this->cli_args->get_arg( 'company' ),
+				'ProjectNamespace'             => $this->classify( $name ),
+				'company-slug'                 => $this->slugify( $this->cli_args->get_arg( 'company' ) ),
+				'Project Description'          => $this->cli_args->get_arg( 'description' ),
+				'http://your-website.com'      => $website,
+				$aubrey                        => $author,
 			];
 			// @codingStandardsIgnoreEnd
 		}

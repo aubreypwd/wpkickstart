@@ -5,19 +5,19 @@
  * Version:     2.0.0
  * Author:      Aubrey Portwood
  * Author URI:  http://github.com/aubreypwd/wpkickstart
- * Text Domain: __your-company__-__plugin-name__
+ * Text Domain: company-slug-project-slug
  * Network:     False
  * License:     GPLv2
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  *
  * @since       __NEXT__
- * @package     __YourCompanyName__\__YourPluginName__
+ * @package     CompanyNamespace\ProjectNamespace
  *
  * Built with https://github.com/aubreypwd/wpkickstart
  */
 
 // Our namespace.
-namespace __YourCompanyName__\__YourPluginName__;
+namespace CompanyNamespace\ProjectNamespace;
 
 // Require the App class.
 require_once 'app/class-app.php';
@@ -25,7 +25,7 @@ require_once 'app/class-app.php';
 /**
  * Create/Get the App.
  *
- * @author __YourName__
+ * @author Your Name <your@email.com>
  * @since  __NEXT__
  *
  * @return App The App.
@@ -52,7 +52,7 @@ function app() {
 }
 
 // Wait until WordPress is ready, then go!
-add_action( 'plugins_loaded', '__YourCompanyName__\__YourPluginName__\app' );
+add_action( 'plugins_loaded', 'CompanyNamespace\ProjectNamespace\app' );
 
 // When we deactivate this plugin...
 register_deactivation_hook( __FILE__, array( app(), 'deactivate_plugin' ) );

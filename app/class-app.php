@@ -3,10 +3,10 @@
  * Application.
  *
  * @since __NEXT__
- * @package  __YourCompanyName__\__YourPluginName__
+ * @package  CompanyNamespace\ProjectNamespace
  */
 
-namespace __YourCompanyName__\__YourPluginName__;
+namespace CompanyNamespace\ProjectNamespace;
 
 use Exception;
 
@@ -23,7 +23,7 @@ class App {
 	/**
 	 * Plugin basename.
 	 *
-	 * @author __YourName__
+	 * @author Your Name <your@email.com>
 	 * @var    string
 	 * @since  __NEXT__
 	 */
@@ -32,7 +32,7 @@ class App {
 	/**
 	 * URL of plugin directory.
 	 *
-	 * @author __YourName__
+	 * @author Your Name <your@email.com>
 	 * @var    string
 	 * @since  __NEXT__
 	 */
@@ -41,7 +41,7 @@ class App {
 	/**
 	 * Path of plugin directory.
 	 *
-	 * @author __YourName__
+	 * @author Your Name <your@email.com>
 	 * @var    string
 	 * @since  __NEXT__
 	 */
@@ -51,7 +51,7 @@ class App {
 	 * Is WP_DEBUG set?
 	 *
 	 * @since  __NEXT__
-	 * @author __YourName__
+	 * @author Your Name <your@email.com>
 	 *
 	 * @var boolean
 	 */
@@ -61,7 +61,7 @@ class App {
 	 * The plugin file.
 	 *
 	 * @since  __NEXT__
-	 * @author __YourName__
+	 * @author Your Name <your@email.com>
 	 *
 	 * @var string
 	 */
@@ -71,7 +71,7 @@ class App {
 	 * The plugin headers.
 	 *
 	 * @since  __NEXT__
-	 * @author __YourName__
+	 * @author Your Name <your@email.com>
 	 *
 	 * @var string
 	 */
@@ -80,7 +80,7 @@ class App {
 	/**
 	 * Construct.
 	 *
-	 * @author __YourName__
+	 * @author Your Name <your@email.com>
 	 * @since  __NEXT__
 	 *
 	 * @param string $plugin_file The plugin file, usually __FILE__ of the base plugin.
@@ -93,7 +93,7 @@ class App {
 		if ( empty( $plugin_file ) || ! stream_resolve_include_path( $plugin_file ) ) {
 
 			// Translators: Displays a message if a plugin file is not passed.
-			throw new Exception( sprintf( esc_html__( 'Invalid plugin file %1$s supplied to %2$s', '__your-company__-__plugin-name__' ), $plugin_file, __METHOD__ ) );
+			throw new Exception( sprintf( esc_html__( 'Invalid plugin file %1$s supplied to %2$s', 'company-slug-project-slug' ), $plugin_file, __METHOD__ ) );
 		}
 
 		// Plugin setup.
@@ -117,7 +117,7 @@ class App {
 		), 'plugin' );
 
 		// Load language files.
-		load_plugin_textdomain( '__your-company__-__plugin-name__', false, basename( dirname( $plugin_file ) ) . '/languages' );
+		load_plugin_textdomain( 'company-slug-project-slug', false, basename( dirname( $plugin_file ) ) . '/languages' );
 
 		// Loaders.
 		$this->auto_loader();
@@ -127,7 +127,7 @@ class App {
 	 * Register the autoloader.
 	 *
 	 * @since __NEXT__
-	 * @author __YourName__
+	 * @author Your Name <your@email.com>
 	 */
 	private function auto_loader() {
 
@@ -138,7 +138,7 @@ class App {
 	/**
 	 * Require classes.
 	 *
-	 * @author __YourName__
+	 * @author Your Name <your@email.com>
 	 * @since  __NEXT__
 	 *
 	 * @param string $class_name Fully qualified name of class to try and load.
@@ -158,7 +158,7 @@ class App {
 	 * - /components/
 	 * - /services/
 	 *
-	 * @author __YourName__
+	 * @author Your Name <your@email.com>
 	 * @since  __NEXT__
 	 *
 	 * @param  array $parts  The parts from self::autoload().
@@ -193,7 +193,7 @@ class App {
 	/**
 	 * Is a file in our plugin?
 	 *
-	 * @author __YourName__
+	 * @author Your Name <your@email.com>
 	 * @since  __NEXT__
 	 *
 	 * @param  string $file The file.
@@ -210,7 +210,7 @@ class App {
 	/**
 	 * Autoload a service e.g. service/class-service.php.
 	 *
-	 * @author __YourName__
+	 * @author Your Name <your@email.com>
 	 * @since  __NEXT__
 	 *
 	 * @param  array $parts The parts from self::autoload().
@@ -252,7 +252,7 @@ class App {
 	/**
 	 * Autoload a service e.g. service/class-service.php.
 	 *
-	 * @author __YourName__
+	 * @author Your Name <your@email.com>
 	 * @since  __NEXT__
 	 *
 	 * @param  array $parts The parts from self::autoload().
@@ -285,7 +285,7 @@ class App {
 	/**
 	 * Get a file for including from app/.
 	 *
-	 * @author __YourName__
+	 * @author Your Name <your@email.com>
 	 * @since  __NEXT__
 	 *
 	 * @param  array $parts The parts from self::autoload().
@@ -298,7 +298,7 @@ class App {
 	/**
 	 * Get a file for including from components/.
 	 *
-	 * @author __YourName__
+	 * @author Your Name <your@email.com>
 	 * @since  __NEXT__
 	 *
 	 * @param  array $parts The parts from self::autoload().
@@ -318,7 +318,7 @@ class App {
 	/**
 	 * Get a directory for autoload.
 	 *
-	 * @author __YourName__
+	 * @author Your Name <your@email.com>
 	 * @since  __NEXT__
 	 *
 	 * @param  string $dir What dir, e.g. app.
@@ -331,7 +331,7 @@ class App {
 	/**
 	 * Generate a class filename to autoload.
 	 *
-	 * @author __YourName__
+	 * @author Your Name <your@email.com>
 	 * @since  __NEXT__
 	 *
 	 * @param  array $parts  The parts from self::autoload().
@@ -344,7 +344,7 @@ class App {
 	/**
 	 * Get the plugin version.
 	 *
-	 * @author __YourName__
+	 * @author Your Name <your@email.com>
 	 * @since  __NEXT__
 	 *
 	 * @return string The version of this plugin.
@@ -356,7 +356,7 @@ class App {
 	/**
 	 * Get a header.
 	 *
-	 * @author __YourName__
+	 * @author Your Name <your@email.com>
 	 * @since  __NEXT__
 	 *
 	 * @param  string $header The header you want, e.g. Version, Author, etc.
@@ -371,7 +371,7 @@ class App {
 	/**
 	 * Attach items to our app.
 	 *
-	 * @author __YourName__
+	 * @author Your Name <your@email.com>
 	 * @since  __NEXT__
 	 */
 	public function attach() {
@@ -388,7 +388,7 @@ class App {
 	 *
 	 * The app will autoload it, run hooks and run methods automatically.
 	 *
-	 * @author __YourName__
+	 * @author Your Name <your@email.com>
 	 * @since  __NEXT__
 	 */
 	public function attach_services() {
@@ -403,7 +403,7 @@ class App {
 	/**
 	 * Fire hooks!
 	 *
-	 * @author __YourName__
+	 * @author Your Name <your@email.com>
 	 * @since  __NEXT__
 	 */
 	public function hooks() {
@@ -414,7 +414,7 @@ class App {
 	/**
 	 * Autoload hooks method.
 	 *
-	 * @author __YourName__
+	 * @author Your Name <your@email.com>
 	 * @since  __NEXT__
 	 */
 	private function auto_call_hooks() {
@@ -424,7 +424,7 @@ class App {
 	/**
 	 * Run the app.
 	 *
-	 * @author __YourName__
+	 * @author Your Name <your@email.com>
 	 * @since  __NEXT__
 	 */
 	public function run() {
@@ -435,7 +435,7 @@ class App {
 	/**
 	 * Automatically call run methods.
 	 *
-	 * @author __YourName__
+	 * @author Your Name <your@email.com>
 	 * @since  __NEXT__
 	 */
 	private function auto_call_run() {
@@ -445,7 +445,7 @@ class App {
 	/**
 	 * Call a property on attached objects.
 	 *
-	 * @author __YourName__
+	 * @author Your Name <your@email.com>
 	 * @since  __NEXT__
 	 *
 	 * @param  string $call The call.
@@ -463,7 +463,7 @@ class App {
 	/**
 	 * This plugin's url.
 	 *
-	 * @author __YourName__
+	 * @author Your Name <your@email.com>
 	 * @since  __NEXT__
 	 *
 	 * @param  string $path (Optional) appended path.
@@ -478,7 +478,7 @@ class App {
 	/**
 	 * Re-attribute user content to site author.
 	 *
-	 * @author __YourName__
+	 * @author Your Name <your@email.com>
 	 * @since  __NEXT__
 	 */
 	public function deactivate_plugin() {
