@@ -14,10 +14,7 @@ Want to see how it works, see below and [/services/example-service](/services/ex
 
 _Note, the `wp kickstart` step is required as it gets rid of cruft you would otherwise have to do yourself._
 
-### [app()](/app/) function...
-### What are [Services](/services/)?
-### What are [Components](/components/)?
-### [Generating POT files](/languages/)...
+[Get more information on the Wiki](https://github.com/aubreypwd/wpkickstart/wiki)
 
 _______________
 
