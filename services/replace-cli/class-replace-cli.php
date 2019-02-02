@@ -199,24 +199,35 @@ class Replace_CLI {
 		static $cached;
 
 		if ( ! is_array( $cached ) ) {
-
-			// Glitches coding standards ¯\_(ツ)_/¯.
 			$aubrey = 'Aubrey Portwood <aubreypwd@icloud.com>';
 
+			$name = $this->cli_args->get_arg( 'name' );
+
+			$author = $this->cli_args->get_arg( 'author' );
+
+			$website = esc_url( $this->cli_args->get_arg( 'website' ) );
+
+			// @codingStandardsIgnoreStart: Alignment below is madness.
 			$cached = [
+				'Plugin Name: wpkickstart' => "Plugin Name: {$name}",
+				'A great way to kickstart a new WordPress plugin or project. Just activate and run <code>wp kickstart</code> to get started' => $this->cli_args->get_arg( 'description' ),
+				'Author:      Aubrey Portwood' => "Author:      {$author}",
+				'Author URI:  http://github.com/aubreypwd/wpkickstart' => "Author URI:  {$website}",
+
 				'2.0.0'                 => $this->cli_args->get_arg( 'since' ),
 				'__NEXT__'              => $this->cli_args->get_arg( 'since' ),
-				'__YourName__'          => $this->cli_args->get_arg( 'author' ),
-				'__PluginName__'        => $this->cli_args->get_arg( 'name' ),
-				'__plugin-name__'       => $this->slugify( $this->cli_args->get_arg( 'name' ) ),
+				'__YourName__'          => $author,
+				'__PluginName__'        => $name,
+				'__plugin-name__'       => $this->slugify( $name ),
 				'__YourCompanyName__'   => $this->classify( $this->cli_args->get_arg( 'company' ) ),
 				'__Your Company Name__' => $this->cli_args->get_arg( 'company' ),
-				'__YourPluginName__'    => $this->classify( $this->cli_args->get_arg( 'name' ) ),
+				'__YourPluginName__'    => $this->classify( $name ),
 				'__your-company__'      => $this->slugify( $this->cli_args->get_arg( 'company' ) ),
 				'__Description__'       => $this->cli_args->get_arg( 'description' ),
-				'__URL__'               => esc_url( $this->cli_args->get_arg( 'website' ) ),
-				$aubrey                 => $this->cli_args->get_arg( 'author' ),
+				'__URL__'               => $website,
+				$aubrey                 => $author,
 			];
+			// @codingStandardsIgnoreEnd
 		}
 
 		return $cached;
