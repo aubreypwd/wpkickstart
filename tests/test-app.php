@@ -60,7 +60,7 @@ class Test_App extends WP_UnitTestCase {
 	 */
 	public function test_url() {
 		$this->method_exists_is_not_empty_and_a_string( 'url' );
-		$this->assertTrue( (boolean) filter_var( app()->url(), FILTER_VALIDATE_URL ), 'App::url() needs to return a valid URL.' );
+		$this->assertTrue( (bool) filter_var( app()->url(), FILTER_VALIDATE_URL ), 'App::url() needs to return a valid URL.' );
 	}
 
 	/**
@@ -71,7 +71,7 @@ class Test_App extends WP_UnitTestCase {
 	 */
 	public function test_semver() {
 		// Un-comment to enable forced semver.
-		// $this->assertTrue( version_compare( app()->version(), '0.0.0', '>=' ), 'Plugin version should always be semantic: 0.0.0 or 1.0 or 1.1.1, etc. Note, __NEXT__ will need to be replaced with a semantic value.' ); // @codingStandardsIgnoreLine
+		$this->assertTrue( version_compare( app()->version(), '0.0.0', '>=' ), 'Plugin version should always be semantic: 0.0.0 or 1.0 or 1.1.1, etc. Note, __NEXT__ will need to be replaced with a semantic value.' ); // @codingStandardsIgnoreLine
 	}
 
 	/**
@@ -90,7 +90,7 @@ class Test_App extends WP_UnitTestCase {
 		// ->url.
 		$this->assertTrue( property_exists( app(), 'url' ), 'App::url property is used in other places in the plugin and must exist' );
 		$this->assertNotEmpty( app()->url, 'App::url should always be set to a valid string.' );
-		$this->assertTrue( (boolean) filter_var( app()->url, FILTER_VALIDATE_URL ), 'App::url should always be a valid URL.' );
+		$this->assertTrue( (bool) filter_var( app()->url, FILTER_VALIDATE_URL ), 'App::url should always be a valid URL.' );
 
 		// ->path.
 		$this->assertTrue( property_exists( app(), 'path' ), 'App::path property is used in other places in the plugin and must exist' );
