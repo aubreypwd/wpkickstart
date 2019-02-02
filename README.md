@@ -2,47 +2,25 @@
 
 Version: `2.0.0`
 
-This is a WordPress Plugin framework I like to use. It uses namespacing,
-a class-based structure, a simple `app()` callable for calling different
-parts of your plugin, and Grunt for language management.
+This is a flexible WordPress Plugin framework I like to use. It uses namespacing, a class-based structure, a simple `app()` callable for calling different services, and Grunt for language management.
+
+_Note this is intended for plugins, but can really go anywhere once it's converted._
 
 ## To Use
 
-Simply clone it down and delete the `.git` stuff to start off. Open up
-each file and start globally replacing things like `Plugin Name`,
-`__plugin-name__`, `__YourCompanyName__`, `__YourPluginName__`, etc to start setting
-it up for your needs. Just make sure you examine all the base files
-and customize it for your needs.
+- Clone down in the `plugins/` directory
+- Activate the plugin
+- Run `wp kickstart help` to find out how to set it up for your use
+- Once `wp kickstart` is done you will have a scaffolded plugin boilerplate ready to build on
+- Start coding your plugin
 
-The easiest way to create a new class is to duplicate the `class-shared.php`
-file and clear out it's contents. Then attach it in the `App::attach()` method,
-and if you're hooking into WordPress, create and call your new class' `hooks` method
-in the `App::hooks()` method and start writing new code!
+_Note, the `wp kickstart` step is required as it gets rid of cruft you would otherwise have to do yourself._
 
-**Make sure you clear out this README for your own!**
+### [app()](/app/README.md) function...
+### What are [Services](/services/README.md)?
+### What are [Components](/components/README.md)?
 
-### Things to Replace
-
-- `__PluginName__` e.g. `My Plugin`
-- `__NEXT__` e.g. `1.0.0`
-- `__plugin-name__` e.g. `my-plugin-name`
-- `__YourCompanyName__` e.g. `MyCompanyName`
-- `__YourPluginName__` e.g. `MyPluginName`
-- `__YourName__` e.g. `Aubrey Portwood`
-- `__your-company__` e.g. `my-company-name`
-- You'll also want to rename `/wpkickstart/wpkickstart.php` e.g. `/my-plugin-name/my-plugin-name.php`
-
-### `app()`
-
-In any class you can always call the base `App` class using the `app()` function, e.g.
-
-`app()->shared->method_in_shared_class()`
-
-or...
-
-`app()->my_new_class->method_in_my_new_class()`
-
-### Language
+### Languages
 
 I use Grunt to generate .pot files for language translations, simply run:
 
@@ -59,9 +37,8 @@ _______________
 
 This release introduces a new concept of "features" which are folders that contain the entire component of a feature. This allows you to more easily move features, their JS, CSS, etc as a whole to other projects, drop them in the `features/` folder, attach them and use them without having to figure out where files go.
 
-- Replacing things are more exact using e.g. `__plugin-name__` vs `plugin-name`
-- New feature structure
-- New `replace.php` PHP file you can use to do your replacements
+- New [Services](/services/README.md) and [Components](/components/README.md) architecture
+- `wp` CLI replacements, see `wp kickstart help` when the plugin is active
 
 ## 1.2
 
