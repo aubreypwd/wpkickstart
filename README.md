@@ -29,10 +29,17 @@ _______________
 
 ## 2.0.0
 
-This release introduces a new concept of "features" which are folders that contain the entire component of a feature. This allows you to more easily move features, their JS, CSS, etc as a whole to other projects, drop them in the `features/` folder, attach them and use them without having to figure out where files go.
+This release introduces a new concept that introduces mobility of things you build. It separates out services (think of these as features) and components (think of these as reusable things services use to do things) into `services/` and `components/`. 
+
+The idea is that a service or a component (really just a folder of files) can have it's own classes, Javascripts, CSS, etc and each can move to other wpkickstart frameworks by moving their folder into the other one with minor code changes for it to work.
+
+This should make the things you build in wpkickstart easily re-usable in other projects built on wpkickstart.
 
 - New [Services](/services/) and [Components](/components/) architecture
-- `wp` CLI replacements, see `wp kickstart help` when the plugin is active
+- `wp` CLI replacements, see `wp kickstart help` after you activate wpkickstart
+- More class flexibility (now if you `new Thing()` it will automatically autoload `class-thing.php` no matter where you put it)
+
+2.0.0 is somewhat backwards compatibly with later versions, but you may have to group your classes that used to be in `includes/` with a component or a service.
 
 ## 1.2
 
