@@ -3,7 +3,7 @@
  *
  * This is mainly used to generate language files for us.
  *
- * @since  __NEXT__
+ * @since  x.x.x
  * @package CompanyNamespace\ProjectNamespace
  */
 

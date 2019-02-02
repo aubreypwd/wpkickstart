@@ -10,7 +10,7 @@
  * License:     GPLv2
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  *
- * @since       __NEXT__
+ * @since       x.x.x
  * @package     CompanyNamespace\ProjectNamespace
  *
  * Built with https://github.com/aubreypwd/wpkickstart
@@ -26,7 +26,7 @@ require_once 'app/class-app.php';
  * Create/Get the App.
  *
  * @author Your Name <your@email.com>
- * @since  __NEXT__
+ * @since  x.x.x
  *
  * @return App The App.
  */

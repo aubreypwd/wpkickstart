@@ -2,7 +2,7 @@
 /**
  * Application.
  *
- * @since __NEXT__
+ * @since x.x.x
  * @package  CompanyNamespace\ProjectNamespace
  */
 
@@ -16,7 +16,7 @@ use Exception;
  * Everything starts here. If you create a new class,
  * attach it to this class using attach() below.
  *
- * @since __NEXT__
+ * @since x.x.x
  */
 class App {
 
@@ -25,7 +25,7 @@ class App {
 	 *
 	 * @author Your Name <your@email.com>
 	 * @var    string
-	 * @since  __NEXT__
+	 * @since  x.x.x
 	 */
 	public $basename = '';
 
@@ -34,7 +34,7 @@ class App {
 	 *
 	 * @author Your Name <your@email.com>
 	 * @var    string
-	 * @since  __NEXT__
+	 * @since  x.x.x
 	 */
 	public $url = '';
 
@@ -43,14 +43,14 @@ class App {
 	 *
 	 * @author Your Name <your@email.com>
 	 * @var    string
-	 * @since  __NEXT__
+	 * @since  x.x.x
 	 */
 	public $path = '';
 
 	/**
 	 * Is WP_DEBUG set?
 	 *
-	 * @since  __NEXT__
+	 * @since  x.x.x
 	 * @author Your Name <your@email.com>
 	 *
 	 * @var boolean
@@ -60,7 +60,7 @@ class App {
 	/**
 	 * The plugin file.
 	 *
-	 * @since  __NEXT__
+	 * @since  x.x.x
 	 * @author Your Name <your@email.com>
 	 *
 	 * @var string
@@ -70,7 +70,7 @@ class App {
 	/**
 	 * The plugin headers.
 	 *
-	 * @since  __NEXT__
+	 * @since  x.x.x
 	 * @author Your Name <your@email.com>
 	 *
 	 * @var string
@@ -81,7 +81,7 @@ class App {
 	 * Construct.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  __NEXT__
+	 * @since  x.x.x
 	 *
 	 * @param string $plugin_file The plugin file, usually __FILE__ of the base plugin.
 	 *
@@ -126,7 +126,7 @@ class App {
 	/**
 	 * Register the autoloader.
 	 *
-	 * @since __NEXT__
+	 * @since x.x.x
 	 * @author Your Name <your@email.com>
 	 */
 	private function auto_loader() {
@@ -139,7 +139,7 @@ class App {
 	 * Require classes.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  __NEXT__
+	 * @since  x.x.x
 	 *
 	 * @param string $class_name Fully qualified name of class to try and load.
 	 */
@@ -159,7 +159,7 @@ class App {
 	 * - /services/
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  __NEXT__
+	 * @since  x.x.x
 	 *
 	 * @param  array $parts  The parts from self::autoload().
 	 * @return void          Early bail once we load the thing.
@@ -194,7 +194,7 @@ class App {
 	 * Is a file in our plugin?
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  __NEXT__
+	 * @since  x.x.x
 	 *
 	 * @param  string $file The file.
 	 * @return boolean      True if it is and exists.
@@ -211,7 +211,7 @@ class App {
 	 * Autoload a service e.g. service/class-service.php.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  __NEXT__
+	 * @since  x.x.x
 	 *
 	 * @param  array $parts The parts from self::autoload().
 	 * @return string       The path to that service class file.
@@ -253,7 +253,7 @@ class App {
 	 * Autoload a service e.g. service/class-service.php.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  __NEXT__
+	 * @since  x.x.x
 	 *
 	 * @param  array $parts The parts from self::autoload().
 	 * @return string       The path to that service class file.
@@ -286,7 +286,7 @@ class App {
 	 * Get a file for including from app/.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  __NEXT__
+	 * @since  x.x.x
 	 *
 	 * @param  array $parts The parts from self::autoload().
 	 * @return string       The path to that file.
@@ -299,7 +299,7 @@ class App {
 	 * Get a file for including from components/.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  __NEXT__
+	 * @since  x.x.x
 	 *
 	 * @param  array $parts The parts from self::autoload().
 	 * @return string       The path to that file.
@@ -319,7 +319,7 @@ class App {
 	 * Get a directory for autoload.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  __NEXT__
+	 * @since  x.x.x
 	 *
 	 * @param  string $dir What dir, e.g. app.
 	 * @return string      The path to that directory.
@@ -332,7 +332,7 @@ class App {
 	 * Generate a class filename to autoload.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  __NEXT__
+	 * @since  x.x.x
 	 *
 	 * @param  array $parts  The parts from self::autoload().
 	 * @return string        The class filename.
@@ -345,7 +345,7 @@ class App {
 	 * Get the plugin version.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  __NEXT__
+	 * @since  x.x.x
 	 *
 	 * @return string The version of this plugin.
 	 */
@@ -357,7 +357,7 @@ class App {
 	 * Get a header.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  __NEXT__
+	 * @since  x.x.x
 	 *
 	 * @param  string $header The header you want, e.g. Version, Author, etc.
 	 * @return string         The value of the header.
@@ -372,7 +372,7 @@ class App {
 	 * Attach items to our app.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  __NEXT__
+	 * @since  x.x.x
 	 */
 	public function attach() {
 		$this->attach_services();
@@ -389,7 +389,7 @@ class App {
 	 * The app will autoload it, run hooks and run methods automatically.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  __NEXT__
+	 * @since  x.x.x
 	 */
 	public function attach_services() {
 
@@ -404,7 +404,7 @@ class App {
 	 * Fire hooks!
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  __NEXT__
+	 * @since  x.x.x
 	 */
 	public function hooks() {
 		$this->auto_call_hooks(); // If you want to run your own hook methods, just strip this.
@@ -415,7 +415,7 @@ class App {
 	 * Autoload hooks method.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  __NEXT__
+	 * @since  x.x.x
 	 */
 	private function auto_call_hooks() {
 		$this->autocall( 'hooks' );
@@ -425,7 +425,7 @@ class App {
 	 * Run the app.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  __NEXT__
+	 * @since  x.x.x
 	 */
 	public function run() {
 		$this->auto_call_run();
@@ -436,7 +436,7 @@ class App {
 	 * Automatically call run methods.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  __NEXT__
+	 * @since  x.x.x
 	 */
 	private function auto_call_run() {
 		$this->autocall( 'run' );
@@ -446,7 +446,7 @@ class App {
 	 * Call a property on attached objects.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  __NEXT__
+	 * @since  x.x.x
 	 *
 	 * @param  string $call The call.
 	 */
@@ -464,7 +464,7 @@ class App {
 	 * This plugin's url.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  __NEXT__
+	 * @since  x.x.x
 	 *
 	 * @param  string $path (Optional) appended path.
 	 * @return string       URL and path.
@@ -479,7 +479,7 @@ class App {
 	 * Re-attribute user content to site author.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  __NEXT__
+	 * @since  x.x.x
 	 */
 	public function deactivate_plugin() {
 	}

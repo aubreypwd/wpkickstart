@@ -217,7 +217,7 @@ class Replace_CLI {
 				                               => "Author URI:  {$website}",
 
 				'2.0.0'                        => $this->cli_args->get_arg( 'since' ),
-				'__NEXT__'                     => $this->cli_args->get_arg( 'since' ),
+				'x.x.x'                     => $this->cli_args->get_arg( 'since' ),
 				'Your Name <your@email.com>'   => $author,
 				'project-slug'                 => $this->slugify( $name ),
 				'CompanyNamespace'             => $this->classify( $this->cli_args->get_arg( 'company' ) ),
