@@ -19,15 +19,8 @@ _Note, the `wp kickstart` step is required as it gets rid of cruft you would oth
 ### [app()](/app/README.md) function...
 ### What are [Services](/services/README.md)?
 ### What are [Components](/components/README.md)?
+### [Generating POT files](/languages/README.md)...
 
-### Languages
-
-I use Grunt to generate .pot files for language translations, simply run:
-
-`grunt languages`
-
-...which will generate a `__plugin-name__.pot` file in `languages/`. You can then
-use PoEdit and tools like it to open the `.pot` file and generate language `.mo` files.
 
 _______________
 
