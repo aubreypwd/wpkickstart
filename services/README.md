@@ -1,6 +1,6 @@
 # Services
 
-Services are essentially "conduct" and can be explained as a feature of your plugin.
+Services are essentially "conduct" operations and can be explained as a feature of your plugin.
 
 Imagine you have a [component](/components/README.md) that you use over and over project to project. Your service might use that component to do something, or use many components to do something.
 
@@ -31,10 +31,8 @@ Now go find [class-app.php](/app/class-app.php) and find `attach_services` metho
 $this->my_service = new Service\Example_Service();
 ```
 
-This will attach the service to your `app()` and you can access it with `app()->my_service` from other services loaded this same way. All your services can talk to each other this way and it's not wrong to build dependencies between your services this way.
+This will attach the service to your `app()` and you can access it with `app()->my_service` from other services loaded this same way. All your services can talk to each other this way and it's not wrong to build dependencies between your services this way but it is suggested to keep dependencies to a minimum.
  
-Note that your service's class will be autoloaded and will now have it's `run` and `hooks` methods run automatically at the right time too.
+Note that your service's class file will be autoloaded and will now have it's `run` and `hooks` methods run automatically at the right time too.
 
-_____________
-
-The idea behind services are that they are a main feature that does something and uses many  reuseable components to do it's job. It also has it's own `js` and `css` and in-itself is mobile. If you need the exact same service on another project just move it's folder over and the components it uses into any other wpkickstart framework and it should work and take little time to re-use code.
+A service is also a group of things, meaning a service folder might have a few classes, Javascript, and CSS that can move project to project if needed.
