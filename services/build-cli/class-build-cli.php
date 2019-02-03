@@ -26,7 +26,7 @@ class Build_CLI {
 	 * @var array
 	 */
 	private $line_removals = [
-		'app/class-app.php' => [ 396, 397, 398, 399, 400, 401, 402, 403, 404 ],
+		'app/class-app.php' => [ 415, 416, 417, 418, 419, 420 ],
 		'composer.json'     => [ 14 ],
 	];
 
