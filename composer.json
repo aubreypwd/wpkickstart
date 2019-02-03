@@ -1,4 +1,10 @@
 {
+	"repositories": [
+		{
+			"type": "git",
+			"url": "git@github.com:aubreypwd/wpkickstart-components.git"
+		}
+	],
 	"name": "aubreypwd/wpkickstart",
 	"description": "",
 	"homepage": "https://github.com/aubreypwd/wpkickstart",
@@ -9,6 +15,12 @@
 	},
 	"type": "wordpress-plugin",
 	"require": {
-		"composer/installers": "~1.0"
+		"composer/installers": "~1.0",
+		"aubreypwd/wpkickstart-components": "dev-master"
+	},
+	"extra": {
+		"installer-paths": {
+			"components/{$name}": ["type:wpkickstart-component"]
+		}
 	}
 }
