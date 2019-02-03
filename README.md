@@ -1,10 +1,8 @@
 # wpkickstart
 
-This is a flexible WordPress Plugin framework I like to use. It uses namespacing, a class-based structure, a simple `app()` callable for calling different services, and Grunt for language management.
+This is a flexible WordPress Plugin framework and boilerplate.
 
-Want to see how it works, see below and [/services/example-service](/services/example-service) and even [services/replace-cli](/services/replace-cli) for examples on what it can do.
-
-Built and tested for PHP 5.6.20 through 7.2.0
+Built and tested for PHP `5.6.20` through `7.2.0`.
 
 _________________
 
