@@ -55,7 +55,7 @@ class Build_CLI {
 	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since 2.0.0
 	 *
-	 * @var \WebDevStudios\CLI_Args\CLI_Args
+	 * @var \aubreypwd\WP_KickStart_Components\CLI_Args
 	 */
 	private $cli_args;
 
@@ -101,7 +101,7 @@ class Build_CLI {
 	 *
 	 * @author Aubrey Portwood <aubreypwd@icloud.com>
 	 * @since  2.0.0
-	 * @var \WebDevStudios\CLI\CLI
+	 * @var \aubreypwd\WP_KickStart_Components\CLI
 	 */
 	private $cli;
 
@@ -118,9 +118,9 @@ class Build_CLI {
 
 			$this->fs = new \WP_Filesystem_Direct( true );
 
-			$this->cli = new \WebDevStudios\CLI\CLI();
+			$this->cli = new \aubreypwd\WP_KickStart_Components\CLI();
 
-			$this->cli_args = new \WebDevStudios\CLI_Args\CLI_Args();
+			$this->cli_args = new \aubreypwd\WP_KickStart_Components\CLI_Args();
 		}
 	}
 
