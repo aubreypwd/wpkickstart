@@ -9,6 +9,7 @@ Built and tested for PHP 5.6.20 through 7.2.0
 _________________
 
 [Installation &rarr;](https://github.com/aubreypwd/wpkickstart/wiki/Installation)
+
 [Get more information on the Wiki &rarr;](https://github.com/aubreypwd/wpkickstart/wiki)
 
 _______________
