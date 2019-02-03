@@ -356,6 +356,9 @@ class Build_CLI {
 	public function command( array $args, array $assoc_args ) {
 		$this->cli_args->set_args( $args, $assoc_args ); // Ensure we have an easy way to get arguments.
 
+		// @codingStandardsIgnoreLine: Deactivate our plugin.
+		shell_exec( 'wp plugin deactivate wpkickstart/wpkickstart.php' );
+
 		$this->loop_through_files_and_fire_hook();
 
 		$this->finalize();
@@ -372,9 +375,6 @@ class Build_CLI {
 	 * @since  2.0.0
 	 */
 	private function finalize() {
-
-		// @codingStandardsIgnoreLine: Deactivate our plugin.
-		shell_exec( 'wp plugin deactivate wpkickstart/wpkickstart.php' );
 
 		// Remove git before it's moved.
 		$plugin_dir = untrailingslashit( dirname( app()->plugin_file ) );
