@@ -468,7 +468,7 @@ class App {
 	 * @param  string $path (Optional) appended path.
 	 * @return string       URL and path.
 	 */
-	public function url( string $path = '' ) {
+	public function url( string $path ) {
 		return is_string( $path ) && ! empty( $path ) ?
 			trailingslashit( $this->url ) . $path :
 			trailingslashit( $this->url );
