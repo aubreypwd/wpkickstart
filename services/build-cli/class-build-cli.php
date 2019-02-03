@@ -373,6 +373,9 @@ class Build_CLI {
 	 */
 	private function finalize() {
 
+		// @codingStandardsIgnoreLine: Deactivate our plugin.
+		shell_exec( 'wp plugin deactivate wpkickstart/wpkickstart.php' );
+
 		// Remove git before it's moved.
 		$plugin_dir = untrailingslashit( dirname( app()->plugin_file ) );
 		$this->fs->delete( "{$plugin_dir}/.git", true ); // Remove git.
@@ -390,12 +393,8 @@ class Build_CLI {
 			$this->fs->move( $olddir, $newdir );
 		}
 
-		// Activate it.
-		if ( function_exists( 'shell_exec' ) ) {
-
-			// @codingStandardsIgnoreLine: Try and activate that plugin.
-			shell_exec( "wp plugin activate {$slug} --allow-root" );
-		}
+		// @codingStandardsIgnoreLine: Try and activate that plugin.
+		shell_exec( "wp plugin activate {$slug} --allow-root" );
 	}
 
 	/**
