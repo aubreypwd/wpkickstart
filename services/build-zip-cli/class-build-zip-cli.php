@@ -129,7 +129,7 @@ class Build_ZIP_CLI {
 
 		$pluginsdir = dirname( $plugindir );
 
-		$version = app()->get_header( 'Version' );
+		$version = app()->header( 'Version' );
 
 		$default_to = "{$pluginsdir}/wpkickstart-{$version}.zip";
 
