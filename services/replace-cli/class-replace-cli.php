@@ -2,9 +2,6 @@
 /**
  * Command line replacements.
  *
- * You'll want to modify, delete, or keep this file around
- * for easy duplication.
- *
  * @since 2.0.0
  * @package  CompanyNamespace\ProjectNamespace
  *
