@@ -14,9 +14,7 @@
  * This file will get removed when you run wp kickstart.
  */
 
-namespace aubreypwd\wpkickstart\Service;
-
-use function \aubreypwd\wpkickstart\app;
+namespace aubreypwd\wpkickstart;
 
 /**
  * Replaces stuff to convert this to your plugin.

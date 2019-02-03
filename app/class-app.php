@@ -385,7 +385,7 @@ class App {
 	 * To add a new service go add a new class to e.g. `services/my-service/class-my-service.php`,
 	 * then add it below like:
 	 *
-	 *     $this->my_service = new Service\My_Service();
+	 *     $this->my_service = new My_Service();
 	 *
 	 * The app will autoload it, run hooks and run methods automatically.
 	 *
@@ -395,13 +395,13 @@ class App {
 	public function attach_services() {
 
 		// An example service so you can see how things work, below cli command should remove this.
-		// $this->example_service = new Service\Example_Service();
+		// $this->example_service = new Example_Service();
 
 		// Adds wp kickstart build for replacements to make this framework into your own plugin.
-		$this->build_cli = new \aubreypwd\wpkickstart\Service\Build_CLI();
+		$this->build_cli = new \aubreypwd\wpkickstart\Build_CLI();
 
 		// Adds wp kickstart release so we can distribute a zip file for use in installation.
-		$this->release_cli = new \aubreypwd\wpkickstart\Service\Release_CLI();
+		$this->release_cli = new \aubreypwd\wpkickstart\Release_CLI();
 	}
 
 	/**
