@@ -29,6 +29,7 @@ class Build_CLI {
 	 */
 	private $line_removals = [
 		'app/class-app.php' => [ 396, 397, 398, 399, 400, 401, 402, 403, 404 ],
+		'composer.json'     => [ 2, 3, 4, 5, 6, 7, 12, 13, 14, 15, 20 ],
 	];
 
 	/**
@@ -255,6 +256,7 @@ class Build_CLI {
 				'https://github.com/aubreypwd/wpkickstart/issues'                                                                  => $website,
 				'https://github.com/aubreypwd/wpkickstart'                                                                         => $website,
 				'"description": "",'                                                                                               => str_replace( '""', "\"{$description}\"", '"description": "",' ),
+				'"oomphinc/composer-installers-extender": "*",'                                                                    => '"oomphinc/composer-installers-extender": "*"', // Removes comma.
 			];
 			// @codingStandardsIgnoreEnd
 		}
@@ -444,7 +446,6 @@ class Build_CLI {
 		}
 
 		if ( stristr( $relative_file, 'components/vendor/' ) ) {
-			error_log( $relative_file );
 			if ( ! $this->dryrun ) {
 				$this->fs->delete( "{$plugin_dir}/components/vendor", true );
 			}

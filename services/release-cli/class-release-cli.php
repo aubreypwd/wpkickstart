@@ -205,10 +205,6 @@ class Release_CLI {
 				continue; // Any node_modules.
 			}
 
-			if ( stristr( $lslash_relative_path, 'composer.json' ) ) {
-				continue; // Any composer.json.
-			}
-
 			$parts = explode( '/', dirname( $lslash_relative_path ) );
 
 			$lslash_relative_base = '/' . trim( $parts[1] );
