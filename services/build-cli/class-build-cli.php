@@ -212,9 +212,9 @@ class Build_CLI {
 
 			$description = $this->cli_args->get_arg( 'description' );
 
-			$classy_company = $this->underscoreify( $this->cli_args->get_arg( 'company' ) );
+			$classy_company = $this->classyfy( $this->cli_args->get_arg( 'company' ) );
 
-			$classy_name = $this->underscoreify( $name );
+			$classy_name = $this->classyfy( $name );
 
 			$namespace = "namespace {$classy_company}" . '\\' . $classy_name;
 
@@ -279,8 +279,12 @@ class Build_CLI {
 	 * @param  string $string The string.
 	 * @return string         The ClassFormat format.
 	 */
-	private function underscoreify( $string ) {
-		return str_replace( '-', '_', $this->slugify( $string ) );
+	private function classyfy( $string ) {
+		$spaced = str_replace( '-', ' ', $this->slugify( $string ) );
+
+		$ucwords = ucwords( $spaced );
+
+		return str_replace( ' ', '_', $ucwords );
 	}
 
 	/**
