@@ -26,7 +26,7 @@ class Release_CLI {
 	/**
 	 * CLI arguments.
 	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since 2.0.0
 	 *
 	 * @var \aubreypwd\WP_KickStart_Components\CLI_Args
@@ -36,7 +36,7 @@ class Release_CLI {
 	/**
 	 * WP File System.
 	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @var \WP_Filesystem_Direct
@@ -46,7 +46,7 @@ class Release_CLI {
 	/**
 	 * CLI.
 	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 * @var aubreypwd\WP_KickStart_Components\CLI
 	 */
@@ -55,7 +55,7 @@ class Release_CLI {
 	/**
 	 * Directories to ignore.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @var array
@@ -68,7 +68,7 @@ class Release_CLI {
 	/**
 	 * Construct.
 	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 */
 	public function __construct() {
@@ -87,7 +87,7 @@ class Release_CLI {
 	/**
 	 * Hooks.
 	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @return void Early bail if not CLI.
@@ -101,7 +101,7 @@ class Release_CLI {
 	/**
 	 * Run.
 	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @return void Early bail if not CLI.
@@ -127,7 +127,7 @@ class Release_CLI {
 	/**
 	 * WP CLI command.
 	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @param  array $args       Arguments.
@@ -152,7 +152,7 @@ class Release_CLI {
 	/**
 	 * Zip up a directory.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @param  string $path The path to zip up.

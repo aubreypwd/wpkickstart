@@ -19,7 +19,7 @@ require_once $_tests_dir . '/includes/functions.php';
  * Manually load the plugin being tested.
  *
  * @since  2.0.0
- * @author Aubrey Portwood <aubrey@webdevstudios.com>
+ * @author Aubrey Portwood <code@aubreypwd.com>
  */
 function _manually_load_plugin() {
 	$kickstartfile = dirname( dirname( __FILE__ ) ) . '/wpkickstart.php';

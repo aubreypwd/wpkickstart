@@ -10,7 +10,7 @@
  * License:     GPLv2
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  *
- * @since       x.x.x
+ * @since       2.0.0
  * @package     aubreypwd\wpkickstart
  *
  * Built with:  wpkickstart
@@ -25,8 +25,8 @@ require_once 'app/class-app.php';
 /**
  * Create/Get the App.
  *
- * @author Your Name <your@email.com>
- * @since  x.x.x
+ * @author Aubrey Portwood <code@aubreypwd.com>
+ * @since  2.0.0
  *
  * @return App The App.
  */

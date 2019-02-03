@@ -24,7 +24,7 @@ class App {
 	/**
 	 * Plugin basename.
 	 *
-	 * @author Your Name <your@email.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @var    string
 	 * @since  2.0.0
 	 */
@@ -33,7 +33,7 @@ class App {
 	/**
 	 * URL of plugin directory.
 	 *
-	 * @author Your Name <your@email.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @var    string
 	 * @since  2.0.0
 	 */
@@ -42,7 +42,7 @@ class App {
 	/**
 	 * Path of plugin directory.
 	 *
-	 * @author Your Name <your@email.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @var    string
 	 * @since  2.0.0
 	 */
@@ -52,7 +52,7 @@ class App {
 	 * Is WP_DEBUG set?
 	 *
 	 * @since  2.0.0
-	 * @author Your Name <your@email.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 *
 	 * @var boolean
 	 */
@@ -62,7 +62,7 @@ class App {
 	 * The plugin file.
 	 *
 	 * @since  2.0.0
-	 * @author Your Name <your@email.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 *
 	 * @var string
 	 */
@@ -72,7 +72,7 @@ class App {
 	 * The plugin headers.
 	 *
 	 * @since  2.0.0
-	 * @author Your Name <your@email.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 *
 	 * @var array
 	 */
@@ -81,7 +81,7 @@ class App {
 	/**
 	 * Construct.
 	 *
-	 * @author Your Name <your@email.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @param string $plugin_file The plugin file, usually __FILE__ of the base plugin.
@@ -127,7 +127,7 @@ class App {
 	/**
 	 * Load any composer dependancies.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 */
 	private function composer_autoload() {
@@ -144,7 +144,7 @@ class App {
 	 * Register the autoloader.
 	 *
 	 * @since 2.0.0
-	 * @author Your Name <your@email.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 */
 	private function auto_loader() {
 
@@ -155,7 +155,7 @@ class App {
 	/**
 	 * Require classes.
 	 *
-	 * @author Your Name <your@email.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @param string $class_name Fully qualified name of class to try and load.
@@ -175,7 +175,7 @@ class App {
 	 * - /components/
 	 * - /services/
 	 *
-	 * @author Your Name <your@email.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @param  array $parts  The parts from self::autoload().
@@ -210,7 +210,7 @@ class App {
 	/**
 	 * Is a file in our plugin?
 	 *
-	 * @author Your Name <your@email.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @param  mixed $file  The file (should be string, but can also be file handler).
@@ -227,7 +227,7 @@ class App {
 	/**
 	 * Autoload a service e.g. service/class-service.php.
 	 *
-	 * @author Your Name <your@email.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @param  array $parts The parts from self::autoload().
@@ -269,7 +269,7 @@ class App {
 	/**
 	 * Autoload a service e.g. service/class-service.php.
 	 *
-	 * @author Your Name <your@email.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @param  array $parts The parts from self::autoload().
@@ -302,7 +302,7 @@ class App {
 	/**
 	 * Get a file for including from app/.
 	 *
-	 * @author Your Name <your@email.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @param  array $parts The parts from self::autoload().
@@ -315,7 +315,7 @@ class App {
 	/**
 	 * Get a file for including from components/.
 	 *
-	 * @author Your Name <your@email.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @param  array $parts The parts from self::autoload().
@@ -335,7 +335,7 @@ class App {
 	/**
 	 * Get a directory for autoload.
 	 *
-	 * @author Your Name <your@email.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @param  string $dir What dir, e.g. app.
@@ -348,7 +348,7 @@ class App {
 	/**
 	 * Generate a class filename to autoload.
 	 *
-	 * @author Your Name <your@email.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @param  array $parts  The parts from self::autoload().
@@ -361,7 +361,7 @@ class App {
 	/**
 	 * Get the plugin version.
 	 *
-	 * @author Your Name <your@email.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @return string The version of this plugin.
@@ -373,7 +373,7 @@ class App {
 	/**
 	 * Get a header.
 	 *
-	 * @author Your Name <your@email.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @param  string $header The header you want, e.g. Version, Author, etc.
@@ -388,7 +388,7 @@ class App {
 	/**
 	 * Attach items to our app.
 	 *
-	 * @author Your Name <your@email.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 */
 	public function attach() {
@@ -405,7 +405,7 @@ class App {
 	 *
 	 * The app will autoload it, run hooks and run methods automatically.
 	 *
-	 * @author Your Name <your@email.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 */
 	public function attach_services() {
@@ -423,7 +423,7 @@ class App {
 	/**
 	 * Fire hooks!
 	 *
-	 * @author Your Name <your@email.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 */
 	public function hooks() {
@@ -433,7 +433,7 @@ class App {
 	/**
 	 * Autoload hooks method.
 	 *
-	 * @author Your Name <your@email.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 */
 	private function auto_call_hooks() {
@@ -443,7 +443,7 @@ class App {
 	/**
 	 * Run the app.
 	 *
-	 * @author Your Name <your@email.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 */
 	public function run() {
@@ -453,7 +453,7 @@ class App {
 	/**
 	 * Automatically call run methods.
 	 *
-	 * @author Your Name <your@email.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 */
 	private function auto_call_run() {
@@ -463,7 +463,7 @@ class App {
 	/**
 	 * Call a property on attached objects.
 	 *
-	 * @author Your Name <your@email.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @param  string $call The call.
@@ -481,7 +481,7 @@ class App {
 	/**
 	 * This plugin's url.
 	 *
-	 * @author Your Name <your@email.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @param  string $path (Optional) appended path.
@@ -496,7 +496,7 @@ class App {
 	/**
 	 * Re-attribute user content to site author.
 	 *
-	 * @author Your Name <your@email.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 */
 	public function deactivate_plugin() {

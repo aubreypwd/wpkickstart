@@ -3,7 +3,7 @@
  *
  * This is mainly used to generate language files for us.
  *
- * @since  x.x.x
+ * @since  2.0.0
  * @package aubreypwd\wpkickstart
  */
 

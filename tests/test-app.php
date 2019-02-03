@@ -25,7 +25,7 @@ class Test_App extends WP_UnitTestCase {
 	/**
 	 * The plugin file.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 * @var [type]
 	 */
@@ -34,7 +34,7 @@ class Test_App extends WP_UnitTestCase {
 	/**
 	 * Construct.
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 */
 	public function __construct() {

@@ -31,7 +31,7 @@ class Example_Component {
 	/**
 	 * Get some example text.
 	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @return string Example text.

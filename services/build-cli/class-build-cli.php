@@ -20,7 +20,7 @@ class Build_CLI {
 	/**
 	 * Line removals.
 	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since 2.0.0
 	 *
 	 * @var array
@@ -33,7 +33,7 @@ class Build_CLI {
 	/**
 	 * File removals.
 	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since 2.0.0
 	 *
 	 * @var array
@@ -53,7 +53,7 @@ class Build_CLI {
 	/**
 	 * CLI arguments.
 	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since 2.0.0
 	 *
 	 * @var \aubreypwd\WP_KickStart_Components\CLI_Args
@@ -63,7 +63,7 @@ class Build_CLI {
 	/**
 	 * Is this a dry run?
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @var boolean
@@ -73,7 +73,7 @@ class Build_CLI {
 	/**
 	 * WP File System.
 	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @var \WP_Filesystem_Direct
@@ -83,7 +83,7 @@ class Build_CLI {
 	/**
 	 * CLI.
 	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 * @var \aubreypwd\WP_KickStart_Components\CLI
 	 */
@@ -92,7 +92,7 @@ class Build_CLI {
 	/**
 	 * Construct.
 	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 */
 	public function __construct() {
@@ -113,7 +113,7 @@ class Build_CLI {
 	/**
 	 * Hooks.
 	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @return void Early bail if not CLI.
@@ -132,7 +132,7 @@ class Build_CLI {
 	/**
 	 * Rename the plugin file.
 	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @param  string $file The file.
@@ -161,7 +161,7 @@ class Build_CLI {
 	/**
 	 * Make string replacements.
 	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @param  string $file The file.
@@ -196,7 +196,7 @@ class Build_CLI {
 	/**
 	 * Collect the replacements.
 	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @return array The replacements.
@@ -234,15 +234,15 @@ class Build_CLI {
 
 				// Other stuff.
 				'2.0.0'                                                                                                            => $this->cli_args->get_arg( 'since' ),
-				'x.x.x'                                                                                                            => $this->cli_args->get_arg( 'since' ),
-				'Your Name <your@email.com>'                                                                                       => $author,
+				'2.0.0'                                                                                                            => $this->cli_args->get_arg( 'since' ),
+				'Aubrey Portwood <code@aubreypwd.com>'                                                                                       => $author,
 				'project-slug'                                                                                                     => $plugin_slug,
 				'namespace aubreypwd\wpkickstart'                                                                                  => $namespace,
 				'Company Name'                                                                                                     => $this->cli_args->get_arg( 'company' ),
 				'company-slug'                                                                                                     => $this->slugify( $this->cli_args->get_arg( 'company' ) ),
 				'Project Description'                                                                                              => $description,
 				'http://your-website.com'                                                                                          => $website,
-				'Aubrey Portwood <aubreypwd@icloud.com>'                                                                           => $author,
+				'Aubrey Portwood <code@aubreypwd.com>'                                                                           => $author,
 
 				// @package
 				'aubreypwd\wpkickstart\\'                                                                                          => "{$classy_company}" . '\\' . $classy_name . '\\',
@@ -266,7 +266,7 @@ class Build_CLI {
 	/**
 	 * Convert a string to a slug.
 	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @param  string $string The string.
@@ -279,7 +279,7 @@ class Build_CLI {
 	/**
 	 * Convert this to a class format.
 	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @param  string $string The string.
@@ -296,7 +296,7 @@ class Build_CLI {
 	/**
 	 * Run.
 	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @return void Early bail if not CLI.
@@ -320,7 +320,7 @@ class Build_CLI {
 					'type'        => 'assoc',
 					'name'        => 'author',
 					'optional'    => false,
-					'description' => __( 'What @author will say, e.g. `Aubrey Portwood <aubreypwd@icloud.com>`.', 'wpkickstart' ),
+					'description' => __( 'What @author will say, e.g. `Aubrey Portwood <code@aubreypwd.com>`.', 'wpkickstart' ),
 				],
 				[
 					'type'        => 'assoc',
@@ -353,7 +353,7 @@ class Build_CLI {
 	/**
 	 * WP CLI command.
 	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @param  array $args       Arguments.
@@ -377,7 +377,7 @@ class Build_CLI {
 	/**
 	 * Move the new plugin and activate it.
 	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 */
 	private function finalize() {
@@ -413,7 +413,7 @@ class Build_CLI {
 	/**
 	 * Remove a file.
 	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @param  string $file The file.
@@ -476,7 +476,7 @@ class Build_CLI {
 	/**
 	 * Get a relative version of a file.
 	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @param  string $file The file.
@@ -489,7 +489,7 @@ class Build_CLI {
 	/**
 	 * Loop through our files and pass it to a hook.
 	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 */
 	private function loop_through_files_and_fire_hook() {
@@ -509,7 +509,7 @@ class Build_CLI {
 			/**
 			 * Do something to this file.
 			 *
-			 * @author Aubrey Portwood <aubreypwd@icloud.com>
+			 * @author Aubrey Portwood <code@aubreypwd.com>
 			 * @since  2.0.0
 			 *
 			 * @param string $file       The file.
@@ -521,7 +521,7 @@ class Build_CLI {
 	/**
 	 * Remove specific lines from files.
 	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @param string $file The file.
@@ -568,7 +568,7 @@ class Build_CLI {
 	/**
 	 * Does a file have a valid extension?
 	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @param  string $file The file.
@@ -587,7 +587,7 @@ class Build_CLI {
 	/**
 	 * Is a file a "code" file?
 	 *
-	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @param  string $file The file.
