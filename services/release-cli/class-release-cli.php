@@ -129,9 +129,7 @@ class Release_CLI {
 
 		$pluginsdir = dirname( $plugindir );
 
-		$version = app()->header( 'Version' );
-
-		$default_to = "{$pluginsdir}/wpkickstart-{$version}.zip";
+		$default_to = "{$pluginsdir}/wpkickstart.zip";
 
 		$to = ! empty( $this->cli_args->get_arg( 'to' ) ) ? $this->cli_args->get_arg( 'to' ) : $default_to;
 
