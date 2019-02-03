@@ -219,40 +219,40 @@ class Replace_CLI {
 
 			$namespace = "namespace {$classy_company}" . '\\' . $classy_name;
 
+			// @codingStandardsIgnoreStart: Alignments below don't pass CS ¯\_(ツ)_/¯.
 			$cached = [
 
 				// Plugin file.
-				'Plugin Name: wpkickstart'     => "Plugin Name: {$name}",
-				'A great way to kickstart a new WordPress plugin. Just activate and run <code>wp kickstart</code> to get started.'
-				                               => $this->cli_args->get_arg( 'description' ),
-				'Author:      Aubrey Portwood' => "Author:      {$author}",
-				'Author URI:  http://github.com/aubreypwd/wpkickstart'
-				                               => "Author URI:  {$website}",
+				'Plugin Name: wpkickstart'                                                                                         => "Plugin Name: {$name}",
+				'A great way to kickstart a new WordPress plugin. Just activate and run <code>wp kickstart</code> to get started.' => $this->cli_args->get_arg( 'description' ),
+				'Author:      Aubrey Portwood'                                                                                     => "Author:      {$author}",
+				'Author URI:  http://github.com/aubreypwd/wpkickstart'                                                             => "Author URI:  {$website}",
 
 				// Other stuff.
-				'2.0.0'                           => $this->cli_args->get_arg( 'since' ),
-				'x.x.x'                           => $this->cli_args->get_arg( 'since' ),
-				'Your Name <your@email.com>'      => $author,
-				'project-slug'                    => $plugin_slug,
-				'namespace aubreypwd\wpkickstart' => $namespace,
-				'Company Name'                    => $this->cli_args->get_arg( 'company' ),
-				'company-slug'                    => $this->slugify( $this->cli_args->get_arg( 'company' ) ),
-				'Project Description'             => $description,
-				'http://your-website.com'         => $website,
-				$aubrey                           => $author,
+				'2.0.0'                                                                                                            => $this->cli_args->get_arg( 'since' ),
+				'x.x.x'                                                                                                            => $this->cli_args->get_arg( 'since' ),
+				'Your Name <your@email.com>'                                                                                       => $author,
+				'project-slug'                                                                                                     => $plugin_slug,
+				'namespace aubreypwd\wpkickstart'                                                                                  => $namespace,
+				'Company Name'                                                                                                     => $this->cli_args->get_arg( 'company' ),
+				'company-slug'                                                                                                     => $this->slugify( $this->cli_args->get_arg( 'company' ) ),
+				'Project Description'                                                                                              => $description,
+				'http://your-website.com'                                                                                          => $website,
+				$aubrey                                                                                                            => $author,
 
 				// @package
-				'aubreypwd\wpkickstart\\' => "{$classy_company}" . '\\' . $classy_name . '\\',
-				'@package  aubreypwd\wpkickstart' => "@package  {$classy_company}" . '\\' . $classy_name,
-				'@package aubreypwd\wpkickstart' => "@package {$classy_company}" . '\\' . $classy_name,
-				'@package     aubreypwd\wpkickstart' => "@package     {$classy_company}" . '\\' . $classy_name,
+				'aubreypwd\wpkickstart\\'                                                                                          => "{$classy_company}" . '\\' . $classy_name . '\\',
+				'@package  aubreypwd\wpkickstart'                                                                                  => "@package  {$classy_company}" . '\\' . $classy_name,
+				'@package aubreypwd\wpkickstart'                                                                                   => "@package {$classy_company}" . '\\' . $classy_name,
+				'@package     aubreypwd\wpkickstart'                                                                               => "@package     {$classy_company}" . '\\' . $classy_name,
 
 				// Composer.json
-				'"name": "aubreypwd/wpkickstart",' => str_replace( 'wpkickstart', $plugin_slug, str_replace( 'aubreypwd', $company_slug, '"name": "aubreypwd/wpkickstart",' ) ),
-				'https://github.com/aubreypwd/wpkickstart/issues' => $website,
-				'https://github.com/aubreypwd/wpkickstart' => $website,
-				'"description": "",' => str_replace( '""', "\"{$description}\"", '"description": "",' ),
+				'"name": "aubreypwd/wpkickstart",'                                                                                 => str_replace( 'wpkickstart', $plugin_slug, str_replace( 'aubreypwd', $company_slug, '"name": "aubreypwd/wpkickstart",' ) ),
+				'https://github.com/aubreypwd/wpkickstart/issues'                                                                  => $website,
+				'https://github.com/aubreypwd/wpkickstart'                                                                         => $website,
+				'"description": "",'                                                                                               => str_replace( '""', "\"{$description}\"", '"description": "",' ),
 			];
+			// @codingStandardsIgnoreEnd
 		}
 
 		return $cached;
