@@ -359,7 +359,7 @@ class Build_CLI {
 		$this->cli_args->set_args( $args, $assoc_args ); // Ensure we have an easy way to get arguments.
 
 		// @codingStandardsIgnoreLine: Deactivate our plugin.
-		shell_exec( 'wp plugin deactivate wpkickstart/wpkickstart.php' );
+		shell_exec( 'wp plugin deactivate wpkickstart/wpkickstart.php --allow-root' );
 
 		$this->loop_through_files_and_fire_hook();
 
