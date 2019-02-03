@@ -166,17 +166,17 @@ class Build_ZIP_CLI {
 				continue;
 			}
 
-			$filePath = $file->getRealPath();
+			$file_path = $file->getRealPath();
 
-			if ( stristr( $filePath, '.git' ) ) {
+			if ( stristr( $file_path, '.git' ) ) {
 				continue;
 			}
 
-			$relativePath = substr( $filePath, strlen( $path ) + 1 );
+			$relative_path = substr( $file_path, strlen( $path ) + 1 );
 
-			$this->cli->success( "Added {$filePath}" );
+			$this->cli->success( "Added {$file_path}" );
 
-			$zip->addFile( $filePath, $relativePath );
+			$zip->addFile( $file_path, $relative_path );
 		}
 
 		$zip->close();
