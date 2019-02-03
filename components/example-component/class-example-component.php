@@ -18,7 +18,7 @@
  * This allows this component to move between wpkickstart frameworks easily
  * and _could_ even be packages!
  */
-namespace FakeCompany\Fake;
+namespace WpKickStart\Components;
 
 /**
  * Example component.

@@ -29,7 +29,7 @@ class Example_Service {
 	 * @since  2.0.0
 	 */
 	public function __construct() {
-		$this->example_component = new \FakeCompany\Fake\Example_Component();
+		$this->example_component = new \WpKickStart\Components\Example_Component();
 	}
 
 	/**
