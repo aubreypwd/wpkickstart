@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cd42f7ebc2a71067622663c540c25b61",
+    "content-hash": "a25809e393340d9e24fd4f658000c3ff",
     "packages": [
         {
             "name": "aubreypwd/wpkickstart-components",
@@ -12,13 +12,13 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:aubreypwd/wpkickstart-components.git",
-                "reference": "b64196ee9bb71e917d91cb12d2a261e21a0d00cd"
+                "reference": "fe975fe8e20f661283624d85a52d11e1746e716c"
             },
             "require": {
                 "composer/installers": "*",
                 "oomphinc/composer-installers-extender": "*"
             },
-            "type": "wpkickstart-component",
+            "type": "wpkickstart-components",
             "license": [
                 "GPL-2.0+"
             ],
@@ -28,7 +28,7 @@
                 "issues": "https://github.com/aubreypwd/wpkickstart-components/issues",
                 "source": "https://github.com/aubreypwd/wpkickstart-components"
             },
-            "time": "2019-02-03T10:12:07+00:00"
+            "time": "2019-02-03T11:52:18+00:00"
         },
         {
             "name": "composer/installers",
