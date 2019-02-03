@@ -2,7 +2,9 @@
 /**
  * PHPUnit bootstrap file
  *
- * @package YourCompanyName\YourPluginName
+ * @package aubreypwd\wpkickstart
+ *
+ * @since  1.1.0
  */
 
 $_tests_dir = getenv( 'WP_TESTS_DIR' );
@@ -15,9 +17,13 @@ require_once $_tests_dir . '/includes/functions.php';
 
 /**
  * Manually load the plugin being tested.
+ *
+ * @since  1.1.0
+ * @author Aubrey Portwood <code@aubreypwd.com>
  */
 function _manually_load_plugin() {
-	require dirname( dirname( __FILE__ ) ) . '/plugin-name.php';
+	$kickstartfile = dirname( dirname( __FILE__ ) ) . '/wpkickstart.php';
+	require dirname( dirname( __FILE__ ) ) . file_exists( $kickstartfile ) ? $kickstartfile : 'company-slug-project-slug';
 }
 tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
 

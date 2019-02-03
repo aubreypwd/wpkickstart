@@ -1,12 +1,12 @@
-<?php
+<?php // @codingStandardsIgnoreLine: Filename different.
 /**
  * App Tests.
  *
- * @package YourCompanyName\YourPluginName
- * @since   NEXT
+ * @package aubreypwd\wpkickstart
+ * @since   1.1.0
  */
 
-namespace YourCompanyName\YourPluginName;
+namespace aubreypwd\wpkickstart;
 
 use \WP_UnitTestCase;
 use \RecursiveDirectoryIterator;
@@ -17,36 +17,56 @@ use \RecursiveIteratorIterator;
 /**
  * App Tests.
  *
- * @since   NEXT
- * @package YourCompanyName\YourPluginName
+ * @since   1.1.0
+ * @package aubreypwd\wpkickstart
  */
 class Test_App extends WP_UnitTestCase {
 
 	/**
+	 * The plugin file.
+	 *
+	 * @author Aubrey Portwood <code@aubreypwd.com>
+	 * @since  1.1.0
+	 * @var [type]
+	 */
+	public $plugin_file;
+
+	/**
+	 * Construct.
+	 *
+	 * @author Aubrey Portwood <code@aubreypwd.com>
+	 * @since  1.1.0
+	 */
+	public function __construct() {
+		parent::__construct();
+		$this->plugin_file = file_exists( '../wpkickstart.php' ) ? '../wpkickstart.php' : 'company-slug-project-slug';
+	}
+
+	/**
 	 * Test if App class exists.
 	 *
-	 * @author Your Name
-	 * @since  NEXT
+	 * @author Aubrey Portwood <code@aubreypwd.com>
+	 * @since  1.1.0
 	 */
 	public function test_app_class_exists() {
-		$this->assertTrue( class_exists( 'YourCompanyName\YourPluginName\App' ), 'YourCompanyName\YourPluginName\App class should always exist so we can create it.' );
+		$this->assertTrue( class_exists( 'aubreypwd\wpkickstart\App' ), 'aubreypwd\wpkickstart\App class should always exist so we can create it.' );
 	}
 
 	/**
 	 * Test that app() calls the App instance.
 	 *
-	 * @author Your Name
-	 * @since  NEXT
+	 * @author Aubrey Portwood <code@aubreypwd.com>
+	 * @since  1.1.0
 	 */
 	public function test_app_function() {
-		$this->assertTrue( is_a( app(), 'YourCompanyName\YourPluginName\App' ), 'app() should always be an instance of YourCompanyName\YourPluginName\App.' );
+		$this->assertTrue( is_a( app(), 'aubreypwd\wpkickstart\App' ), 'app() should always be an instance of aubreypwd\wpkickstart\App.' );
 	}
 
 	/**
 	 * Test that the version method is set to something proper.
 	 *
-	 * @author Your Name
-	 * @since  NEXT
+	 * @author Aubrey Portwood <code@aubreypwd.com>
+	 * @since  1.1.0
 	 */
 	public function test_version() {
 		$this->method_exists_is_not_empty_and_a_string( 'version' );
@@ -55,46 +75,46 @@ class Test_App extends WP_UnitTestCase {
 	/**
 	 * Test that the url method is set to something proper.
 	 *
-	 * @author Your Name
-	 * @since  NEXT
+	 * @author Aubrey Portwood <code@aubreypwd.com>
+	 * @since  1.1.0
 	 */
 	public function test_url() {
 		$this->method_exists_is_not_empty_and_a_string( 'url' );
-		$this->assertTrue( (boolean) filter_var( app()->url(), FILTER_VALIDATE_URL ), 'App::url() needs to return a valid URL.' );
+		$this->assertTrue( (bool) filter_var( app()->url(), FILTER_VALIDATE_URL ), 'App::url() needs to return a valid URL.' );
 	}
 
 	/**
 	 * Test for a semantic version.
 	 *
-	 * @author Your Name
-	 * @since  NEXT
+	 * @author Aubrey Portwood <code@aubreypwd.com>
+	 * @since  1.1.0
 	 */
 	public function test_semver() {
 		// Un-comment to enable forced semver.
-		// $this->assertTrue( version_compare( app()->version(), '0.0.0', '>=' ), 'Plugin version should always be semantic: 0.0.0 or 1.0 or 1.1.1, etc. Note, NEXT will need to be replaced with a semantic value.' ); // @codingStandardsIgnoreLine
+		$this->assertTrue( version_compare( app()->version(), '0.0.0', '>=' ), 'Plugin version should always be semantic: 0.0.0 or 1.0 or 1.1.1, etc. Note, 1.1.0 will need to be replaced with a semantic value.' ); // @codingStandardsIgnoreLine
 	}
 
 	/**
 	 * Test that the app's properties are properly set.
 	 *
-	 * @author Your Name
-	 * @since  NEXT
+	 * @author Aubrey Portwood <code@aubreypwd.com>
+	 * @since  1.1.0
 	 */
 	public function test_app_properties() {
 
 		// ->plugin_file.
 		$this->assertTrue( property_exists( app(), 'plugin_file' ), 'App::plugin_file property is used in other places in the plugin and must exist' );
-		$this->assertNotEmpty( app()->plugin_file, 'App::plugin_file should always be set to the plugin-name.php file.' );
+		$this->assertNotEmpty( app()->plugin_file, "App::plugin_file should always be set to the {$this->plugin_file} file." );
 		$this->assertFileExists( app()->plugin_file, 'App::plugin_file should always be set to a file that exists.' );
 
 		// ->url.
 		$this->assertTrue( property_exists( app(), 'url' ), 'App::url property is used in other places in the plugin and must exist' );
 		$this->assertNotEmpty( app()->url, 'App::url should always be set to a valid string.' );
-		$this->assertTrue( (boolean) filter_var( app()->url, FILTER_VALIDATE_URL ), 'App::url should always be a valid URL.' );
+		$this->assertTrue( (bool) filter_var( app()->url, FILTER_VALIDATE_URL ), 'App::url should always be a valid URL.' );
 
 		// ->path.
 		$this->assertTrue( property_exists( app(), 'path' ), 'App::path property is used in other places in the plugin and must exist' );
-		$this->assertNotEmpty( app()->path, 'App::path should always be set to the plugin-name.php file.' );
+		$this->assertNotEmpty( app()->path, "App::path should always be set to the {$this->plugin_file} file." );
 		if ( method_exists( $this, 'assertDirectoryExists' ) ) {
 
 			// Path must be a directory that exists.
@@ -114,8 +134,8 @@ class Test_App extends WP_UnitTestCase {
 	/**
 	 * Test that autoloading functions exist.
 	 *
-	 * @author Your Name
-	 * @since  NEXT
+	 * @author Aubrey Portwood <code@aubreypwd.com>
+	 * @since  1.1.0
 	 */
 	public function test_autoloader() {
 
@@ -128,8 +148,8 @@ class Test_App extends WP_UnitTestCase {
 	/**
 	 * Test that all folders are protected against directory browsing.
 	 *
-	 * @author Your Name
-	 * @since  NEXT
+	 * @author Aubrey Portwood <code@aubreypwd.com>
+	 * @since  1.1.0
 	 */
 	public function test_all_folders_are_protected() {
 
@@ -158,8 +178,8 @@ class Test_App extends WP_UnitTestCase {
 	 *
 	 * @param string $function_name The function name.
 	 *
-	 * @author Your Name
-	 * @since  NEXT
+	 * @author Aubrey Portwood <code@aubreypwd.com>
+	 * @since  1.1.0
 	 */
 	private function method_exists_is_not_empty_and_a_string( $function_name ) {
 		$this->assertTrue( method_exists( app(), $function_name ), "App::{$function_name} method must exist, it could be used throughout the plugin." );
@@ -170,8 +190,8 @@ class Test_App extends WP_UnitTestCase {
 	/**
 	 * Files to ignore for testing all folders are protected.
 	 *
-	 * @author Your Name
-	 * @since  NEXT
+	 * @author Aubrey Portwood <code@aubreypwd.com>
+	 * @since  1.1.0
 	 *
 	 * @param  string $file     The file.
 	 * @param  string $key      The key.

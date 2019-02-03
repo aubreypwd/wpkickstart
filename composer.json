@@ -1,0 +1,22 @@
+{
+	"name": "aubreypwd/wpkickstart",
+	"description": "",
+	"homepage": "https://github.com/aubreypwd/wpkickstart",
+	"license": "GPL-2.0+",
+	"support": {
+		"issues": "https://github.com/aubreypwd/wpkickstart/issues",
+		"source": "https://github.com/aubreypwd/wpkickstart"
+	},
+	"type": "wordpress-plugin",
+	"require": {
+		"composer/installers": "*",
+		"oomphinc/composer-installers-extender": "*",
+		"aubreypwd/wpkickstart-components": "dev-master"
+	},
+	"extra": {
+		"installer-types": ["wpkickstart-components", "wpkickstart-component"],
+		"installer-paths": {
+			"components/vendor/{$vendor}/{$name}/": ["type:wpkickstart-components", "type:wpkickstart-component"]
+		}
+	}
+}
