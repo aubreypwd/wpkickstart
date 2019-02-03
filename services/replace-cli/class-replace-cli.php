@@ -241,6 +241,11 @@ class Replace_CLI {
 				'http://your-website.com'         => $website,
 				$aubrey                           => $author,
 
+				// @package
+				'@package  aubreypwd\wpkickstart' => "@package  {$classy_company}" . '\\' . $classy_name,
+				'@package aubreypwd\wpkickstart' => "@package {$classy_company}" . '\\' . $classy_name,
+				'@package     aubreypwd\wpkickstart' => "@package     {$classy_company}" . '\\' . $classy_name,
+
 				// Composer.json
 				'"name": "aubreypwd/wpkickstart",' => str_replace( 'wpkickstart', $plugin_slug, str_replace( 'aubreypwd', $company_slug, '"name": "aubreypwd/wpkickstart",' ) ),
 				'https://github.com/aubreypwd/wpkickstart/issues' => $website,
