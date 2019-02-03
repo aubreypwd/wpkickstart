@@ -37,7 +37,7 @@ class CLI_Args {
 	 *
 	 * @return array The arguments we saved.
 	 */
-	public function set_args( array $args = [], array $assoc_args = [] ) : array {
+	public function set_args( array $args = [], array $assoc_args = [] ) {
 		return $this->cli_args = $this->merge_args( $args, $assoc_args );
 	}
 
@@ -51,7 +51,7 @@ class CLI_Args {
 	 * @param  array $assoc_args Assoc args e.g. array( 'thing' => 1, 'thing2' => 'value' ).
 	 * @return array             $args reformatted to work like $assoc args.
 	 */
-	public function merge_args( array $args = [], array $assoc_args = [] ) : array {
+	public function merge_args( array $args = [], array $assoc_args = [] ) {
 		return array_merge( $assoc_args, array_map( function() {
 
 			// E.g. if I do wp migrate sleep we will get sleep set to true like in $assoc_args.
@@ -69,7 +69,7 @@ class CLI_Args {
 	 * @param  string $arg The argument.
 	 * @return bool        True if it is, false if not.
 	 */
-	public function arg_set( string $arg ) : bool {
+	public function arg_set( string $arg ) {
 		return isset( $this->cli_args[ $arg ] ) ? true : false;
 	}
 
@@ -91,7 +91,7 @@ class CLI_Args {
 		}
 
 		if ( ! class_exists( '\WP_CLI' ) ) {
-			throw new Exception( 'WP CLI not present.' );
+			throw new \Exception( 'WP CLI not present.' );
 		}
 
 		if ( ! isset( $this->cli_args[ $arg ] ) ) {
