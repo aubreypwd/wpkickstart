@@ -431,10 +431,25 @@ class Build_CLI {
 
 		$relative_file = $this->get_relative_file( $file );
 
-		if ( stristr( $relative_file, 'components/vendor/' ) ) {
+		if ( stristr( $relative_file, '.git' ) ) {
 			if ( ! $this->dryrun ) {
-				$this->fs->delete( $dir );
+				if ( is_dir( $relative_dir ) ) {
+					$this->delete( $relative_dir, true );
+				} else {
+					$this->delete( $relative_file );
+				}
 			}
+
+			return;
+		}
+
+		if ( stristr( $relative_file, 'components/vendor/' ) ) {
+			error_log( $relative_file );
+			if ( ! $this->dryrun ) {
+				$this->fs->delete( "{$plugin_dir}/components/vendor", true );
+			}
+
+			return;
 		}
 
 		if ( in_array( $relative_dir, $this->file_removals, true ) ) {
