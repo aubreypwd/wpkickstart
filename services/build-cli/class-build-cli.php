@@ -234,22 +234,25 @@ class Build_CLI {
 				'Author:      Aubrey Portwood'                                                                                     => "Author:      {$author}",
 				'Author URI:  http://github.com/aubreypwd/wpkickstart'                                                             => "Author URI:  {$website}",
 
-				// Versions
+				// Versions.
 				'1.0.0'                                                                                                            => $this->cli_args->get_arg( 'since' ),
 				'1.0.0'                                                                                                            => $this->cli_args->get_arg( 'since' ),
 				'1.2.0'                                                                                                            => $this->cli_args->get_arg( 'since' ),
 				'2.0.0'                                                                                                            => $this->cli_args->get_arg( 'since' ),
 				'x.x.x'                                                                                                            => $this->cli_args->get_arg( 'since' ),
 
+				// Authors.
+				'Aubrey Portwood <code@aubreypwd.com>'                                                                             => $author,
+				'Aubrey Portwood <aubrey@webdevstudios.com>'                                                                       => $author,
+				'Aubrey Portwood <aubreypwd@icloud.com>'                                                                           => $author,
+
 				// Other stuff.
-				'Aubrey Portwood <code@aubreypwd.com>'                                                                                       => $author,
 				'project-slug'                                                                                                     => $plugin_slug,
 				'namespace aubreypwd\wpkickstart'                                                                                  => $namespace,
 				'Company Name'                                                                                                     => $this->cli_args->get_arg( 'company' ),
 				'company-slug'                                                                                                     => $this->slugify( $this->cli_args->get_arg( 'company' ) ),
 				'Project Description'                                                                                              => $description,
 				'http://your-website.com'                                                                                          => $website,
-				'Aubrey Portwood <code@aubreypwd.com>'                                                                           => $author,
 
 				// @package
 				'aubreypwd\wpkickstart\\'                                                                                          => "{$classy_company}" . '\\' . $classy_name . '\\',
