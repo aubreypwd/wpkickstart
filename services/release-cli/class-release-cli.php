@@ -168,6 +168,10 @@ class Release_CLI {
 				continue;
 			}
 
+			if ( stristr( $file_path, 'dist/' ) ) {
+				continue;
+			}
+
 			$relative_path = substr( $file_path, strlen( $path ) + 1 );
 
 			$this->cli->success( "Added {$file_path}" );
