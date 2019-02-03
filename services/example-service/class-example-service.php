@@ -7,6 +7,8 @@
  *
  * @since 2.0.0
  * @package  CompanyNamespace\ProjectNamespace
+ *
+ * This file will get removed when you run wp kickstart (and assets).
  */
 
 // Note the namespace here should follow the namespace of the project.

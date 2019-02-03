@@ -7,6 +7,8 @@
  *
  * @since 2.0.0
  * @package  CompanyNamespace\ProjectNamespace
+ *
+ * This file will get removed when you run wp kickstart.
  */
 
 namespace CompanyNamespace\ProjectNamespace\Service;
