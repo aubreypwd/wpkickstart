@@ -3,7 +3,7 @@
 ###
  # Run bash tests/install-wp-tests.sh
  #
- # @since 1.1.1
+ # @since 1.1.0
  ##
 
 if [ $# -lt 3 ]; then
@@ -28,7 +28,7 @@ WP_CORE_DIR=${WP_CORE_DIR-/tmp/wordpress/}
 ###
  # Download.
  #
- # @since 1.1.1
+ # @since 1.1.0
  ##
 download() {
 	if [ `which curl` ]; then
@@ -65,7 +65,7 @@ fi; echo "Done."
 ###
  # Install WP.
  #
- # @since 1.1.1
+ # @since 1.1.0
  ##
 install_wp() {
 	if [ -d $WP_CORE_DIR ]; then
@@ -97,7 +97,7 @@ install_wp() {
 ###
  # Install Test Suite.
  #
- # @since 1.1.1
+ # @since 1.1.0
  ##
 install_test_suite() {
 	echo "Installing test suite..."
@@ -137,7 +137,7 @@ install_test_suite() {
 ###
  # Create the DB.
  #
- # @since 1.1.1
+ # @since 1.1.0
  ##
 install_db() {
 	echo "Creating WP Database..."
