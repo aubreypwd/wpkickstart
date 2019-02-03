@@ -213,7 +213,7 @@ class Release_CLI {
 
 			$relative_path = substr( $file_path, strlen( $path ) + 1 );
 
-			$this->cli->success( "Added {$lslash_relative_path}" );
+			$this->cli->log( "Added {$lslash_relative_path}" );
 
 			$zip->addFile( $file_path, $relative_path );
 		}
