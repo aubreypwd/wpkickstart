@@ -6,16 +6,16 @@
  * for easy duplication.
  *
  * @since 2.0.0
- * @package  aubreypwd\WpKickStart
+ * @package  aubreypwd\wpkickstart
  *
  * This file will get removed when you run wp kickstart (and assets).
  */
 
 // Note the namespace here should follow the namespace of the project.
-namespace aubreypwd\WpKickStart\Service;
+namespace aubreypwd\wpkickstart\Service;
 
 // Since we're using the \Service namespace to separate from conflicts with components, we need to use app() from the base.
-use function \aubreypwd\WpKickStart\app;
+use function \aubreypwd\wpkickstart\app;
 
 /**
  * Example Feature.

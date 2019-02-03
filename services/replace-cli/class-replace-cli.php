@@ -3,14 +3,14 @@
  * Command line replacements.
  *
  * @since 2.0.0
- * @package  aubreypwd\WpKickStart
+ * @package  aubreypwd\wpkickstart
  *
  * This file will get removed when you run wp kickstart.
  */
 
-namespace aubreypwd\WpKickStart\Service;
+namespace aubreypwd\wpkickstart\Service;
 
-use function \aubreypwd\WpKickStart\app;
+use function \aubreypwd\wpkickstart\app;
 
 /**
  * Replaces stuff to convert this to your plugin.
@@ -234,7 +234,7 @@ class Replace_CLI {
 				'x.x.x'                           => $this->cli_args->get_arg( 'since' ),
 				'Your Name <your@email.com>'      => $author,
 				'project-slug'                    => $plugin_slug,
-				'namespace aubreypwd\WpKickStart' => $namespace,
+				'namespace aubreypwd\wpkickstart' => $namespace,
 				'Company Name'                    => $this->cli_args->get_arg( 'company' ),
 				'company-slug'                    => $this->slugify( $this->cli_args->get_arg( 'company' ) ),
 				'Project Description'             => $description,

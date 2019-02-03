@@ -2,7 +2,7 @@
 /**
  * PHPUnit bootstrap file
  *
- * @package aubreypwd\WpKickStart
+ * @package aubreypwd\wpkickstart
  *
  * @since  2.0.0
  */

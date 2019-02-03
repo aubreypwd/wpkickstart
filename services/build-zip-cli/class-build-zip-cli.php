@@ -9,14 +9,14 @@
  * This builds that Zip file for us and removes GIT.
  *
  * @since 2.0.0
- * @package  aubreypwd\WpKickStart
+ * @package  aubreypwd\wpkickstart
  *
  * This file will get removed when you run wp kickstart.
  */
 
-namespace aubreypwd\WpKickStart\Service;
+namespace aubreypwd\wpkickstart\Service;
 
-use function \aubreypwd\WpKickStart\app;
+use function \aubreypwd\wpkickstart\app;
 
 /**
  * Replaces stuff to convert this to your plugin.

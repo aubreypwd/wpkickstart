@@ -4,7 +4,7 @@
  * This is mainly used to generate language files for us.
  *
  * @since  x.x.x
- * @package aubreypwd\WpKickStart
+ * @package aubreypwd\wpkickstart
  */
 
 /* globals require, module */
