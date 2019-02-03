@@ -13,8 +13,9 @@ use Exception;
 /**
  * Application Loader.
  *
- * Everything starts here. If you create a new class,
- * attach it to this class using attach() below.
+ * Everything starts here. If you create a new service,
+ * attach it to this class using attach_services() method below
+ * and you can call it with app().
  *
  * @since x.x.x
  */
@@ -73,9 +74,9 @@ class App {
 	 * @since  x.x.x
 	 * @author Your Name <your@email.com>
 	 *
-	 * @var string
+	 * @var array
 	 */
-	public $plugin_headers = '';
+	public $plugin_headers = [];
 
 	/**
 	 * Construct.
@@ -87,7 +88,7 @@ class App {
 	 *
 	 * @throws Exception If $plugin_file parameter is invalid (prevents plugin from loading).
 	 */
-	public function __construct( $plugin_file ) {
+	public function __construct( string $plugin_file ) {
 
 		// Check input validity.
 		if ( empty( $plugin_file ) || ! stream_resolve_include_path( $plugin_file ) ) {
@@ -143,7 +144,7 @@ class App {
 	 *
 	 * @param string $class_name Fully qualified name of class to try and load.
 	 */
-	public function autoload( $class_name ) {
+	public function autoload( string $class_name ) {
 
 		// Autoload files from parts.
 		$this->autoload_from_parts( explode( '\\', $class_name ) );
@@ -164,7 +165,7 @@ class App {
 	 * @param  array $parts  The parts from self::autoload().
 	 * @return void          Early bail once we load the thing.
 	 */
-	private function autoload_from_parts( $parts ) {
+	private function autoload_from_parts( array $parts ) {
 
 		// app/.
 		if ( $this->is_our_file( $this->autoload_app_file( $parts ) ) ) {
@@ -196,7 +197,7 @@ class App {
 	 * @author Your Name <your@email.com>
 	 * @since  x.x.x
 	 *
-	 * @param  string $file The file.
+	 * @param  mixed $file  The file (should be string, but can also be file handler).
 	 * @return boolean      True if it is and exists.
 	 */
 	public function is_our_file( $file ) {
@@ -216,7 +217,7 @@ class App {
 	 * @param  array $parts The parts from self::autoload().
 	 * @return string       The path to that service class file.
 	 */
-	public function autoload_recursive_file( $parts ) {
+	public function autoload_recursive_file( array $parts ) {
 		$class = end( $parts );
 
 		// Where would it be?
@@ -258,7 +259,7 @@ class App {
 	 * @param  array $parts The parts from self::autoload().
 	 * @return string       The path to that service class file.
 	 */
-	public function autoload_service_file( $parts ) {
+	public function autoload_service_file( array $parts ) {
 		$dirs = [
 			'services',
 			'features', // This is here for backwards compatibility.
@@ -291,7 +292,7 @@ class App {
 	 * @param  array $parts The parts from self::autoload().
 	 * @return string       The path to that file.
 	 */
-	private function autoload_app_file( $parts ) {
+	private function autoload_app_file( array $parts ) {
 		return $this->autoload_dir( 'app' ) . $this->autoload_class_file( $parts );
 	}
 
@@ -304,7 +305,7 @@ class App {
 	 * @param  array $parts The parts from self::autoload().
 	 * @return string       The path to that file.
 	 */
-	private function autoload_component_file( $parts ) {
+	private function autoload_component_file( array $parts ) {
 		$class = end( $parts );
 
 		// Where would it be?
@@ -324,7 +325,7 @@ class App {
 	 * @param  string $dir What dir, e.g. app.
 	 * @return string      The path to that directory.
 	 */
-	private function autoload_dir( $dir = '' ) {
+	private function autoload_dir( string $dir = '' ) {
 		return trailingslashit( $this->path ) . trailingslashit( $dir );
 	}
 
@@ -337,7 +338,7 @@ class App {
 	 * @param  array $parts  The parts from self::autoload().
 	 * @return string        The class filename.
 	 */
-	private function autoload_class_file( $parts ) {
+	private function autoload_class_file( array $parts ) {
 		return 'class-' . strtolower( str_replace( '_', '-', end( $parts ) ) ) . '.php';
 	}
 
@@ -362,7 +363,7 @@ class App {
 	 * @param  string $header The header you want, e.g. Version, Author, etc.
 	 * @return string         The value of the header.
 	 */
-	public function header( $header ) {
+	public function header( string $header ) {
 		return isset( $this->plugin_headers[ $header ] )
 			? trim( (string) $this->plugin_headers[ $header ] )
 			: '';
@@ -394,7 +395,7 @@ class App {
 	public function attach_services() {
 
 		// An example service so you can see how things work, below cli command should remove this.
-		$this->example_service = new Service\Example_Service();
+		// $this->example_service = new Service\Example_Service();
 
 		// Adds wp kickstart for replacements to make this framework into your own plugin.
 		$this->replace_cli = new Service\Replace_CLI();
@@ -408,7 +409,6 @@ class App {
 	 */
 	public function hooks() {
 		$this->auto_call_hooks(); // If you want to run your own hook methods, just strip this.
-		// $this->attached_thing->hooks(); // You could do it this way if you want.
 	}
 
 	/**
@@ -429,7 +429,6 @@ class App {
 	 */
 	public function run() {
 		$this->auto_call_run();
-		// $this->attached_thing->run(); // You could do them manually this way if you want.
 	}
 
 	/**
@@ -450,7 +449,7 @@ class App {
 	 *
 	 * @param  string $call The call.
 	 */
-	private function autocall( $call ) {
+	private function autocall( string $call ) {
 		foreach ( get_object_vars( $this ) as $prop ) {
 			if ( is_object( $prop ) ) {
 				if ( method_exists( $prop, $call ) ) {
@@ -469,7 +468,7 @@ class App {
 	 * @param  string $path (Optional) appended path.
 	 * @return string       URL and path.
 	 */
-	public function url( $path = '' ) {
+	public function url( string $path = '' ) {
 		return is_string( $path ) && ! empty( $path ) ?
 			trailingslashit( $this->url ) . $path :
 			trailingslashit( $this->url );
@@ -482,5 +481,12 @@ class App {
 	 * @since  x.x.x
 	 */
 	public function deactivate_plugin() {
+		foreach ( get_object_vars( $this ) as $prop ) {
+			if ( is_object( $prop ) ) {
+				if ( method_exists( $prop, 'deactivate_plugin' ) ) {
+					$prop->deactivate_plugin();
+				}
+			}
+		}
 	}
 }

@@ -29,7 +29,7 @@ class Replace_CLI {
 	 * @var array
 	 */
 	private $line_removals = [
-		'app/class-app.php' => [ 395, 396, 397, 398, 399, 400 ],
+		'app/class-app.php' => [ 396, 397, 398, 399, 400, 401 ],
 	];
 
 	/**
