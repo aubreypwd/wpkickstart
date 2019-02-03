@@ -129,7 +129,11 @@ class Build_ZIP_CLI {
 
 		$pluginsdir = dirname( $plugindir );
 
-		$to = ! empty( $this->cli_args->get_arg( 'to' ) ) ? $this->cli_args->get_arg( 'to' ) : "{$pluginsdir}/wpkickstart.zip";
+		$version = app()->get_header( 'Version' );
+
+		$default_to = "{$pluginsdir}/wpkickstart-{$version}.zip";
+
+		$to = ! empty( $this->cli_args->get_arg( 'to' ) ) ? $this->cli_args->get_arg( 'to' ) : $default_to;
 
 		$this->cli->log( "Building to {$to}..." );
 
