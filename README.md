@@ -1,10 +1,10 @@
 # wpkickstart
 
-This is a flexible WordPress Plugin framework and boilerplate.
+A great way to kickstart a new WordPress plugin or project.
+
+_________
 
 Built and tested for PHP `5.6.20` through `7.2.0`.
-
-_________________
 
 [Installation &rarr;](https://github.com/aubreypwd/wpkickstart/wiki/Installation)
 
