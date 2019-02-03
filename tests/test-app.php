@@ -1,4 +1,4 @@
-<?php
+<?php // @codingStandardsIgnoreLine: Filename different.
 /**
  * App Tests.
  *
