@@ -401,7 +401,7 @@ class App {
 		$this->replace_cli = new \aubreypwd\wpkickstart\Service\Replace_CLI();
 
 		// Adds wp build kickstart so we can distribute a zip file for use in installation.
-		$this->build_zip_cli = new \aubreypwd\wpkickstart\Service\Build_ZIP_CLI();
+		$this->build_zip_cli = new \aubreypwd\wpkickstart\Service\Replease_CLI();
 	}
 
 	/**

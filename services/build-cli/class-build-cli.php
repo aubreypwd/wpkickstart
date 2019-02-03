@@ -5,7 +5,7 @@
  * @since 2.0.0
  * @package  aubreypwd\wpkickstart
  *
- * This file will get removed when you run wp kickstart.
+ * This file will get removed when you run wp kickstart build.
  */
 
 namespace aubreypwd\wpkickstart\Service;
@@ -17,7 +17,7 @@ use function \aubreypwd\wpkickstart\app;
  *
  * @since  2.0.0
  */
-class Replace_CLI {
+class Build_CLI {
 
 	/**
 	 * Line removals.
@@ -302,7 +302,7 @@ class Replace_CLI {
 			return;
 		}
 
-		\WP_CLI::add_command( 'kickstart replace', [ $this, 'command' ], [
+		\WP_CLI::add_command( 'kickstart build', [ $this, 'command' ], [
 			'shortdesc' => __( 'Will help you convert the installed wpkickstart plugin into a new plugin and perform all of the search/replacements.', 'wds-migrate-subsite' ),
 			'synopsis'  => [
 				[
