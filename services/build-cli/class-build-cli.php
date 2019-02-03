@@ -61,6 +61,16 @@ class Build_CLI {
 	private $cli_args;
 
 	/**
+	 * Is this a dry run?
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  2.0.0
+	 *
+	 * @var boolean
+	 */
+	private $dry_run = false;
+
+	/**
 	 * Only work on these extensions.
 	 *
 	 * @author Aubrey Portwood <aubreypwd@icloud.com>
@@ -122,6 +132,8 @@ class Build_CLI {
 			$this->cli = new \aubreypwd\WP_KickStart_Components\CLI();
 
 			$this->cli_args = new \aubreypwd\WP_KickStart_Components\CLI_Args();
+
+			$this->dry_run = defined( 'WPKICKSTART_DRY_RUN' ) && WPKICKSTART_DRY_RUN ? true : false;
 		}
 	}
 
@@ -160,7 +172,9 @@ class Build_CLI {
 
 			$slug = $this->slugify( $this->cli_args->get_arg( 'name' ) );
 
-			$this->fs->move( $file, "{$dir}/{$slug}.php" );
+			if ( ! $this->dryrun ) {
+				$this->fs->move( $file, "{$dir}/{$slug}.php" );
+			}
 		}
 	}
 
@@ -186,7 +200,9 @@ class Build_CLI {
 			$file_contents = str_replace( $search, $replace, $file_contents );
 		}
 
-		file_put_contents( $file, $file_contents ); // @codingStandardsIgnoreLine: We want this.
+		if ( ! $this->dryrun ) {
+			file_put_contents( $file, $file_contents ); // @codingStandardsIgnoreLine: We want this.
+		}
 	}
 
 	/**
@@ -379,8 +395,11 @@ class Build_CLI {
 
 		// Remove git before it's moved.
 		$plugin_dir = untrailingslashit( dirname( app()->plugin_file ) );
-		$this->fs->delete( "{$plugin_dir}/.git", true ); // Remove git.
-		$this->fs->delete( "{$plugin_dir}/.gitignore", true ); // Remove gitignore.
+
+		if ( ! $this->dryrun ) {
+			$this->fs->delete( "{$plugin_dir}/.git", true ); // Remove git.
+			$this->fs->delete( "{$plugin_dir}/.gitignore", true ); // Remove gitignore.
+		}
 
 		// Move it.
 		$slug = $this->slugify( $this->cli_args->get_arg( 'name' ) );
@@ -391,11 +410,15 @@ class Build_CLI {
 		$newdir = "{$plugins_dir}/{$slug}";
 
 		if ( ! file_exists( $newdir ) ) {
-			$this->fs->move( $olddir, $newdir );
+			if ( ! $this->dryrun ) {
+				$this->fs->move( $olddir, $newdir );
+			}
 		}
 
-		// @codingStandardsIgnoreLine: Try and activate that plugin.
-		shell_exec( "wp plugin activate {$slug} --allow-root" );
+		if ( ! $this->dryrun ) {
+			// @codingStandardsIgnoreLine: Try and activate that plugin.
+			shell_exec( "wp plugin activate {$slug} --allow-root" );
+		}
 	}
 
 	/**
@@ -421,7 +444,10 @@ class Build_CLI {
 		$relative_file = $this->get_relative_file( $file );
 
 		if ( in_array( $relative_dir, $this->file_removals, true ) ) {
-			$this->fs->delete( $dir, true );
+			if ( ! $this->dryrun ) {
+				$this->fs->delete( $dir, true );
+			}
+
 			return;
 		}
 
@@ -430,12 +456,17 @@ class Build_CLI {
 		}
 
 		if ( in_array( $relative_file, $this->file_removals, true ) ) {
-			$this->fs->delete( $file );
+			if ( ! $this->dryrun ) {
+				$this->fs->delete( $file );
+			}
+
 			return;
 		}
 
 		if ( stristr( $relative_file, 'components/vendor/' ) ) {
-			$this->fs->delete( $dir );
+			if ( ! $this->dryrun ) {
+				$this->fs->delete( $dir );
+			}
 		}
 	}
 
@@ -529,8 +560,10 @@ class Build_CLI {
 			unset( $file_content_array[ $line - 1 ] );
 		}
 
-		// @codingStandardsIgnoreLine: We want this, it's cheap and works with an array.
-		file_put_contents( $file, $file_content_array );
+		if ( ! $this->dryrun ) {
+			// @codingStandardsIgnoreLine: We want this, it's cheap and works with an array.
+			file_put_contents( $file, $file_content_array );
+		}
 	}
 
 	/**
