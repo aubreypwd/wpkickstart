@@ -212,9 +212,9 @@ class Build_CLI {
 
 			$description = $this->cli_args->get_arg( 'description' );
 
-			$classy_company = $this->slugify( $this->cli_args->get_arg( 'company' ) );
+			$classy_company = $this->underscoreify( $this->cli_args->get_arg( 'company' ) );
 
-			$classy_name = $this->slugify( $name );
+			$classy_name = $this->underscoreify( $name );
 
 			$namespace = "namespace {$classy_company}" . '\\' . $classy_name;
 
@@ -268,6 +268,19 @@ class Build_CLI {
 	 */
 	private function slugify( $string ) {
 		return sanitize_title_with_dashes( $string );
+	}
+
+	/**
+	 * Convert this to a class format.
+	 *
+	 * @author Aubrey Portwood <aubreypwd@icloud.com>
+	 * @since  2.0.0
+	 *
+	 * @param  string $string The string.
+	 * @return string         The ClassFormat format.
+	 */
+	private function underscoreify( $string ) {
+		return str_replace( '-', '_', $this->slugify( $string ) );
 	}
 
 	/**
