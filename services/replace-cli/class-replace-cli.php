@@ -233,7 +233,7 @@ class Replace_CLI {
 				'x.x.x'                           => $this->cli_args->get_arg( 'since' ),
 				'Your Name <your@email.com>'      => $author,
 				'project-slug'                    => $plugin_slug,
-				'namespace aubreypwd\WpKickStart' => "namespace {$classy_company}\{$classy_name}",
+				'namespace aubreypwd\WpKickStart' => "namespace {$classy_company}/\{$classy_name}",
 				'Company Name'                    => $this->cli_args->get_arg( 'company' ),
 				'company-slug'                    => $this->slugify( $this->cli_args->get_arg( 'company' ) ),
 				'Project Description'             => $description,
