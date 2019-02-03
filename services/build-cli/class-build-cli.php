@@ -48,6 +48,7 @@ class Build_CLI {
 		'dist', // Any dist files.
 		'vendor', // Composers vendor library.
 		'composer.lock',
+		'README.md',
 	];
 
 	/**
