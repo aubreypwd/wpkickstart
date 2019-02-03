@@ -152,7 +152,7 @@ class Replace_CLI {
 	 *
 	 * @param  string $file The file.
 	 */
-	public function rename_plugin_file( string $file ) {
+	public function rename_plugin_file( $file ) {
 
 		// Only when the file is the kickstart file.
 		if ( 'wpkickstart.php' === basename( $file ) ) {
@@ -173,7 +173,7 @@ class Replace_CLI {
 	 * @param  string $file The file.
 	 * @return void         Early bail if file does not exist or is empty.
 	 */
-	public function replace_strings( string $file ) {
+	public function replace_strings( $file ) {
 		$replacements = $this->get_replacements();
 
 		if ( ! file_exists( $file ) ) {
@@ -404,7 +404,7 @@ class Replace_CLI {
 	 * @param  string $file The file.
 	 * @return void         Early bail if already done.
 	 */
-	public function remove_file( string $file ) {
+	public function remove_file( $file ) {
 		$plugin_dir = dirname( app()->plugin_file );
 
 		$dir = dirname( $file );
@@ -440,7 +440,7 @@ class Replace_CLI {
 	 * @param  string $file The file.
 	 * @return string       The relative file.
 	 */
-	private function get_relative_file( string $file ) {
+	private function get_relative_file( $file ) {
 		return ltrim( str_replace( dirname( app()->plugin_file ), '', $file ), '/' );
 	}
 
@@ -534,7 +534,7 @@ class Replace_CLI {
 	 * @param  string $file The file.
 	 * @return boolean      True if we should, false if not.
 	 */
-	private function ignore( string $file ) {
+	private function ignore( $file ) {
 		foreach ( $this->ignore_dirs as $ignore_dir ) {
 			if ( stristr( $file, trailingslashit( $ignore_dir ) ) ) {
 				return true;
@@ -553,7 +553,7 @@ class Replace_CLI {
 	 * @param  string $file The file.
 	 * @return boolean      True if it does, false if not.
 	 */
-	private function has_valid_extension( string $file ) {
+	private function has_valid_extension( $file ) {
 		foreach ( $this->extensions as $extension ) {
 			if ( stristr( $file, $extension ) ) {
 				return true;

@@ -49,7 +49,7 @@ class CLI {
 	 *
 	 * @param string $message The message.
 	 */
-	public function success( string $message ) {
+	public function success( $message ) {
 		\WP_CLI::success( $message ); // Will continue.
 	}
 
@@ -61,7 +61,7 @@ class CLI {
 	 *
 	 * @param string $message The message.
 	 */
-	public function error( string $message ) {
+	public function error( $message ) {
 		\WP_CLI::error( $message ); // Will die.
 	}
 
@@ -73,7 +73,7 @@ class CLI {
 	 *
 	 * @param string $message The message.
 	 */
-	public function warn( string $message ) {
+	public function warn( $message ) {
 		\WP_CLI::warning( $message ); // Will continue.
 	}
 
@@ -85,7 +85,7 @@ class CLI {
 	 *
 	 * @param string $message The message.
 	 */
-	public function log( string $message ) {
+	public function log( $message ) {
 		\WP_CLI::log( $message ); // Will continue.
 	}
 }

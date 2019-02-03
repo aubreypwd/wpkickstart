@@ -69,7 +69,7 @@ class CLI_Args {
 	 * @param  string $arg The argument.
 	 * @return bool        True if it is, false if not.
 	 */
-	public function arg_set( string $arg ) {
+	public function arg_set( $arg ) {
 		return isset( $this->cli_args[ $arg ] ) ? true : false;
 	}
 
@@ -85,7 +85,7 @@ class CLI_Args {
 	 * @throws \Exception If you try to get an argument before you run `self::set_args()`.
 	 * @throws \Exception If you call this w/out WP CLI.
 	 */
-	public function get_arg( string $arg ) {
+	public function get_arg( $arg ) {
 		if ( empty( $this->cli_args ) ) {
 			throw new \Exception( 'self::set_args() has not been run yet.' );
 		}
