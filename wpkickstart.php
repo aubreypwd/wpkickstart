@@ -28,7 +28,7 @@ require_once 'app/class-app.php';
  * @author Aubrey Portwood <code@aubreypwd.com>
  * @since  1.0.0
  *
- * @author Aubrey Portwood <aubrey@webdevstudios.com>
+ * @author Aubrey Portwood <code@aubreypwd.com>
  * @since  1.2.0           Fixed issue where this was in global space conflicting with other plugins built off same framework.
  *
  * @return App The App.
