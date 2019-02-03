@@ -325,7 +325,7 @@ class App {
 	 * @param  string $dir What dir, e.g. app.
 	 * @return string      The path to that directory.
 	 */
-	private function autoload_dir( string $dir = '' ) {
+	private function autoload_dir( string $dir ) {
 		return trailingslashit( $this->path ) . trailingslashit( $dir );
 	}
 
