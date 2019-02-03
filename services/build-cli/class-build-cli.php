@@ -48,6 +48,7 @@ class Build_CLI {
 		'services/release-cli', // Our own release process.
 		'dist', // Any dist files.
 		'/vendor', // Composers vendor library.
+		'/components/vendor', // Our component vendor stuff.
 	];
 
 	/**
