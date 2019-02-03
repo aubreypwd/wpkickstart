@@ -410,7 +410,7 @@ class App {
 	 */
 	public function attach_services() {
 
-		// An example service so you can see how things work, below cli command should remove this.
+		// Attach your things, e.g.:
 		// $this->example_service = new Example_Service();
 
 		// Adds wp kickstart build for replacements to make this framework into your own plugin.
