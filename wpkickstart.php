@@ -13,7 +13,7 @@
  * @since       x.x.x
  * @package     aubreypwd\wpkickstart
  *
- * Built with https://github.com/aubreypwd/wpkickstart
+ * Built with:  wpkickstart
  */
 
 // Our namespace.
