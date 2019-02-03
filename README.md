@@ -35,11 +35,11 @@ This should make the things you build in wpkickstart easily re-usable in other p
 
 ______________________
 
-## 1.2
+### 1.2
 
 This minor release fixes a major issue with `$app` being in the global space and conflicts with other plugins using the same architecture. #5
 
-## 1.1
+### 1.1
 
 This is based off of some of 1.0's uses in different projects and has been improved to be more stable!
 
@@ -51,6 +51,6 @@ This is based off of some of 1.0's uses in different projects and has been impro
 - Adds better `app()` callback and global `$app` that can alternatively be called using `global $app`
 - Hardened `phpunit` testing for a good starting point for how the framework should work, you should be able to add additional tests with ease
 
-## 1.0
+### 1.0
 
 This came directly from a breakdown of the WDS SSO plugin that used my app framework. It does not work perfectly and has issues that could be problematic, so please use a future version.
