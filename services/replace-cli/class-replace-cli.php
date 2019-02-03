@@ -28,7 +28,7 @@ class Replace_CLI {
 	 * @var array
 	 */
 	private $line_removals = [
-		'app/class-app.php' => [ 396, 397, 398, 399, 400, 401 ],
+		'app/class-app.php' => [ 396, 397, 398, 399, 400, 401, 402, 403, 404 ],
 	];
 
 	/**
@@ -45,6 +45,7 @@ class Replace_CLI {
 		'components/example-component',
 		'services/example-service',
 		'services/replace-cli',
+		'services/build-zip-cli',
 	];
 
 	/**
