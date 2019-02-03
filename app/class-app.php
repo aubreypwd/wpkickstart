@@ -88,7 +88,7 @@ class App {
 	 *
 	 * @throws Exception If $plugin_file parameter is invalid (prevents plugin from loading).
 	 */
-	public function __construct( string $plugin_file ) {
+	public function __construct( $plugin_file ) {
 
 		// Check input validity.
 		if ( empty( $plugin_file ) || ! stream_resolve_include_path( $plugin_file ) ) {
@@ -144,7 +144,7 @@ class App {
 	 *
 	 * @param string $class_name Fully qualified name of class to try and load.
 	 */
-	public function autoload( string $class_name ) {
+	public function autoload( $class_name ) {
 
 		// Autoload files from parts.
 		$this->autoload_from_parts( explode( '\\', $class_name ) );
@@ -325,7 +325,7 @@ class App {
 	 * @param  string $dir What dir, e.g. app.
 	 * @return string      The path to that directory.
 	 */
-	private function autoload_dir( string $dir ) {
+	private function autoload_dir( $dir ) {
 		return trailingslashit( $this->path ) . trailingslashit( $dir );
 	}
 
@@ -363,7 +363,7 @@ class App {
 	 * @param  string $header The header you want, e.g. Version, Author, etc.
 	 * @return string         The value of the header.
 	 */
-	public function header( string $header ) {
+	public function header( $header ) {
 		return isset( $this->plugin_headers[ $header ] )
 			? trim( (string) $this->plugin_headers[ $header ] )
 			: '';
@@ -449,7 +449,7 @@ class App {
 	 *
 	 * @param  string $call The call.
 	 */
-	private function autocall( string $call ) {
+	private function autocall( $call ) {
 		foreach ( get_object_vars( $this ) as $prop ) {
 			if ( is_object( $prop ) ) {
 				if ( method_exists( $prop, $call ) ) {
@@ -468,7 +468,7 @@ class App {
 	 * @param  string $path (Optional) appended path.
 	 * @return string       URL and path.
 	 */
-	public function url( string $path ) {
+	public function url( $path ) {
 		return is_string( $path ) && ! empty( $path ) ?
 			trailingslashit( $this->url ) . $path :
 			trailingslashit( $this->url );
