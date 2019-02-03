@@ -3,10 +3,10 @@
  * Application.
  *
  * @since x.x.x
- * @package  CompanyNamespace\ProjectNamespace
+ * @package  aubreypwd\WpKickStart
  */
 
-namespace CompanyNamespace\ProjectNamespace;
+namespace aubreypwd\WpKickStart;
 
 use Exception;
 

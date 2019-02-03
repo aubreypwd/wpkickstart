@@ -16,7 +16,7 @@
 
 namespace aubreypwd\WpKickStart\Service;
 
-use function \CompanyNamespace\ProjectNamespace\app;
+use function \aubreypwd\WpKickStart\app;
 
 /**
  * Replaces stuff to convert this to your plugin.

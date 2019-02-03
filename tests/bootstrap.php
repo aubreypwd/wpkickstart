@@ -2,7 +2,7 @@
 /**
  * PHPUnit bootstrap file
  *
- * @package CompanyNamespace\ProjectNamespace
+ * @package aubreypwd\WpKickStart
  *
  * @since  2.0.0
  */

@@ -2,11 +2,11 @@
 /**
  * App Tests.
  *
- * @package CompanyNamespace\ProjectNamespace
+ * @package aubreypwd\WpKickStart
  * @since   2.0.0
  */
 
-namespace CompanyNamespace\ProjectNamespace;
+namespace aubreypwd\WpKickStart;
 
 use \WP_UnitTestCase;
 use \RecursiveDirectoryIterator;
@@ -18,7 +18,7 @@ use \RecursiveIteratorIterator;
  * App Tests.
  *
  * @since   2.0.0
- * @package CompanyNamespace\ProjectNamespace
+ * @package aubreypwd\WpKickStart
  */
 class Test_App extends WP_UnitTestCase {
 
@@ -49,7 +49,7 @@ class Test_App extends WP_UnitTestCase {
 	 * @since  2.0.0
 	 */
 	public function test_app_class_exists() {
-		$this->assertTrue( class_exists( 'CompanyNamespace\ProjectNamespace\App' ), 'CompanyNamespace\ProjectNamespace\App class should always exist so we can create it.' );
+		$this->assertTrue( class_exists( 'aubreypwd\WpKickStart\App' ), 'aubreypwd\WpKickStart\App class should always exist so we can create it.' );
 	}
 
 	/**
@@ -59,7 +59,7 @@ class Test_App extends WP_UnitTestCase {
 	 * @since  2.0.0
 	 */
 	public function test_app_function() {
-		$this->assertTrue( is_a( app(), 'CompanyNamespace\ProjectNamespace\App' ), 'app() should always be an instance of CompanyNamespace\ProjectNamespace\App.' );
+		$this->assertTrue( is_a( app(), 'aubreypwd\WpKickStart\App' ), 'app() should always be an instance of aubreypwd\WpKickStart\App.' );
 	}
 
 	/**

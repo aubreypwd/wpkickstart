@@ -3,14 +3,14 @@
  * Command line replacements.
  *
  * @since 2.0.0
- * @package  CompanyNamespace\ProjectNamespace
+ * @package  aubreypwd\WpKickStart
  *
  * This file will get removed when you run wp kickstart.
  */
 
 namespace aubreypwd\WpKickStart\Service;
 
-use function \CompanyNamespace\ProjectNamespace\app;
+use function \aubreypwd\WpKickStart\app;
 
 /**
  * Replaces stuff to convert this to your plugin.
@@ -213,6 +213,10 @@ class Replace_CLI {
 
 			$description = $this->cli_args->get_arg( 'description' );
 
+			$classy_company = $this->classify( $this->cli_args->get_arg( 'company' ) );
+
+			$classy_name = $this->classify( $name );
+
 			// @codingStandardsIgnoreStart: Alignment below is madness.
 			$cached = [
 
@@ -225,17 +229,16 @@ class Replace_CLI {
 				                               => "Author URI:  {$website}",
 
 				// Other stuff.
-				'2.0.0'                        => $this->cli_args->get_arg( 'since' ),
-				'x.x.x'                        => $this->cli_args->get_arg( 'since' ),
-				'Your Name <your@email.com>'   => $author,
-				'project-slug'                 => $plugin_slug,
-				'CompanyNamespace'             => $this->classify( $this->cli_args->get_arg( 'company' ) ),
-				'Company Name'                 => $this->cli_args->get_arg( 'company' ),
-				'ProjectNamespace'             => $this->classify( $name ),
-				'company-slug'                 => $this->slugify( $this->cli_args->get_arg( 'company' ) ),
-				'Project Description'          => $description,
-				'http://your-website.com'      => $website,
-				$aubrey                        => $author,
+				'2.0.0'                           => $this->cli_args->get_arg( 'since' ),
+				'x.x.x'                           => $this->cli_args->get_arg( 'since' ),
+				'Your Name <your@email.com>'      => $author,
+				'project-slug'                    => $plugin_slug,
+				'namespace aubreypwd\WpKickStart' => "namespace {$classy_company}\{$classy_name}",
+				'Company Name'                    => $this->cli_args->get_arg( 'company' ),
+				'company-slug'                    => $this->slugify( $this->cli_args->get_arg( 'company' ) ),
+				'Project Description'             => $description,
+				'http://your-website.com'         => $website,
+				$aubrey                           => $author,
 
 				// Composer.json
 				'"name": "aubreypwd/wpkickstart",' => str_replace( 'wpkickstart', $plugin_slug, str_replace( 'aubreypwd', $company_slug, '"name": "aubreypwd/wpkickstart",' ) ),

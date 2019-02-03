@@ -11,13 +11,13 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  *
  * @since       x.x.x
- * @package     CompanyNamespace\ProjectNamespace
+ * @package     aubreypwd\WpKickStart
  *
  * Built with https://github.com/aubreypwd/wpkickstart
  */
 
 // Our namespace.
-namespace CompanyNamespace\ProjectNamespace;
+namespace aubreypwd\WpKickStart;
 
 // Require the App class.
 require_once 'app/class-app.php';
@@ -52,7 +52,7 @@ function app() {
 }
 
 // Wait until WordPress is ready, then go!
-add_action( 'plugins_loaded', 'CompanyNamespace\ProjectNamespace\app' );
+add_action( 'plugins_loaded', 'aubreypwd\WpKickStart\app' );
 
 // When we deactivate this plugin...
 register_deactivation_hook( __FILE__, array( app(), 'deactivate_plugin' ) );
