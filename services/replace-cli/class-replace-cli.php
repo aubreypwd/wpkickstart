@@ -199,8 +199,6 @@ class Replace_CLI {
 		static $cached;
 
 		if ( ! is_array( $cached ) ) {
-			$aubrey = 'Aubrey Portwood <aubreypwd@icloud.com>';
-
 			$name = $this->cli_args->get_arg( 'name' );
 
 			$author = $this->cli_args->get_arg( 'author' );
@@ -238,7 +236,7 @@ class Replace_CLI {
 				'company-slug'                                                                                                     => $this->slugify( $this->cli_args->get_arg( 'company' ) ),
 				'Project Description'                                                                                              => $description,
 				'http://your-website.com'                                                                                          => $website,
-				$aubrey                                                                                                            => $author,
+				'Aubrey Portwood <aubreypwd@icloud.com>'                                                                           => $author,
 
 				// @package
 				'aubreypwd\wpkickstart\\'                                                                                          => "{$classy_company}" . '\\' . $classy_name . '\\',
