@@ -1,0 +1,14 @@
+{
+	"name": "aubreypwd/wpkickstart",
+	"description": "",
+	"homepage": "https://github.com/aubreypwd/wpkickstart",
+	"license": "GPL-2.0+",
+	"support": {
+		"issues": "https://github.com/aubreypwd/wpkickstart/issues",
+		"source": "https://github.com/aubreypwd/wpkickstart"
+	},
+	"type": "wordpress-plugin",
+	"require": {
+		"composer/installers": "~1.0"
+	}
+}
