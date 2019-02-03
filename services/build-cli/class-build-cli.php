@@ -48,7 +48,6 @@ class Build_CLI {
 		'services/release-cli', // Our own release process.
 		'dist', // Any dist files.
 		'/vendor', // Composers vendor library.
-		'components/vendor', // Our component vendor stuff.
 	];
 
 	/**
@@ -413,15 +412,13 @@ class Build_CLI {
 
 		$dir = dirname( $file );
 
-		$relative_dir = $this->get_relative_file( $dir );
-
-		$relative_file = $this->get_relative_file( $file );
-
 		if ( ! file_exists( $dir ) ) {
 			return; // The directory doesn't even exist, already done.
 		}
 
-		error_log( $relative_dir );
+		$relative_dir = $this->get_relative_file( $dir );
+
+		$relative_file = $this->get_relative_file( $file );
 
 		if ( in_array( $relative_dir, $this->file_removals, true ) ) {
 			$this->fs->delete( $dir, true );
@@ -434,6 +431,11 @@ class Build_CLI {
 
 		if ( in_array( $relative_file, $this->file_removals, true ) ) {
 			$this->fs->delete( $file );
+			return;
+		}
+
+		if ( stristr( $relative_file, 'components/vendor/' ) ) {
+			$this->fs->delete( $dir );
 		}
 	}
 
