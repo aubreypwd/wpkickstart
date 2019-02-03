@@ -26,7 +26,7 @@ module.exports = function( grunt ) {
 			dist: {
 				options: {
 					domainPath: '/languages/',
-					potFilename: 'company-slug-project-slug.pot',
+					potFilename: 'project-slug.pot',
 					type: 'wp-plugin'
 				}
 			}
