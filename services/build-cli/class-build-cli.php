@@ -48,7 +48,7 @@ class Build_CLI {
 		'services/release-cli', // Our own release process.
 		'dist', // Any dist files.
 		'/vendor', // Composers vendor library.
-		'/components/vendor', // Our component vendor stuff.
+		'components/vendor', // Our component vendor stuff.
 	];
 
 	/**
@@ -420,6 +420,8 @@ class Build_CLI {
 		if ( ! file_exists( $dir ) ) {
 			return; // The directory doesn't even exist, already done.
 		}
+
+		error_log( $relative_dir );
 
 		if ( in_array( $relative_dir, $this->file_removals, true ) ) {
 			$this->fs->delete( $dir, true );
