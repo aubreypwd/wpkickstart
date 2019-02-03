@@ -29,7 +29,7 @@ class Build_CLI {
 	 */
 	private $line_removals = [
 		'app/class-app.php' => [ 396, 397, 398, 399, 400, 401, 402, 403, 404 ],
-		'composer.json'     => [ 2, 3, 4, 5, 6, 7, 12, 13, 14, 15, 20 ],
+		'composer.json'     => [ 12, 13, 14, 15, 20 ],
 	];
 
 	/**
