@@ -238,7 +238,7 @@ class Replace_CLI {
 				$aubrey                        => $author,
 
 				// Composer.json
-				'"name": "aubreypwd/wpkickstart",' => str_replace( 'wpkickstart', $plugin_slug, str_replace( 'aubreypwd', $company_slug, '"name": "aubreypwd/wpkickstart",' ) )
+				'"name": "aubreypwd/wpkickstart",' => str_replace( 'wpkickstart', $plugin_slug, str_replace( 'aubreypwd', $company_slug, '"name": "aubreypwd/wpkickstart",' ) ),
 				'https://github.com/aubreypwd/wpkickstart/issues' => $website,
 				'https://github.com/aubreypwd/wpkickstart' => $website,
 				'"description": "",' => str_replace( '""', "\"{$description}\"", '"description": "",' ),
