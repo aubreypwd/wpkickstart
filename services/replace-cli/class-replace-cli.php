@@ -207,8 +207,14 @@ class Replace_CLI {
 
 			$website = esc_url( $this->cli_args->get_arg( 'website' ) );
 
+			$company_slug = $this->slugify( $this->cli_args->get_arg( 'company' ) );
+
+			$plugin_slug = $this->slugify( $name );
+
 			// @codingStandardsIgnoreStart: Alignment below is madness.
 			$cached = [
+
+				// Plugin file.
 				'Plugin Name: wpkickstart'     => "Plugin Name: {$name}",
 				'A great way to kickstart a new WordPress plugin. Just activate and run <code>wp kickstart</code> to get started.'
 				                               => $this->cli_args->get_arg( 'description' ),
@@ -216,10 +222,11 @@ class Replace_CLI {
 				'Author URI:  http://github.com/aubreypwd/wpkickstart'
 				                               => "Author URI:  {$website}",
 
+				// Other stuff.
 				'2.0.0'                        => $this->cli_args->get_arg( 'since' ),
-				'x.x.x'                     => $this->cli_args->get_arg( 'since' ),
+				'x.x.x'                        => $this->cli_args->get_arg( 'since' ),
 				'Your Name <your@email.com>'   => $author,
-				'project-slug'                 => $this->slugify( $name ),
+				'project-slug'                 => $plugin_slug,
 				'CompanyNamespace'             => $this->classify( $this->cli_args->get_arg( 'company' ) ),
 				'Company Name'                 => $this->cli_args->get_arg( 'company' ),
 				'ProjectNamespace'             => $this->classify( $name ),
@@ -227,6 +234,11 @@ class Replace_CLI {
 				'Project Description'          => $this->cli_args->get_arg( 'description' ),
 				'http://your-website.com'      => $website,
 				$aubrey                        => $author,
+
+				// Composer.json
+				'"name": "aubreypwd/wpkickstart",' => str_replace( 'wpkickstart', $plugin_slug, str_replace( 'aubreypwd', $company_slug, '"name": "aubreypwd/wpkickstart",' ) )
+				'https://github.com/aubreypwd/wpkickstart/issues' => $website,
+				'https://github.com/aubreypwd/wpkickstart' => $website,
 			];
 			// @codingStandardsIgnoreEnd
 		}
