@@ -242,6 +242,7 @@ class Replace_CLI {
 				$aubrey                           => $author,
 
 				// @package
+				'aubreypwd\wpkickstart\\' => "{$classy_company}" . '\\' . $classy_name . '\\',
 				'@package  aubreypwd\wpkickstart' => "@package  {$classy_company}" . '\\' . $classy_name,
 				'@package aubreypwd\wpkickstart' => "@package {$classy_company}" . '\\' . $classy_name,
 				'@package     aubreypwd\wpkickstart' => "@package     {$classy_company}" . '\\' . $classy_name,
