@@ -44,9 +44,9 @@ class Build_CLI {
 		'components/cli-args',
 		'components/example-component',
 		'services/example-service',
-		'services/replace-cli',
-		'services/build-zip-cli',
-		'dist',
+		'services/build-cli', // Our own build process.
+		'services/release-cli', // Our own release process.
+		'dist', // Any dist files.
 	];
 
 	/**
