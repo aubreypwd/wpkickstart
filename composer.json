@@ -1,10 +1,4 @@
 {
-	"repositories": [
-		{
-			"type": "git",
-			"url": "git@github.com:aubreypwd/wpkickstart-components.git"
-		}
-	],
 	"name": "aubreypwd/wpkickstart",
 	"description": "",
 	"homepage": "https://github.com/aubreypwd/wpkickstart",
