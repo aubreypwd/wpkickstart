@@ -49,6 +49,7 @@ class Build_CLI {
 		'vendor', // Composers vendor library.
 		'composer.lock',
 		'README.md',
+		'package-lock.json',
 	];
 
 	/**

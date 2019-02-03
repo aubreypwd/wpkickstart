@@ -45,7 +45,7 @@ class Test_App extends WP_UnitTestCase {
 	/**
 	 * Test if App class exists.
 	 *
-	 * @author Aubrey Portwood
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 */
 	public function test_app_class_exists() {
@@ -55,7 +55,7 @@ class Test_App extends WP_UnitTestCase {
 	/**
 	 * Test that app() calls the App instance.
 	 *
-	 * @author Aubrey Portwood
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 */
 	public function test_app_function() {
@@ -65,7 +65,7 @@ class Test_App extends WP_UnitTestCase {
 	/**
 	 * Test that the version method is set to something proper.
 	 *
-	 * @author Aubrey Portwood
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 */
 	public function test_version() {
@@ -75,7 +75,7 @@ class Test_App extends WP_UnitTestCase {
 	/**
 	 * Test that the url method is set to something proper.
 	 *
-	 * @author Aubrey Portwood
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 */
 	public function test_url() {
@@ -86,7 +86,7 @@ class Test_App extends WP_UnitTestCase {
 	/**
 	 * Test for a semantic version.
 	 *
-	 * @author Aubrey Portwood
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 */
 	public function test_semver() {
@@ -97,7 +97,7 @@ class Test_App extends WP_UnitTestCase {
 	/**
 	 * Test that the app's properties are properly set.
 	 *
-	 * @author Aubrey Portwood
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 */
 	public function test_app_properties() {
@@ -134,7 +134,7 @@ class Test_App extends WP_UnitTestCase {
 	/**
 	 * Test that autoloading functions exist.
 	 *
-	 * @author Aubrey Portwood
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 */
 	public function test_autoloader() {
@@ -148,7 +148,7 @@ class Test_App extends WP_UnitTestCase {
 	/**
 	 * Test that all folders are protected against directory browsing.
 	 *
-	 * @author Aubrey Portwood
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 */
 	public function test_all_folders_are_protected() {
@@ -178,7 +178,7 @@ class Test_App extends WP_UnitTestCase {
 	 *
 	 * @param string $function_name The function name.
 	 *
-	 * @author Aubrey Portwood
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 */
 	private function method_exists_is_not_empty_and_a_string( $function_name ) {
@@ -190,7 +190,7 @@ class Test_App extends WP_UnitTestCase {
 	/**
 	 * Files to ignore for testing all folders are protected.
 	 *
-	 * @author Aubrey Portwood
+	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  2.0.0
 	 *
 	 * @param  string $file     The file.
