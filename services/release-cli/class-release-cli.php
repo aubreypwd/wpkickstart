@@ -172,6 +172,14 @@ class Release_CLI {
 				continue;
 			}
 
+			if ( stristr( $file_path, '.DS_Store' ) ) {
+				continue;
+			}
+
+			if ( stristr( $file_path, 'node_modules/' ) ) {
+				continue;
+			}
+
 			$relative_path = substr( $file_path, strlen( $path ) + 1 );
 
 			$this->cli->success( "Added {$file_path}" );
