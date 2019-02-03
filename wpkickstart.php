@@ -10,7 +10,7 @@
  * License:     GPLv2
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  *
- * @since       2.0.0
+ * @since       1.0.0
  * @package     aubreypwd\wpkickstart
  *
  * Built with:  wpkickstart
