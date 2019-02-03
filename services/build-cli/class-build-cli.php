@@ -238,7 +238,7 @@ class Build_CLI {
 
 				// Versions.
 				'1.0.0'                                                                                                            => $this->cli_args->get_arg( 'since' ),
-				'1.0.0'                                                                                                            => $this->cli_args->get_arg( 'since' ),
+				'1.1.0'                                                                                                            => $this->cli_args->get_arg( 'since' ),
 				'1.2.0'                                                                                                            => $this->cli_args->get_arg( 'since' ),
 				'2.0.0'                                                                                                            => $this->cli_args->get_arg( 'since' ),
 				'x.x.x'                                                                                                            => $this->cli_args->get_arg( 'since' ),
