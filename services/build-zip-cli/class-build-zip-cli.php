@@ -20,34 +20,6 @@ use function \CompanyNamespace\ProjectNamespace\app;
 class Build_ZIP_CLI {
 
 	/**
-	 * Line removals.
-	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
-	 * @since 2.0.0
-	 *
-	 * @var array
-	 */
-	private $line_removals = [
-		'app/class-app.php' => [ 396, 397, 398, 399, 400, 401 ],
-	];
-
-	/**
-	 * File removals.
-	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
-	 * @since 2.0.0
-	 *
-	 * @var array
-	 */
-	private $file_removals = [
-		'components/cli',
-		'components/cli-args',
-		'components/example-component',
-		'services/example-service',
-		'services/replace-cli',
-	];
-
-	/**
 	 * CLI arguments.
 	 *
 	 * @author Aubrey Portwood <aubreypwd@icloud.com>
@@ -56,33 +28,6 @@ class Build_ZIP_CLI {
 	 * @var \WebDevStudios\CLI_Args\CLI_Args
 	 */
 	private $cli_args;
-
-	/**
-	 * Only work on these extensions.
-	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
-	 * @since 2.0.0
-	 *
-	 * @var array
-	 */
-	private $extensions = [
-		'.php',
-		'.md',
-		'.js',
-		'.json',
-	];
-
-	/**
-	 * Directories to ignore modifications.
-	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
-	 * @since 2.0.0
-	 *
-	 * @var array
-	 */
-	private $ignore_dirs = [
-		'vendor',
-	];
 
 	/**
 	 * WP File System.
@@ -149,13 +94,13 @@ class Build_ZIP_CLI {
 			return;
 		}
 
-		\WP_CLI::add_command( 'build kickstart', [ $this, 'command' ], [
+		\WP_CLI::add_command( 'build', [ $this, 'command' ], [
 			'shortdesc' => __( 'Will help you convert the installed wpkickstart plugin into a new plugin and perform all of the search/replacements.', 'wds-migrate-subsite' ),
 			'synopsis'  => [
 				[
 					'type'        => 'assoc',
 					'name'        => 'to',
-					'optional'    => false,
+					'optional'    => true,
 					'description' => __( 'Where to put the resulting .zip file e.g. `/tmp`.', 'wpkickstart' ),
 				],
 			],
@@ -174,37 +119,54 @@ class Build_ZIP_CLI {
 	public function command( array $args, array $assoc_args ) {
 		$this->cli_args->set_args( $args, $assoc_args ); // Ensure we have an easy way to get arguments.
 
-		$tmpdir = untrailingslashit( sys_get_temp_dir() );
-
-		$tmpplugindir = "{$tmpdir}/wpkickstart";
-
-		error_log( print_r( (object) array(
-			'line' => __LINE__,
-			'file' => __FILE__,
-			'dump' => array(
-				$tmpplugindir,
-			),
-		), true ) );
-
-		if ( file_exists( $tmpplugindir ) ) {
-			$this->fs->rmdir( $tmpplugindir, true );
-		}
-
-		$this->fs->mkdir( $tmpplugindir );
-
-		$zipfile = "{$tmpdir}/wpkickstart.zip";
-
-		if ( file_exists( $zipfile ) ) {
-			$this->fs->delete( $zipfile );
-			return;
-		}
-
 		$plugindir = dirname( app()->plugin_file );
 
-		$this->fs->copy( $plugindir, $tmpplugindir );
+		$pluginsdir = dirname( $plugindir );
 
-		// Copy our plugin to a new location.
-		// exec( "copy -Rfva {$plugindir} {$tmpplugindir}");
+		$to = ! empty( $this->cli_args->get_arg( 'to' ) ) ? $this->cli_args->get_arg( 'to' ) : "{$pluginsdir}/wpkickstart.zip";
 
+		$this->cli->log( "Building to {$to}..." );
+
+		$this->zipdir( $plugindir, $to );
+
+		$this->cli->success( "Built {$to}!" );
+	}
+
+	/**
+	 * Zip up a directory.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  2.0.0
+	 *
+	 * @param  string $path The path to zip up.
+	 * @param  string $to   Where to zip it to.
+	 */
+	private function zipdir( $path, $to ) {
+		$zip = new \ZipArchive();
+
+		$zip->open( $to, \ZipArchive::CREATE | \ZipArchive::OVERWRITE );
+
+		$files = new \RecursiveIteratorIterator( new \RecursiveDirectoryIterator( $path ) );
+
+		foreach ( $files as $name => $file ) {
+			if ( $file->isDir() ) {
+				flush();
+				continue;
+			}
+
+			$path = $file->getRealPath();
+
+			if ( stristr( $path, '.git' ) ) {
+				continue;
+			}
+
+			$this->cli->success( "Added {$path}" );
+
+			$rel_path = substr( $path, strlen( $path ) + 1 );
+
+			$zip->addFile( $path, $rel_path );
+		}
+
+		$zip->close();
 	}
 }

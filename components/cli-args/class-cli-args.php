@@ -87,7 +87,7 @@ class CLI_Args {
 	 */
 	public function get_arg( $arg ) {
 		if ( empty( $this->cli_args ) ) {
-			throw new \Exception( 'self::set_args() has not been run yet.' );
+			return '';
 		}
 
 		if ( ! class_exists( '\WP_CLI' ) ) {
