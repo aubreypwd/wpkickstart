@@ -138,6 +138,8 @@ class Build_CLI {
 	 * @since  2.0.0
 	 *
 	 * @param  string $file The file.
+	 *
+	 * @return void
 	 */
 	public function rename_plugin_file( $file ) {
 		if ( is_dir( $file ) ) {
