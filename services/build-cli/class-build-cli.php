@@ -68,7 +68,7 @@ class Build_CLI {
 	 *
 	 * @var boolean
 	 */
-	private $dry_run = false;
+	private $dryrun = false;
 
 	/**
 	 * Only work on these extensions.
@@ -133,7 +133,7 @@ class Build_CLI {
 
 			$this->cli_args = new \aubreypwd\WP_KickStart_Components\CLI_Args();
 
-			$this->dry_run = defined( 'WPKICKSTART_DRY_RUN' ) && WPKICKSTART_DRY_RUN ? true : false;
+			$this->dryrun = defined( 'WPKICKSTART_DRY_RUN' ) && WPKICKSTART_DRY_RUN ? true : false;
 		}
 	}
 
