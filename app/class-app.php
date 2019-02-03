@@ -397,11 +397,11 @@ class App {
 		// An example service so you can see how things work, below cli command should remove this.
 		// $this->example_service = new Service\Example_Service();
 
-		// Adds wp kickstart for replacements to make this framework into your own plugin.
-		$this->replace_cli = new \aubreypwd\wpkickstart\Service\Replace_CLI();
+		// Adds wp kickstart build for replacements to make this framework into your own plugin.
+		$this->build_cli = new \aubreypwd\wpkickstart\Service\Build_CLI();
 
-		// Adds wp build kickstart so we can distribute a zip file for use in installation.
-		$this->build_zip_cli = new \aubreypwd\wpkickstart\Service\Replease_CLI();
+		// Adds wp kickstart release so we can distribute a zip file for use in installation.
+		$this->release_cli = new \aubreypwd\wpkickstart\Service\Release_CLI();
 	}
 
 	/**
