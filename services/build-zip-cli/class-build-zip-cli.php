@@ -152,6 +152,8 @@ class Build_ZIP_CLI {
 	 * @param  string $to   Where to zip it to.
 	 */
 	private function zipdir( $path, $to ) {
+		$path = realpath( $path );
+
 		$zip = new \ZipArchive();
 
 		$zip->open( $to, \ZipArchive::CREATE | \ZipArchive::OVERWRITE );
@@ -164,17 +166,17 @@ class Build_ZIP_CLI {
 				continue;
 			}
 
-			$path = $file->getRealPath();
+			$filePath = $file->getRealPath();
 
-			if ( stristr( $path, '.git' ) ) {
+			if ( stristr( $filePath, '.git' ) ) {
 				continue;
 			}
 
-			$this->cli->success( "Added {$path}" );
+			$relativePath = substr( $filePath, strlen( $path ) + 1 );
 
-			$rel_path = substr( $path, strlen( $path ) + 1 );
+			$this->cli->success( "Added {$filePath}" );
 
-			$zip->addFile( $path, $rel_path );
+			$zip->addFile( $filePath, $relativePath );
 		}
 
 		$zip->close();
