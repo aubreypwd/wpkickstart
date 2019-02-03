@@ -46,6 +46,7 @@ class Build_CLI {
 		'services/example-service',
 		'services/replace-cli',
 		'services/build-zip-cli',
+		'dist',
 	];
 
 	/**
