@@ -47,7 +47,7 @@ class Build_CLI {
 		'services/build-cli', // Our own build process.
 		'services/release-cli', // Our own release process.
 		'dist', // Any dist files.
-		'/vendor', // Composers vendor library.
+		'vendor', // Composers vendor library.
 	];
 
 	/**
@@ -69,33 +69,6 @@ class Build_CLI {
 	 * @var boolean
 	 */
 	private $dryrun = false;
-
-	/**
-	 * Only work on these extensions.
-	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
-	 * @since 2.0.0
-	 *
-	 * @var array
-	 */
-	private $extensions = [
-		'.php',
-		'.md',
-		'.js',
-		'.json',
-	];
-
-	/**
-	 * Directories to ignore modifications.
-	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
-	 * @since 2.0.0
-	 *
-	 * @var array
-	 */
-	private $ignore_dirs = [
-		'vendor',
-	];
 
 	/**
 	 * WP File System.
@@ -165,6 +138,13 @@ class Build_CLI {
 	 * @param  string $file The file.
 	 */
 	public function rename_plugin_file( $file ) {
+		if ( is_dir( $file ) ) {
+			return;
+		}
+
+		if ( ! $this->is_code_file( $file ) ) {
+			return;
+		}
 
 		// Only when the file is the kickstart file.
 		if ( 'wpkickstart.php' === basename( $file ) ) {
@@ -188,6 +168,14 @@ class Build_CLI {
 	 * @return void         Early bail if file does not exist or is empty.
 	 */
 	public function replace_strings( $file ) {
+		if ( is_dir( $file ) ) {
+			return;
+		}
+
+		if ( ! $this->is_code_file( $file ) ) {
+			return;
+		}
+
 		$replacements = $this->get_replacements();
 
 		if ( ! file_exists( $file ) ) {
@@ -443,6 +431,12 @@ class Build_CLI {
 
 		$relative_file = $this->get_relative_file( $file );
 
+		if ( stristr( $relative_file, 'components/vendor/' ) ) {
+			if ( ! $this->dryrun ) {
+				$this->fs->delete( $dir );
+			}
+		}
+
 		if ( in_array( $relative_dir, $this->file_removals, true ) ) {
 			if ( ! $this->dryrun ) {
 				$this->fs->delete( $dir, true );
@@ -461,12 +455,6 @@ class Build_CLI {
 			}
 
 			return;
-		}
-
-		if ( stristr( $relative_file, 'components/vendor/' ) ) {
-			if ( ! $this->dryrun ) {
-				$this->fs->delete( $dir );
-			}
 		}
 	}
 
@@ -499,19 +487,7 @@ class Build_CLI {
 				continue;
 			}
 
-			if ( is_dir( $file ) ) {
-				continue;
-			}
-
 			if ( ! app()->is_our_file( $file ) ) {
-				continue;
-			}
-
-			if ( ! $this->has_valid_extension( $file ) ) {
-				continue;
-			}
-
-			if ( $this->ignore( $file ) ) {
 				continue;
 			}
 
@@ -539,6 +515,14 @@ class Build_CLI {
 	 * @return void       Early bail if not a file to remove lines.
 	 */
 	public function remove_lines( $file ) {
+		if ( is_dir( $file ) ) {
+			return;
+		}
+
+		if ( ! $this->is_code_file( $file ) ) {
+			return;
+		}
+
 		$plugin_dir = dirname( app()->plugin_file );
 
 		$relative_file = ltrim( str_replace( $plugin_dir, '', $file ), '/' );
@@ -567,25 +551,6 @@ class Build_CLI {
 	}
 
 	/**
-	 * Should we ignore a file?
-	 *
-	 * @author Aubrey Portwood <aubreypwd@icloud.com>
-	 * @since  2.0.0
-	 *
-	 * @param  string $file The file.
-	 * @return boolean      True if we should, false if not.
-	 */
-	private function ignore( $file ) {
-		foreach ( $this->ignore_dirs as $ignore_dir ) {
-			if ( stristr( $file, trailingslashit( $ignore_dir ) ) ) {
-				return true;
-			}
-		}
-
-		return false;
-	}
-
-	/**
 	 * Does a file have a valid extension?
 	 *
 	 * @author Aubrey Portwood <aubreypwd@icloud.com>
@@ -599,6 +564,39 @@ class Build_CLI {
 			if ( stristr( $file, $extension ) ) {
 				return true;
 			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Is a file a "code" file?
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  2.0.0
+	 *
+	 * @param  string $file The file.
+	 * @return boolean      True if it is, false if not.
+	 */
+	private function is_code_file( $file ) {
+		if ( stristr( $file, '.php' ) ) {
+			return true;
+		}
+
+		if ( stristr( $file, '.js' ) ) {
+			return true;
+		}
+
+		if ( stristr( $file, '.css' ) ) {
+			return true;
+		}
+
+		if ( stristr( $file, '.json' ) ) {
+			return true;
+		}
+
+		if ( stristr( $file, '.md' ) ) {
+			return true;
 		}
 
 		return false;
