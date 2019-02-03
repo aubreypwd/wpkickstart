@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9fea06f819c1e5147ac995085c3dc0a4",
+    "content-hash": "f792728ecd0a503a72b85ca55c319e8b",
     "packages": [
         {
             "name": "aubreypwd/wpkickstart-components",
@@ -12,19 +12,13 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:aubreypwd/wpkickstart-components.git",
-                "reference": "d293cba5a84051d5f595bc328b0db685cc52ccb7"
+                "reference": "be3221452dccf52c4d38f7ca39b799c803cfcfb1"
             },
             "require": {
-                "composer/installers": "~1.0"
+                "composer/installers": "*",
+                "oomphinc/composer-installers-extender": "*"
             },
-            "type": "wpkickstart-component",
-            "extra": {
-                "installer-paths": {
-                    "components/{$name}": [
-                        "aubreypwd/wpkickstart-component"
-                    ]
-                }
-            },
+            "type": "library",
             "license": [
                 "GPL-2.0+"
             ],
@@ -34,7 +28,7 @@
                 "issues": "https://github.com/aubreypwd/wpkickstart-components/issues",
                 "source": "https://github.com/aubreypwd/wpkickstart-components"
             },
-            "time": "2019-02-03T09:31:46+00:00"
+            "time": "2019-02-03T10:08:06+00:00"
         },
         {
             "name": "composer/installers",
@@ -155,6 +149,48 @@
                 "zikula"
             ],
             "time": "2018-08-27T06:10:37+00:00"
+        },
+        {
+            "name": "oomphinc/composer-installers-extender",
+            "version": "v1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/oomphinc/composer-installers-extender.git",
+                "reference": "ca1c4b16b0905c81d1e77e608f36a2eff1a56f56"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/oomphinc/composer-installers-extender/zipball/ca1c4b16b0905c81d1e77e608f36a2eff1a56f56",
+                "reference": "ca1c4b16b0905c81d1e77e608f36a2eff1a56f56",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0",
+                "composer/installers": "^1.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "OomphInc\\ComposerInstallersExtender\\Plugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "OomphInc\\ComposerInstallersExtender\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stephen Beemsterboer",
+                    "email": "stephen@oomphinc.com",
+                    "homepage": "https://github.com/balbuf"
+                }
+            ],
+            "description": "Extend the composer/installers plugin to accept any arbitrary package type.",
+            "homepage": "http://www.oomphinc.com/",
+            "time": "2017-03-31T16:57:39+00:00"
         }
     ],
     "packages-dev": [],

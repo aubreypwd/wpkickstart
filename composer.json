@@ -15,12 +15,14 @@
 	},
 	"type": "wordpress-plugin",
 	"require": {
-		"composer/installers": "~1.0",
+		"composer/installers": "*",
+		"oomphinc/composer-installers-extender": "*",
 		"aubreypwd/wpkickstart-components": "dev-master"
 	},
 	"extra": {
+		"installer-types": ["library"],
 		"installer-paths": {
-			"components/{$name}": ["aubreypwd/wpkickstart-components"]
+			"components/vendor/{$vendor}/{$name}/": ["type:library"]
 		}
 	}
 }
