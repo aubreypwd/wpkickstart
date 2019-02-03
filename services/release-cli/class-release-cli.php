@@ -55,6 +55,19 @@ class Release_CLI {
 	private $cli;
 
 	/**
+	 * Directories to ignore.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  2.0.0
+	 *
+	 * @var array
+	 */
+	private $ignore_relative_dirs = [
+		'/vendor',
+		'/dist',
+	];
+
+	/**
 	 * Construct.
 	 *
 	 * @author Aubrey Portwood <aubreypwd@icloud.com>
@@ -150,9 +163,13 @@ class Release_CLI {
 	private function zipdir( $path, $to ) {
 		$path = realpath( $path );
 
+		$plugin_dir = dirname( app()->plugin_file );
+
 		$dirto = dirname( $to );
 
 		if ( ! file_exists( $dirto ) ) {
+
+			// @codingStandardsIgnoreLine: Want to stop notices.
 			@$this->fs->mkdir( $dirto );
 		}
 
@@ -170,25 +187,39 @@ class Release_CLI {
 
 			$file_path = $file->getRealPath();
 
-			if ( stristr( $file_path, '.git' ) ) {
+			$lslash_relative_path = str_replace( $plugin_dir, '', $file_path );
+
+			if ( stristr( $lslash_relative_path, '.git' ) ) {
+				continue; // Anything git.
+			}
+
+			if ( stristr( $lslash_relative_path, 'dist/' ) ) {
 				continue;
 			}
 
-			if ( stristr( $file_path, 'dist/' ) ) {
-				continue;
+			if ( stristr( $lslash_relative_path, '.DS_Store' ) ) {
+				continue; // Any .DS_Store.
 			}
 
-			if ( stristr( $file_path, '.DS_Store' ) ) {
-				continue;
+			if ( stristr( $lslash_relative_path, 'node_modules/' ) ) {
+				continue; // Any node_modules.
 			}
 
-			if ( stristr( $file_path, 'node_modules/' ) ) {
+			if ( stristr( $lslash_relative_path, 'composer.json' ) ) {
+				continue; // Any composer.json.
+			}
+
+			$parts = explode( '/', dirname( $lslash_relative_path ) );
+
+			$lslash_relative_base = '/' . trim( $parts[1] );
+
+			if ( in_array( $lslash_relative_base, array_values( $this->ignore_relative_dirs ), true ) ) {
 				continue;
 			}
 
 			$relative_path = substr( $file_path, strlen( $path ) + 1 );
 
-			$this->cli->success( "Added {$file_path}" );
+			$this->cli->success( "Added {$lslash_relative_path}" );
 
 			$zip->addFile( $file_path, $relative_path );
 		}

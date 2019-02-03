@@ -47,6 +47,7 @@ class Build_CLI {
 		'services/build-cli', // Our own build process.
 		'services/release-cli', // Our own release process.
 		'dist', // Any dist files.
+		'/vendor', // Composers vendor library.
 	];
 
 	/**
