@@ -3,7 +3,7 @@
  * App Tests.
  *
  * @package aubreypwd\wpkickstart
- * @since   2.0.0
+ * @since   1.1.0
  */
 
 namespace aubreypwd\wpkickstart;
@@ -17,7 +17,7 @@ use \RecursiveIteratorIterator;
 /**
  * App Tests.
  *
- * @since   2.0.0
+ * @since   1.1.0
  * @package aubreypwd\wpkickstart
  */
 class Test_App extends WP_UnitTestCase {
@@ -26,7 +26,7 @@ class Test_App extends WP_UnitTestCase {
 	 * The plugin file.
 	 *
 	 * @author Aubrey Portwood <code@aubreypwd.com>
-	 * @since  2.0.0
+	 * @since  1.1.0
 	 * @var [type]
 	 */
 	public $plugin_file;
@@ -35,7 +35,7 @@ class Test_App extends WP_UnitTestCase {
 	 * Construct.
 	 *
 	 * @author Aubrey Portwood <code@aubreypwd.com>
-	 * @since  2.0.0
+	 * @since  1.1.0
 	 */
 	public function __construct() {
 		parent::__construct();
@@ -46,7 +46,7 @@ class Test_App extends WP_UnitTestCase {
 	 * Test if App class exists.
 	 *
 	 * @author Aubrey Portwood <code@aubreypwd.com>
-	 * @since  2.0.0
+	 * @since  1.1.0
 	 */
 	public function test_app_class_exists() {
 		$this->assertTrue( class_exists( 'aubreypwd\wpkickstart\App' ), 'aubreypwd\wpkickstart\App class should always exist so we can create it.' );
@@ -56,7 +56,7 @@ class Test_App extends WP_UnitTestCase {
 	 * Test that app() calls the App instance.
 	 *
 	 * @author Aubrey Portwood <code@aubreypwd.com>
-	 * @since  2.0.0
+	 * @since  1.1.0
 	 */
 	public function test_app_function() {
 		$this->assertTrue( is_a( app(), 'aubreypwd\wpkickstart\App' ), 'app() should always be an instance of aubreypwd\wpkickstart\App.' );
@@ -66,7 +66,7 @@ class Test_App extends WP_UnitTestCase {
 	 * Test that the version method is set to something proper.
 	 *
 	 * @author Aubrey Portwood <code@aubreypwd.com>
-	 * @since  2.0.0
+	 * @since  1.1.0
 	 */
 	public function test_version() {
 		$this->method_exists_is_not_empty_and_a_string( 'version' );
@@ -76,7 +76,7 @@ class Test_App extends WP_UnitTestCase {
 	 * Test that the url method is set to something proper.
 	 *
 	 * @author Aubrey Portwood <code@aubreypwd.com>
-	 * @since  2.0.0
+	 * @since  1.1.0
 	 */
 	public function test_url() {
 		$this->method_exists_is_not_empty_and_a_string( 'url' );
@@ -87,18 +87,18 @@ class Test_App extends WP_UnitTestCase {
 	 * Test for a semantic version.
 	 *
 	 * @author Aubrey Portwood <code@aubreypwd.com>
-	 * @since  2.0.0
+	 * @since  1.1.0
 	 */
 	public function test_semver() {
 		// Un-comment to enable forced semver.
-		$this->assertTrue( version_compare( app()->version(), '0.0.0', '>=' ), 'Plugin version should always be semantic: 0.0.0 or 1.0 or 1.1.1, etc. Note, 2.0.0 will need to be replaced with a semantic value.' ); // @codingStandardsIgnoreLine
+		$this->assertTrue( version_compare( app()->version(), '0.0.0', '>=' ), 'Plugin version should always be semantic: 0.0.0 or 1.0 or 1.1.1, etc. Note, 1.1.0 will need to be replaced with a semantic value.' ); // @codingStandardsIgnoreLine
 	}
 
 	/**
 	 * Test that the app's properties are properly set.
 	 *
 	 * @author Aubrey Portwood <code@aubreypwd.com>
-	 * @since  2.0.0
+	 * @since  1.1.0
 	 */
 	public function test_app_properties() {
 
@@ -135,7 +135,7 @@ class Test_App extends WP_UnitTestCase {
 	 * Test that autoloading functions exist.
 	 *
 	 * @author Aubrey Portwood <code@aubreypwd.com>
-	 * @since  2.0.0
+	 * @since  1.1.0
 	 */
 	public function test_autoloader() {
 
@@ -149,7 +149,7 @@ class Test_App extends WP_UnitTestCase {
 	 * Test that all folders are protected against directory browsing.
 	 *
 	 * @author Aubrey Portwood <code@aubreypwd.com>
-	 * @since  2.0.0
+	 * @since  1.1.0
 	 */
 	public function test_all_folders_are_protected() {
 
@@ -179,7 +179,7 @@ class Test_App extends WP_UnitTestCase {
 	 * @param string $function_name The function name.
 	 *
 	 * @author Aubrey Portwood <code@aubreypwd.com>
-	 * @since  2.0.0
+	 * @since  1.1.0
 	 */
 	private function method_exists_is_not_empty_and_a_string( $function_name ) {
 		$this->assertTrue( method_exists( app(), $function_name ), "App::{$function_name} method must exist, it could be used throughout the plugin." );
@@ -191,7 +191,7 @@ class Test_App extends WP_UnitTestCase {
 	 * Files to ignore for testing all folders are protected.
 	 *
 	 * @author Aubrey Portwood <code@aubreypwd.com>
-	 * @since  2.0.0
+	 * @since  1.1.0
 	 *
 	 * @param  string $file     The file.
 	 * @param  string $key      The key.

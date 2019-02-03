@@ -17,7 +17,7 @@ use Exception;
  * attach it to this class using attach_services() method below
  * and you can call it with app().
  *
- * @since 2.0.0
+ * @since 1.0.0
  */
 class App {
 
@@ -26,7 +26,7 @@ class App {
 	 *
 	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @var    string
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 */
 	public $basename = '';
 
@@ -35,7 +35,7 @@ class App {
 	 *
 	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @var    string
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 */
 	public $url = '';
 
@@ -44,14 +44,14 @@ class App {
 	 *
 	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @var    string
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 */
 	public $path = '';
 
 	/**
 	 * Is WP_DEBUG set?
 	 *
-	 * @since  2.0.0
+	 * @since  1.1.0
 	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 *
 	 * @var boolean
@@ -61,7 +61,7 @@ class App {
 	/**
 	 * The plugin file.
 	 *
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 *
 	 * @var string
@@ -71,7 +71,7 @@ class App {
 	/**
 	 * The plugin headers.
 	 *
-	 * @since  2.0.0
+	 * @since  1.1.0
 	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 *
 	 * @var array
@@ -82,7 +82,7 @@ class App {
 	 * Construct.
 	 *
 	 * @author Aubrey Portwood <code@aubreypwd.com>
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 *
 	 * @param string $plugin_file The plugin file, usually __FILE__ of the base plugin.
 	 *
@@ -143,7 +143,7 @@ class App {
 	/**
 	 * Register the autoloader.
 	 *
-	 * @since 2.0.0
+	 * @since  1.0.0
 	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 */
 	private function auto_loader() {
@@ -156,7 +156,7 @@ class App {
 	 * Require classes.
 	 *
 	 * @author Aubrey Portwood <code@aubreypwd.com>
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 *
 	 * @param string $class_name Fully qualified name of class to try and load.
 	 */
@@ -176,7 +176,7 @@ class App {
 	 * - /services/
 	 *
 	 * @author Aubrey Portwood <code@aubreypwd.com>
-	 * @since  2.0.0
+	 * @since  1.1.0
 	 *
 	 * @param  array $parts  The parts from self::autoload().
 	 * @return void          Early bail once we load the thing.
@@ -336,7 +336,7 @@ class App {
 	 * Get a directory for autoload.
 	 *
 	 * @author Aubrey Portwood <code@aubreypwd.com>
-	 * @since  2.0.0
+	 * @since  1.1.0
 	 *
 	 * @param  string $dir What dir, e.g. app.
 	 * @return string      The path to that directory.
@@ -362,7 +362,7 @@ class App {
 	 * Get the plugin version.
 	 *
 	 * @author Aubrey Portwood <code@aubreypwd.com>
-	 * @since  2.0.0
+	 * @since  1.1.0
 	 *
 	 * @return string The version of this plugin.
 	 */
@@ -374,7 +374,7 @@ class App {
 	 * Get a header.
 	 *
 	 * @author Aubrey Portwood <code@aubreypwd.com>
-	 * @since  2.0.0
+	 * @since  1.1.0
 	 *
 	 * @param  string $header The header you want, e.g. Version, Author, etc.
 	 * @return string         The value of the header.
@@ -389,7 +389,7 @@ class App {
 	 * Attach items to our app.
 	 *
 	 * @author Aubrey Portwood <code@aubreypwd.com>
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 */
 	public function attach() {
 		$this->attach_services();
@@ -424,7 +424,10 @@ class App {
 	 * Fire hooks!
 	 *
 	 * @author Aubrey Portwood <code@aubreypwd.com>
-	 * @since  2.0.0
+	 * @since  1.0.0
+	 *
+	 * @author Aubrey Portwood <code@aubreypwd.com>
+	 * @since  2.0.0           Calls automatically now.
 	 */
 	public function hooks() {
 		$this->auto_call_hooks(); // If you want to run your own hook methods, just strip this.
@@ -482,7 +485,7 @@ class App {
 	 * This plugin's url.
 	 *
 	 * @author Aubrey Portwood <code@aubreypwd.com>
-	 * @since  2.0.0
+	 * @since  1.0.0
 	 *
 	 * @param  string $path (Optional) appended path.
 	 * @return string       URL and path.

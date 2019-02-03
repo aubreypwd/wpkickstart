@@ -4,7 +4,7 @@
  *
  * @package aubreypwd\wpkickstart
  *
- * @since  2.0.0
+ * @since  1.1.0
  */
 
 $_tests_dir = getenv( 'WP_TESTS_DIR' );
@@ -18,7 +18,7 @@ require_once $_tests_dir . '/includes/functions.php';
 /**
  * Manually load the plugin being tested.
  *
- * @since  2.0.0
+ * @since  1.1.0
  * @author Aubrey Portwood <code@aubreypwd.com>
  */
 function _manually_load_plugin() {
