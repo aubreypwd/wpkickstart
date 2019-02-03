@@ -24,10 +24,15 @@ The idea is that a service or a component (really just a folder of files) can ha
 This should make the things you build in wpkickstart easily re-usable in other projects built on wpkickstart.
 
 - New [Services](/services/) and [Components](/components/) architecture ([note component namespace changes](/components/))
-- `wp` CLI replacements, see `wp kickstart help` after you activate wpkickstart to set it up for your specific project
+- `wp` CLI replacements, see `wp kickstart build` after you activate wpkickstart to set it up for your specific project
+- Easier `wp` based install, see [Installation](https://github.com/aubreypwd/wpkickstart/wiki/Installation)
 - More class flexibility (now if you `new Anything()` it will automatically autoload `class-anything.php` no matter where you put it)
 
-2.0.0 is somewhat backwards compatible with later versions, but you may have to group your classes that used to be in `includes/` with a component or a service.
+### Backwards Compatibility
+
+`2.0.0` is somewhat backwards compatible with later versions, but you may have to group your classes that used to be in `includes/` with a [component](https://github.com/aubreypwd/wpkickstart/wiki/Components) or a [service](https://github.com/aubreypwd/wpkickstart/wiki/Services).
+
+______________________
 
 ## 1.2
 
