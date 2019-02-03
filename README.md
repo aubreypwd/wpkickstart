@@ -6,17 +6,10 @@ Want to see how it works, see below and [/services/example-service](/services/ex
 
 Built and tested for PHP 5.6.20 through 7.2.0
 
-## To Use
+_________________
 
-- Clone down in the `plugins/` directory
-- Activate the plugin
-- Run `wp kickstart help` to find out how to set it up for your use
-- Once `wp kickstart` is done you will have a scaffolded plugin boilerplate ready to build on
-- Start coding your plugin
-
-_Note, the `wp kickstart` step is required as it gets rid of cruft you would otherwise have to do yourself._
-
-[Get more information on the Wiki](https://github.com/aubreypwd/wpkickstart/wiki)
+[Installation &rarr;](https://github.com/aubreypwd/wpkickstart/wiki/Installation)
+[Get more information on the Wiki &rarr;](https://github.com/aubreypwd/wpkickstart/wiki)
 
 _______________
 
