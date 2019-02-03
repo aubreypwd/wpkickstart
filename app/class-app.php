@@ -398,10 +398,10 @@ class App {
 		// $this->example_service = new Service\Example_Service();
 
 		// Adds wp kickstart for replacements to make this framework into your own plugin.
-		$this->replace_cli = new Service\Replace_CLI();
+		$this->replace_cli = new \aubreypwd\WpKickStart\Service\Replace_CLI();
 
 		// Adds wp build kickstart so we can distribute a zip file for use in installation.
-		$this->build_zip_cli = new Service\Build_ZIP_CLI();
+		$this->build_zip_cli = new \aubreypwd\WpKickStart\Service\Build_ZIP_CLI();
 	}
 
 	/**

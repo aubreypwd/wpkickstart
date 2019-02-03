@@ -8,7 +8,7 @@
  * This file will get removed when you run wp kickstart.
  */
 
-namespace CompanyNamespace\ProjectNamespace\Service;
+namespace aubreypwd\WpKickStart\Service;
 
 use function \CompanyNamespace\ProjectNamespace\app;
 

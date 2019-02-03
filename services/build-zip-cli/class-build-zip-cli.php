@@ -2,13 +2,19 @@
 /**
  * Build a zip for easy installation.
  *
+ * We use this internally to build a zip file that we can use to install
+ * easily via a URL using `wp plugin install <url>` which has to lead to a
+ * zip file.
+ *
+ * This builds that Zip file for us and removes GIT.
+ *
  * @since 2.0.0
- * @package  CompanyNamespace\ProjectNamespace
+ * @package  aubreypwd\WpKickStart
  *
  * This file will get removed when you run wp kickstart.
  */
 
-namespace CompanyNamespace\ProjectNamespace\Service;
+namespace aubreypwd\WpKickStart\Service;
 
 use function \CompanyNamespace\ProjectNamespace\app;
 
