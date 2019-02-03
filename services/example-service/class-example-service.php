@@ -9,6 +9,7 @@
  * @package  CompanyNamespace\ProjectNamespace
  */
 
+// Note the namespace here should follow the namespace of the project.
 namespace CompanyNamespace\ProjectNamespace\Service;
 
 // Since we're using the \Service namespace to separate from conflicts with components, we need to use app() from the base.
@@ -58,6 +59,8 @@ class Example_Service {
 	/**
 	 * Content.
 	 *
+	 * Here we're going to call something from a component.
+	 *
 	 * @author Aubrey Portwood
 	 * @since  2.0.0
 	 */
@@ -69,6 +72,8 @@ class Example_Service {
 
 	/**
 	 * Load styles and scripts.
+	 *
+	 * This service has it's own JS and CSS!
 	 *
 	 * @author Aubrey Portwood
 	 * @since  2.0.0
