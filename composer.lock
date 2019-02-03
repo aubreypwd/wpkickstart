@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a25809e393340d9e24fd4f658000c3ff",
+    "content-hash": "20843b5a1c05611c5643e8d7f5a46498",
     "packages": [
         {
             "name": "aubreypwd/wpkickstart-components",
