@@ -2,7 +2,7 @@
 /**
  * Application.
  *
- * @since x.x.x
+ * @since 2.0.0
  * @package  aubreypwd\wpkickstart
  */
 
@@ -17,7 +17,7 @@ use Exception;
  * attach it to this class using attach_services() method below
  * and you can call it with app().
  *
- * @since x.x.x
+ * @since 2.0.0
  */
 class App {
 
@@ -26,7 +26,7 @@ class App {
 	 *
 	 * @author Your Name <your@email.com>
 	 * @var    string
-	 * @since  x.x.x
+	 * @since  2.0.0
 	 */
 	public $basename = '';
 
@@ -35,7 +35,7 @@ class App {
 	 *
 	 * @author Your Name <your@email.com>
 	 * @var    string
-	 * @since  x.x.x
+	 * @since  2.0.0
 	 */
 	public $url = '';
 
@@ -44,14 +44,14 @@ class App {
 	 *
 	 * @author Your Name <your@email.com>
 	 * @var    string
-	 * @since  x.x.x
+	 * @since  2.0.0
 	 */
 	public $path = '';
 
 	/**
 	 * Is WP_DEBUG set?
 	 *
-	 * @since  x.x.x
+	 * @since  2.0.0
 	 * @author Your Name <your@email.com>
 	 *
 	 * @var boolean
@@ -61,7 +61,7 @@ class App {
 	/**
 	 * The plugin file.
 	 *
-	 * @since  x.x.x
+	 * @since  2.0.0
 	 * @author Your Name <your@email.com>
 	 *
 	 * @var string
@@ -71,7 +71,7 @@ class App {
 	/**
 	 * The plugin headers.
 	 *
-	 * @since  x.x.x
+	 * @since  2.0.0
 	 * @author Your Name <your@email.com>
 	 *
 	 * @var array
@@ -82,7 +82,7 @@ class App {
 	 * Construct.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  x.x.x
+	 * @since  2.0.0
 	 *
 	 * @param string $plugin_file The plugin file, usually __FILE__ of the base plugin.
 	 *
@@ -120,14 +120,30 @@ class App {
 		// Load language files.
 		load_plugin_textdomain( 'company-slug-project-slug', false, basename( dirname( $plugin_file ) ) . '/languages' );
 
-		// Loaders.
+		$this->composer_autoload();
 		$this->auto_loader();
+	}
+
+	/**
+	 * Load any composer dependancies.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  2.0.0
+	 */
+	private function composer_autoload() {
+		$plugin_dir = untrailingslashit( dirname( $this->plugin_file ) );
+
+		$autoload = "{$plugin_dir}/vendor/autoload.php";
+
+		if ( file_exists( $autoload ) ) {
+			require_once $autoload;
+		}
 	}
 
 	/**
 	 * Register the autoloader.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 * @author Your Name <your@email.com>
 	 */
 	private function auto_loader() {
@@ -140,7 +156,7 @@ class App {
 	 * Require classes.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  x.x.x
+	 * @since  2.0.0
 	 *
 	 * @param string $class_name Fully qualified name of class to try and load.
 	 */
@@ -160,7 +176,7 @@ class App {
 	 * - /services/
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  x.x.x
+	 * @since  2.0.0
 	 *
 	 * @param  array $parts  The parts from self::autoload().
 	 * @return void          Early bail once we load the thing.
@@ -195,7 +211,7 @@ class App {
 	 * Is a file in our plugin?
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  x.x.x
+	 * @since  2.0.0
 	 *
 	 * @param  mixed $file  The file (should be string, but can also be file handler).
 	 * @return boolean      True if it is and exists.
@@ -212,7 +228,7 @@ class App {
 	 * Autoload a service e.g. service/class-service.php.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  x.x.x
+	 * @since  2.0.0
 	 *
 	 * @param  array $parts The parts from self::autoload().
 	 * @return string       The path to that service class file.
@@ -254,7 +270,7 @@ class App {
 	 * Autoload a service e.g. service/class-service.php.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  x.x.x
+	 * @since  2.0.0
 	 *
 	 * @param  array $parts The parts from self::autoload().
 	 * @return string       The path to that service class file.
@@ -287,7 +303,7 @@ class App {
 	 * Get a file for including from app/.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  x.x.x
+	 * @since  2.0.0
 	 *
 	 * @param  array $parts The parts from self::autoload().
 	 * @return string       The path to that file.
@@ -300,7 +316,7 @@ class App {
 	 * Get a file for including from components/.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  x.x.x
+	 * @since  2.0.0
 	 *
 	 * @param  array $parts The parts from self::autoload().
 	 * @return string       The path to that file.
@@ -320,7 +336,7 @@ class App {
 	 * Get a directory for autoload.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  x.x.x
+	 * @since  2.0.0
 	 *
 	 * @param  string $dir What dir, e.g. app.
 	 * @return string      The path to that directory.
@@ -333,7 +349,7 @@ class App {
 	 * Generate a class filename to autoload.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  x.x.x
+	 * @since  2.0.0
 	 *
 	 * @param  array $parts  The parts from self::autoload().
 	 * @return string        The class filename.
@@ -346,7 +362,7 @@ class App {
 	 * Get the plugin version.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  x.x.x
+	 * @since  2.0.0
 	 *
 	 * @return string The version of this plugin.
 	 */
@@ -358,7 +374,7 @@ class App {
 	 * Get a header.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  x.x.x
+	 * @since  2.0.0
 	 *
 	 * @param  string $header The header you want, e.g. Version, Author, etc.
 	 * @return string         The value of the header.
@@ -373,7 +389,7 @@ class App {
 	 * Attach items to our app.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  x.x.x
+	 * @since  2.0.0
 	 */
 	public function attach() {
 		$this->attach_services();
@@ -390,7 +406,7 @@ class App {
 	 * The app will autoload it, run hooks and run methods automatically.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  x.x.x
+	 * @since  2.0.0
 	 */
 	public function attach_services() {
 
@@ -408,7 +424,7 @@ class App {
 	 * Fire hooks!
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  x.x.x
+	 * @since  2.0.0
 	 */
 	public function hooks() {
 		$this->auto_call_hooks(); // If you want to run your own hook methods, just strip this.
@@ -418,7 +434,7 @@ class App {
 	 * Autoload hooks method.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  x.x.x
+	 * @since  2.0.0
 	 */
 	private function auto_call_hooks() {
 		$this->autocall( 'hooks' );
@@ -428,7 +444,7 @@ class App {
 	 * Run the app.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  x.x.x
+	 * @since  2.0.0
 	 */
 	public function run() {
 		$this->auto_call_run();
@@ -438,7 +454,7 @@ class App {
 	 * Automatically call run methods.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  x.x.x
+	 * @since  2.0.0
 	 */
 	private function auto_call_run() {
 		$this->autocall( 'run' );
@@ -448,7 +464,7 @@ class App {
 	 * Call a property on attached objects.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  x.x.x
+	 * @since  2.0.0
 	 *
 	 * @param  string $call The call.
 	 */
@@ -466,7 +482,7 @@ class App {
 	 * This plugin's url.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  x.x.x
+	 * @since  2.0.0
 	 *
 	 * @param  string $path (Optional) appended path.
 	 * @return string       URL and path.
@@ -481,7 +497,7 @@ class App {
 	 * Re-attribute user content to site author.
 	 *
 	 * @author Your Name <your@email.com>
-	 * @since  x.x.x
+	 * @since  2.0.0
 	 */
 	public function deactivate_plugin() {
 		foreach ( get_object_vars( $this ) as $prop ) {
