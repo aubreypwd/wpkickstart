@@ -150,6 +150,12 @@ class Release_CLI {
 	private function zipdir( $path, $to ) {
 		$path = realpath( $path );
 
+		$dirto = dirname( $to );
+
+		if ( ! file_exists( $dirto ) ) {
+			@$this->fs->mkdir( $dirto );
+		}
+
 		$zip = new \ZipArchive();
 
 		$zip->open( $to, \ZipArchive::CREATE | \ZipArchive::OVERWRITE );
