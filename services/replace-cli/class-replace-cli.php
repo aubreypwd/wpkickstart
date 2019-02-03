@@ -211,6 +211,8 @@ class Replace_CLI {
 
 			$plugin_slug = $this->slugify( $name );
 
+			$description = $this->cli_args->get_arg( 'description' );
+
 			// @codingStandardsIgnoreStart: Alignment below is madness.
 			$cached = [
 
@@ -231,7 +233,7 @@ class Replace_CLI {
 				'Company Name'                 => $this->cli_args->get_arg( 'company' ),
 				'ProjectNamespace'             => $this->classify( $name ),
 				'company-slug'                 => $this->slugify( $this->cli_args->get_arg( 'company' ) ),
-				'Project Description'          => $this->cli_args->get_arg( 'description' ),
+				'Project Description'          => $description,
 				'http://your-website.com'      => $website,
 				$aubrey                        => $author,
 
@@ -239,6 +241,7 @@ class Replace_CLI {
 				'"name": "aubreypwd/wpkickstart",' => str_replace( 'wpkickstart', $plugin_slug, str_replace( 'aubreypwd', $company_slug, '"name": "aubreypwd/wpkickstart",' ) )
 				'https://github.com/aubreypwd/wpkickstart/issues' => $website,
 				'https://github.com/aubreypwd/wpkickstart' => $website,
+				'"description": "",' => str_replace( '""', "\"{$description}\"", '"description": "",' ),
 			];
 			// @codingStandardsIgnoreEnd
 		}
