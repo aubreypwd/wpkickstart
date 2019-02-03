@@ -100,7 +100,7 @@ class Build_ZIP_CLI {
 			return;
 		}
 
-		\WP_CLI::add_command( 'build', [ $this, 'command' ], [
+		\WP_CLI::add_command( 'kickstart zip', [ $this, 'command' ], [
 			'shortdesc' => __( 'Will help you convert the installed wpkickstart plugin into a new plugin and perform all of the search/replacements.', 'wds-migrate-subsite' ),
 			'synopsis'  => [
 				[

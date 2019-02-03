@@ -302,7 +302,7 @@ class Replace_CLI {
 			return;
 		}
 
-		\WP_CLI::add_command( 'kickstart', [ $this, 'command' ], [
+		\WP_CLI::add_command( 'kickstart replace', [ $this, 'command' ], [
 			'shortdesc' => __( 'Will help you convert the installed wpkickstart plugin into a new plugin and perform all of the search/replacements.', 'wds-migrate-subsite' ),
 			'synopsis'  => [
 				[
