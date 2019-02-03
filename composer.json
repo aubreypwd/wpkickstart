@@ -20,9 +20,9 @@
 		"aubreypwd/wpkickstart-components": "dev-master"
 	},
 	"extra": {
-		"installer-types": ["library"],
+		"installer-types": ["wpkickstart-component"],
 		"installer-paths": {
-			"components/vendor/{$vendor}/{$name}/": ["type:library"]
+			"components/vendor/{$vendor}/{$name}/": ["type:wpkickstart-component"]
 		}
 	}
 }
